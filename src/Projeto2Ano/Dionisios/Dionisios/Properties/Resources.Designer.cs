@@ -63,6 +63,136 @@ namespace Dionisios.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _1077114 {
+            get {
+                object obj = ResourceManager.GetObject("1077114", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _111039_key_icon {
+            get {
+                object obj = ResourceManager.GetObject("111039_key_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _360_F_315394192_WPTehkhMfKD6TZaaQMNMtuMx6xZtIM9e {
+            get {
+                object obj = ResourceManager.GetObject("360_F_315394192_WPTehkhMfKD6TZaaQMNMtuMx6xZtIM9e", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _88591_removebg_preview {
+            get {
+                object obj = ResourceManager.GetObject("88591-removebg-preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _9999e0ae7aa424f5fa5c319433b229ed_removebg_preview {
+            get {
+                object obj = ResourceManager.GetObject("9999e0ae7aa424f5fa5c319433b229ed-removebg-preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap a_removebg_preview {
+            get {
+                object obj = ResourceManager.GetObject("a-removebg-preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Captura_de_ecrã_2024_05_07_144725_removebg_preview {
+            get {
+                object obj = ResourceManager.GetObject("Captura_de_ecrã_2024-05-07_144725-removebg-preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Dionisios {
+            get {
+                object obj = ResourceManager.GetObject("Dionisios", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Dionisios_removebg_preview {
+            get {
+                object obj = ResourceManager.GetObject("Dionisios-removebg-preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap eye {
+            get {
+                object obj = ResourceManager.GetObject("eye", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap eyecheck {
+            get {
+                object obj = ResourceManager.GetObject("eyecheck", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap eyenotcheck {
+            get {
+                object obj = ResourceManager.GetObject("eyenotcheck", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap hide {
+            get {
+                object obj = ResourceManager.GetObject("hide", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap image_removebg_preview {
             get {
                 object obj = ResourceManager.GetObject("image-removebg-preview", resourceCulture);
@@ -76,6 +206,69 @@ namespace Dionisios.Properties {
         internal static System.Drawing.Bitmap image_removebg_preview__1_ {
             get {
                 object obj = ResourceManager.GetObject("image-removebg-preview (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap images__1__removebg_preview {
+            get {
+                object obj = ResourceManager.GetObject("images__1_-removebg-preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap images__2__removebg_preview {
+            get {
+                object obj = ResourceManager.GetObject("images__2_-removebg-preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap images_removebg_preview {
+            get {
+                object obj = ResourceManager.GetObject("images-removebg-preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap kisspng_computer_icons_email_internet_bounce_address_icon_emailsymbol_5b4e0d876276b5_1879250015318419274033 {
+            get {
+                object obj = ResourceManager.GetObject("kisspng-computer-icons-email-internet-bounce-address-icon-emailsymbol-5b4e0d87627" +
+                        "6b5.1879250015318419274033", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap kisspng_computer_icons_email_internet_bounce_address_icon_emailsymbol_5b4e0d876276b51 {
+            get {
+                object obj = ResourceManager.GetObject("kisspng-computer-icons-email-internet-bounce-address-icon-emailsymbol-5b4e0d87627" +
+                        "6b51", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap kisspng_computer_icons_stock_photography_email_clip_art_simblo_5b4faed2d78991_2976490215319487548829_removebg_preview {
+            get {
+                object obj = ResourceManager.GetObject("kisspng-computer-icons-stock-photography-email-clip-art-simblo-5b4faed2d78991.297" +
+                        "6490215319487548829-removebg-preview", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

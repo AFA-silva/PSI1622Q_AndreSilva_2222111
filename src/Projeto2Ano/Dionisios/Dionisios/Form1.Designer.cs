@@ -28,58 +28,166 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.UsernameBox = new System.Windows.Forms.TextBox();
+            this.Passwordbox = new System.Windows.Forms.TextBox();
+            this.BtnLogin = new System.Windows.Forms.Button();
+            this.RegisterLabel = new System.Windows.Forms.Label();
+            this.Emailbox = new System.Windows.Forms.TextBox();
+            this.EmailIcon = new System.Windows.Forms.PictureBox();
+            this.UserIcon = new System.Windows.Forms.PictureBox();
+            this.PassIcon = new System.Windows.Forms.PictureBox();
+            this.LogoIcon = new System.Windows.Forms.PictureBox();
+            this.PasscheckIcon = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.EmailIcon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UserIcon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PassIcon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LogoIcon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PasscheckIcon)).BeginInit();
             this.SuspendLayout();
             // 
-            // pictureBox1
+            // UsernameBox
             // 
-            this.pictureBox1.Image = global::Dionisios.Properties.Resources.image_removebg_preview__1_;
-            this.pictureBox1.Location = new System.Drawing.Point(96, 11);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(620, 161);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.UsernameBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UsernameBox.ForeColor = System.Drawing.Color.Gray;
+            this.UsernameBox.Location = new System.Drawing.Point(108, 168);
+            this.UsernameBox.Name = "UsernameBox";
+            this.UsernameBox.Size = new System.Drawing.Size(218, 29);
+            this.UsernameBox.TabIndex = 1;
+            this.UsernameBox.Text = "Username";
+            this.UsernameBox.Click += new System.EventHandler(this.UsernameBox_Click);
+            this.UsernameBox.Leave += new System.EventHandler(this.UsernameBox_Leave);
             // 
-            // label1
+            // Passwordbox
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(28)))), ((int)(((byte)(36)))));
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label1.Location = new System.Drawing.Point(174, 52);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(343, 37);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Weclome, to Dionisios!";
+            this.Passwordbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Passwordbox.ForeColor = System.Drawing.Color.Gray;
+            this.Passwordbox.Location = new System.Drawing.Point(108, 214);
+            this.Passwordbox.Name = "Passwordbox";
+            this.Passwordbox.PasswordChar = '*';
+            this.Passwordbox.Size = new System.Drawing.Size(218, 29);
+            this.Passwordbox.TabIndex = 2;
+            this.Passwordbox.Text = "Password";
+            this.Passwordbox.Click += new System.EventHandler(this.Passwordbox_Click);
+            this.Passwordbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Passwordbox_KeyPress);
+            this.Passwordbox.Leave += new System.EventHandler(this.Passwordbox_Leave);
             // 
-            // label2
+            // BtnLogin
             // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(28)))), ((int)(((byte)(36)))));
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label2.Location = new System.Drawing.Point(263, 98);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(280, 24);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Login Here with your credentials";
+            this.BtnLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(34)))), ((int)(((byte)(41)))));
+            this.BtnLogin.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(34)))), ((int)(((byte)(41)))));
+            this.BtnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
+            this.BtnLogin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(172)))), ((int)(((byte)(100)))));
+            this.BtnLogin.Location = new System.Drawing.Point(133, 317);
+            this.BtnLogin.Name = "BtnLogin";
+            this.BtnLogin.Size = new System.Drawing.Size(145, 54);
+            this.BtnLogin.TabIndex = 6;
+            this.BtnLogin.Text = "Login";
+            this.BtnLogin.UseVisualStyleBackColor = false;
+            this.BtnLogin.Click += new System.EventHandler(this.BtnLogin_Click);
+            // 
+            // RegisterLabel
+            // 
+            this.RegisterLabel.AutoSize = true;
+            this.RegisterLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RegisterLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(172)))), ((int)(((byte)(100)))));
+            this.RegisterLabel.Location = new System.Drawing.Point(82, 374);
+            this.RegisterLabel.Name = "RegisterLabel";
+            this.RegisterLabel.Size = new System.Drawing.Size(236, 18);
+            this.RegisterLabel.TabIndex = 7;
+            this.RegisterLabel.Text = "Dont have an account? Click Here!";
+            this.RegisterLabel.Click += new System.EventHandler(this.RegisterLabel_Click);
+            // 
+            // Emailbox
+            // 
+            this.Emailbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Emailbox.ForeColor = System.Drawing.Color.Gray;
+            this.Emailbox.Location = new System.Drawing.Point(108, 263);
+            this.Emailbox.Name = "Emailbox";
+            this.Emailbox.Size = new System.Drawing.Size(218, 29);
+            this.Emailbox.TabIndex = 8;
+            this.Emailbox.Text = "Email";
+            this.Emailbox.Click += new System.EventHandler(this.Emailbox_Click);
+            this.Emailbox.Leave += new System.EventHandler(this.Emailbox_Leave);
+            // 
+            // EmailIcon
+            // 
+            this.EmailIcon.Image = global::Dionisios.Properties.Resources.kisspng_computer_icons_stock_photography_email_clip_art_simblo_5b4faed2d78991_2976490215319487548829_removebg_preview;
+            this.EmailIcon.Location = new System.Drawing.Point(55, 257);
+            this.EmailIcon.Name = "EmailIcon";
+            this.EmailIcon.Size = new System.Drawing.Size(36, 35);
+            this.EmailIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.EmailIcon.TabIndex = 9;
+            this.EmailIcon.TabStop = false;
+            // 
+            // UserIcon
+            // 
+            this.UserIcon.Image = global::Dionisios.Properties.Resources.a_removebg_preview;
+            this.UserIcon.Location = new System.Drawing.Point(53, 163);
+            this.UserIcon.Name = "UserIcon";
+            this.UserIcon.Size = new System.Drawing.Size(49, 39);
+            this.UserIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.UserIcon.TabIndex = 5;
+            this.UserIcon.TabStop = false;
+            // 
+            // PassIcon
+            // 
+            this.PassIcon.Image = global::Dionisios.Properties.Resources._9999e0ae7aa424f5fa5c319433b229ed_removebg_preview;
+            this.PassIcon.Location = new System.Drawing.Point(45, 210);
+            this.PassIcon.Name = "PassIcon";
+            this.PassIcon.Size = new System.Drawing.Size(63, 35);
+            this.PassIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PassIcon.TabIndex = 4;
+            this.PassIcon.TabStop = false;
+            // 
+            // LogoIcon
+            // 
+            this.LogoIcon.Image = global::Dionisios.Properties.Resources.Dionisios_removebg_preview;
+            this.LogoIcon.Location = new System.Drawing.Point(64, -20);
+            this.LogoIcon.Name = "LogoIcon";
+            this.LogoIcon.Size = new System.Drawing.Size(277, 177);
+            this.LogoIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.LogoIcon.TabIndex = 0;
+            this.LogoIcon.TabStop = false;
+            // 
+            // PasscheckIcon
+            // 
+            this.PasscheckIcon.Image = global::Dionisios.Properties.Resources.hide;
+            this.PasscheckIcon.Location = new System.Drawing.Point(332, 214);
+            this.PasscheckIcon.Name = "PasscheckIcon";
+            this.PasscheckIcon.Size = new System.Drawing.Size(37, 28);
+            this.PasscheckIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PasscheckIcon.TabIndex = 22;
+            this.PasscheckIcon.TabStop = false;
+            this.PasscheckIcon.Click += new System.EventHandler(this.PasscheckIcon_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.pictureBox1);
+            this.AutoSize = true;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(34)))), ((int)(((byte)(41)))));
+            this.ClientSize = new System.Drawing.Size(408, 476);
+            this.Controls.Add(this.PasscheckIcon);
+            this.Controls.Add(this.EmailIcon);
+            this.Controls.Add(this.Emailbox);
+            this.Controls.Add(this.RegisterLabel);
+            this.Controls.Add(this.BtnLogin);
+            this.Controls.Add(this.UserIcon);
+            this.Controls.Add(this.PassIcon);
+            this.Controls.Add(this.Passwordbox);
+            this.Controls.Add(this.UsernameBox);
+            this.Controls.Add(this.LogoIcon);
+            this.MaximizeBox = false;
             this.Name = "Form1";
-            this.Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "LoginPage";
+            this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.EmailIcon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UserIcon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PassIcon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LogoIcon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PasscheckIcon)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -87,9 +195,16 @@
 
         #endregion
 
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.PictureBox LogoIcon;
+        private System.Windows.Forms.TextBox UsernameBox;
+        private System.Windows.Forms.TextBox Passwordbox;
+        private System.Windows.Forms.PictureBox PassIcon;
+        private System.Windows.Forms.PictureBox UserIcon;
+        private System.Windows.Forms.Button BtnLogin;
+        private System.Windows.Forms.Label RegisterLabel;
+        private System.Windows.Forms.TextBox Emailbox;
+        private System.Windows.Forms.PictureBox EmailIcon;
+        private System.Windows.Forms.PictureBox PasscheckIcon;
     }
 }
 

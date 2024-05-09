@@ -54,6 +54,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Register.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Register.Designer.cs">
+      <DependentUpon>Register.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -67,6 +73,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Register.resx">
+      <DependentUpon>Register.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -85,6 +94,63 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\image-removebg-preview %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\360_F_315394192_WPTehkhMfKD6TZaaQMNMtuMx6xZtIM9e.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Captura_de_ecrã_2024-05-07_144725-removebg-preview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Dionisios.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Dionisios-removebg-preview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\111039_key_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1077114.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\kisspng-computer-icons-email-internet-bounce-address-icon-emailsymbol-5b4e0d876276b5.1879250015318419274033.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\kisspng-computer-icons-email-internet-bounce-address-icon-emailsymbol-5b4e0d876276b5.18792500153184192740331.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\kisspng-computer-icons-stock-photography-email-clip-art-simblo-5b4faed2d78991.2976490215319487548829-removebg-preview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\88591-removebg-preview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\images__2_-removebg-preview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\images__1_-removebg-preview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\images-removebg-preview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\a-removebg-preview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\9999e0ae7aa424f5fa5c319433b229ed-removebg-preview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\eyecheck.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\eyenotcheck.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\eye.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hide.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
