@@ -125,6 +125,8 @@ namespace Dionisios
                         connection.Open();
                         int rowsAffected = command.ExecuteNonQuery();
                         MessageBox.Show("Registro inserido com sucesso!");
+                        fclose = 1;
+                        this.Close();
                     }
                     catch (Exception ex)
                     {

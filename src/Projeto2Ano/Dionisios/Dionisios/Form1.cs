@@ -2,16 +2,20 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolTip;
 
 namespace Dionisios
 {
     public partial class Form1 : Form
     {
+        bool validationV;
+        string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=DionisiosDB;Integrated Security=True";
         public Form1()
         {
             InitializeComponent();
@@ -20,7 +24,7 @@ namespace Dionisios
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            UsernameBox.TabStop = false;
+            BIbox.TabStop = false;
             Passwordbox.TabStop = false;
             Emailbox.TabStop = false;
         }
@@ -39,13 +43,13 @@ namespace Dionisios
                 this.Close();
             }
         }
-        private void UsernameBox_Click(object sender, EventArgs e)
+        private void BIBox_Click(object sender, EventArgs e)
         {
-            if (UsernameBox.Text == "Username")
+            if (BIbox.Text == "BI")
             {
-                UsernameBox.Text = "";
+                BIbox.Text = "";
             }
-            UsernameBox.ForeColor = Color.Black;
+            BIbox.ForeColor = Color.Black;
         }
         private void Passwordbox_Click(object sender, EventArgs e)
         {
@@ -73,12 +77,12 @@ namespace Dionisios
             }
         }
 
-        private void UsernameBox_Leave(object sender, EventArgs e)
+        private void BIBox_Leave(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(UsernameBox.Text))
+            if (string.IsNullOrEmpty(BIbox.Text))
             {
-                UsernameBox.ForeColor = Color.Gray;
-                UsernameBox.Text = "Username";
+                BIbox.ForeColor = Color.Gray;
+                BIbox.Text = "BI";
             }
         }
 
@@ -93,7 +97,7 @@ namespace Dionisios
 
         private void BtnLogin_Click(object sender, EventArgs e)
         {
-            
+            ConfirmLogin();
         }
         private void Passwordbox_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -114,6 +118,62 @@ namespace Dionisios
             {
                 Passwordbox.PasswordChar = '*';
                 PasscheckIcon.Image = Properties.Resources.hide;
+            }
+        }
+        private void ConfirmLogin()
+        {
+            validationV = false;
+            bool biFound = false;
+            int v1 = 0;
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string biQuery = "SELECT * FROM UserAccount WHERE BI = @BI";
+                using (SqlCommand command = new SqlCommand(biQuery, connection))
+                {
+                    command.Parameters.AddWithValue("@BI", BIbox.Text);
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            string storedPassword = reader["Password"].ToString();
+                            if (storedPassword == Passwordbox.Text)
+                            {
+                                v1++;
+                            }
+                            else
+                            {
+                                MessageBox.Show("Wrong Password! Try Again.");
+                                return;
+                            }
+                            string storedEmail = reader["Email"].ToString();
+                            if (storedEmail == Emailbox.Text)
+                            {
+                                v1++;
+                            }
+                            else
+                            {
+                                MessageBox.Show("Wrong Email! Try again.");
+                                return;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("BI not found! Try another.");
+                        return;
+                    }
+                }
+            }
+            if (v1==2)
+            {
+                MessageBox.Show("Login Successful!");
+            }
+            else
+            {
+                MessageBox.Show("Email/Password/BI combination not found! Try another.");
             }
         }
     }
