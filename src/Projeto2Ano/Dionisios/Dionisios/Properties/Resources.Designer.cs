@@ -133,6 +133,16 @@ namespace Dionisios.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Captura_de_ecrã_2024_05_13_093254 {
+            get {
+                object obj = ResourceManager.GetObject("Captura de ecrã 2024-05-13 093254", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Dionisios {
             get {
                 object obj = ResourceManager.GetObject("Dionisios", resourceCulture);
@@ -213,6 +223,56 @@ namespace Dionisios.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap image_removebg_preview__2_ {
+            get {
+                object obj = ResourceManager.GetObject("image-removebg-preview (2)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap image_removebg_preview__3_ {
+            get {
+                object obj = ResourceManager.GetObject("image-removebg-preview (3)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap image_removebg_preview__4_ {
+            get {
+                object obj = ResourceManager.GetObject("image-removebg-preview (4)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap image_removebg_preview__5_ {
+            get {
+                object obj = ResourceManager.GetObject("image-removebg-preview (5)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap image_removebg_preview__6_ {
+            get {
+                object obj = ResourceManager.GetObject("image-removebg-preview (6)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap images__1__removebg_preview {
             get {
                 object obj = ResourceManager.GetObject("images__1_-removebg-preview", resourceCulture);
@@ -269,6 +329,26 @@ namespace Dionisios.Properties {
             get {
                 object obj = ResourceManager.GetObject("kisspng-computer-icons-stock-photography-email-clip-art-simblo-5b4faed2d78991.297" +
                         "6490215319487548829-removebg-preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap olhoA {
+            get {
+                object obj = ResourceManager.GetObject("olhoA", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap olhoF {
+            get {
+                object obj = ResourceManager.GetObject("olhoF", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

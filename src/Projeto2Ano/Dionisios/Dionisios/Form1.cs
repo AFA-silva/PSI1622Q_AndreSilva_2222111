@@ -15,6 +15,7 @@ namespace Dionisios
     public partial class Form1 : Form
     {
         bool validationV;
+        string role = "";
         string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=DionisiosDB;Integrated Security=True";
         public Form1()
         {
@@ -97,7 +98,27 @@ namespace Dionisios
 
         private void BtnLogin_Click(object sender, EventArgs e)
         {
-            ConfirmLogin();
+            /*ConfirmLogin();
+            if(role == "ADMIN")
+            {
+                this.Hide();
+                AdminPage adminpage = new AdminPage();
+                adminpage.ShowDialog();
+                int a = 0;
+                if (a == 1)
+                {
+                    this.Show   ();
+                }
+                else
+                {
+                    this.Close();
+                }
+            }
+            */
+            this.Hide();
+            AdminPage adminpage = new AdminPage();
+            adminpage.ShowDialog();
+            this.Show();
         }
         private void Passwordbox_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -112,12 +133,12 @@ namespace Dionisios
             if (Passwordbox.PasswordChar != '\0')
             {
                 Passwordbox.PasswordChar = '\0';
-                PasscheckIcon.Image = Properties.Resources.eye;
+                PasscheckIcon.Image = Properties.Resources.olhoF;
             }
             else
             {
                 Passwordbox.PasswordChar = '*';
-                PasscheckIcon.Image = Properties.Resources.hide;
+                PasscheckIcon.Image = Properties.Resources.olhoA;
             }
         }
         private void ConfirmLogin()
@@ -152,6 +173,7 @@ namespace Dionisios
                             if (storedEmail == Emailbox.Text)
                             {
                                 v1++;
+                                role = reader["Role"].ToString();
                             }
                             else
                             {

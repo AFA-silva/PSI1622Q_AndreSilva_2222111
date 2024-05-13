@@ -149,12 +149,12 @@ namespace Dionisios
             if (Passwordbox.PasswordChar != '\0')
             {
                 Passwordbox.PasswordChar = '\0'; 
-                PasscheckIcon.Image = Properties.Resources.eye; 
+                PasscheckIcon.Image = Properties.Resources.olhoF; 
             }
             else
             {
                 Passwordbox.PasswordChar = '*'; 
-                PasscheckIcon.Image = Properties.Resources.hide;
+                PasscheckIcon.Image = Properties.Resources.olhoA;
             }
         }
         private bool IsValidEmail(string email)
