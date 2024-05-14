@@ -28,24 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Register));
             this.Emailbox = new System.Windows.Forms.TextBox();
             this.LoginLabel = new System.Windows.Forms.Label();
             this.BtnRegister = new System.Windows.Forms.Button();
             this.Passwordbox = new System.Windows.Forms.TextBox();
             this.UsernameBox = new System.Windows.Forms.TextBox();
             this.BIbox = new System.Windows.Forms.TextBox();
-            this.LogoIcon = new System.Windows.Forms.PictureBox();
             this.PasscheckIcon = new System.Windows.Forms.PictureBox();
             this.BIicon = new System.Windows.Forms.PictureBox();
             this.EmailIcon = new System.Windows.Forms.PictureBox();
-            this.PassIcon = new System.Windows.Forms.PictureBox();
             this.UserIcon = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.LogoIcon)).BeginInit();
+            this.PassIcon = new System.Windows.Forms.PictureBox();
+            this.LogoIcon = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.PasscheckIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BIicon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EmailIcon)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PassIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UserIcon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PassIcon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LogoIcon)).BeginInit();
             this.SuspendLayout();
             // 
             // Emailbox
@@ -126,22 +127,12 @@
             this.BIbox.Click += new System.EventHandler(this.BIbox_Click);
             this.BIbox.Leave += new System.EventHandler(this.BIbox_Leave);
             // 
-            // LogoIcon
-            // 
-            this.LogoIcon.Image = global::Dionisios.Properties.Resources.Dionisios_removebg_preview;
-            this.LogoIcon.Location = new System.Drawing.Point(64, -20);
-            this.LogoIcon.Name = "LogoIcon";
-            this.LogoIcon.Size = new System.Drawing.Size(277, 177);
-            this.LogoIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.LogoIcon.TabIndex = 10;
-            this.LogoIcon.TabStop = false;
-            // 
             // PasscheckIcon
             // 
-            this.PasscheckIcon.Image = global::Dionisios.Properties.Resources.hide;
-            this.PasscheckIcon.Location = new System.Drawing.Point(332, 217);
+            this.PasscheckIcon.Image = global::Dionisios.Properties.Resources.olhoA;
+            this.PasscheckIcon.Location = new System.Drawing.Point(304, 194);
             this.PasscheckIcon.Name = "PasscheckIcon";
-            this.PasscheckIcon.Size = new System.Drawing.Size(37, 28);
+            this.PasscheckIcon.Size = new System.Drawing.Size(92, 75);
             this.PasscheckIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PasscheckIcon.TabIndex = 21;
             this.PasscheckIcon.TabStop = false;
@@ -149,33 +140,23 @@
             // 
             // BIicon
             // 
-            this.BIicon.Image = global::Dionisios.Properties.Resources._88591_removebg_preview;
-            this.BIicon.Location = new System.Drawing.Point(55, 306);
+            this.BIicon.Image = global::Dionisios.Properties.Resources.image_removebg_preview__6_;
+            this.BIicon.Location = new System.Drawing.Point(45, 288);
             this.BIicon.Name = "BIicon";
-            this.BIicon.Size = new System.Drawing.Size(36, 35);
+            this.BIicon.Size = new System.Drawing.Size(63, 72);
             this.BIicon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.BIicon.TabIndex = 20;
             this.BIicon.TabStop = false;
             // 
             // EmailIcon
             // 
-            this.EmailIcon.Image = global::Dionisios.Properties.Resources.kisspng_computer_icons_stock_photography_email_clip_art_simblo_5b4faed2d78991_2976490215319487548829_removebg_preview;
-            this.EmailIcon.Location = new System.Drawing.Point(55, 257);
+            this.EmailIcon.Image = global::Dionisios.Properties.Resources.image_removebg_preview__5_;
+            this.EmailIcon.Location = new System.Drawing.Point(45, 251);
             this.EmailIcon.Name = "EmailIcon";
-            this.EmailIcon.Size = new System.Drawing.Size(36, 35);
+            this.EmailIcon.Size = new System.Drawing.Size(63, 55);
             this.EmailIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.EmailIcon.TabIndex = 18;
             this.EmailIcon.TabStop = false;
-            // 
-            // PassIcon
-            // 
-            this.PassIcon.Image = global::Dionisios.Properties.Resources._9999e0ae7aa424f5fa5c319433b229ed_removebg_preview;
-            this.PassIcon.Location = new System.Drawing.Point(45, 210);
-            this.PassIcon.Name = "PassIcon";
-            this.PassIcon.Size = new System.Drawing.Size(63, 35);
-            this.PassIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.PassIcon.TabIndex = 13;
-            this.PassIcon.TabStop = false;
             // 
             // UserIcon
             // 
@@ -187,6 +168,26 @@
             this.UserIcon.TabIndex = 14;
             this.UserIcon.TabStop = false;
             // 
+            // PassIcon
+            // 
+            this.PassIcon.Image = global::Dionisios.Properties.Resources._9999e0ae7aa424f5fa5c319433b229ed_removebg_preview;
+            this.PassIcon.Location = new System.Drawing.Point(45, 210);
+            this.PassIcon.Name = "PassIcon";
+            this.PassIcon.Size = new System.Drawing.Size(63, 35);
+            this.PassIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PassIcon.TabIndex = 13;
+            this.PassIcon.TabStop = false;
+            // 
+            // LogoIcon
+            // 
+            this.LogoIcon.Image = global::Dionisios.Properties.Resources.Dionisios_removebg_preview;
+            this.LogoIcon.Location = new System.Drawing.Point(64, -20);
+            this.LogoIcon.Name = "LogoIcon";
+            this.LogoIcon.Size = new System.Drawing.Size(277, 177);
+            this.LogoIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.LogoIcon.TabIndex = 10;
+            this.LogoIcon.TabStop = false;
+            // 
             // Register
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -194,7 +195,6 @@
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(34)))), ((int)(((byte)(41)))));
             this.ClientSize = new System.Drawing.Size(408, 476);
-            this.Controls.Add(this.PasscheckIcon);
             this.Controls.Add(this.BIicon);
             this.Controls.Add(this.BIbox);
             this.Controls.Add(this.EmailIcon);
@@ -206,17 +206,19 @@
             this.Controls.Add(this.Passwordbox);
             this.Controls.Add(this.UsernameBox);
             this.Controls.Add(this.LogoIcon);
+            this.Controls.Add(this.PasscheckIcon);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Register";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Register";
             this.Load += new System.EventHandler(this.Register_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.LogoIcon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PasscheckIcon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BIicon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EmailIcon)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PassIcon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.UserIcon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PassIcon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LogoIcon)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
