@@ -17,10 +17,10 @@ namespace Dionisios
     {
         bool validationV;
         string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=DionisiosDB;Integrated Security=True";
-        public int fclose { get; set; }
+        public int Registerclose { get; set; }
         public Register()
         {
-            fclose = 0;
+            Registerclose = 0;
             InitializeComponent();
             this.MinimumSize = new System.Drawing.Size(424, 515);
             this.MaximumSize = new System.Drawing.Size(424, 515);
@@ -34,7 +34,7 @@ namespace Dionisios
         }
         private void LoginLabel_Click(object sender, EventArgs e)
         {
-            fclose = 1;
+            Registerclose = 1;
             this.Close();
         }
         private void BIbox_Click(object sender, EventArgs e)
@@ -117,7 +117,8 @@ namespace Dionisios
                 {
                     command.Parameters.AddWithValue("@Username", UsernameBox.Text);
                     command.Parameters.AddWithValue("@Password", Passwordbox.Text);
-                    command.Parameters.AddWithValue("@Role", "ADMIN");
+                    command.Parameters.AddWithValue("@Role", "MANAGER");
+                    command.Parameters.AddWithValue("@Role", "EMPLOYEE");
                     command.Parameters.AddWithValue("@Email", Emailbox.Text);
                     command.Parameters.AddWithValue("@BI", BIbox.Text);
                     try
@@ -125,7 +126,7 @@ namespace Dionisios
                         connection.Open();
                         int rowsAffected = command.ExecuteNonQuery();
                         MessageBox.Show("Registro inserido com sucesso!");
-                        fclose = 1;
+                        Registerclose = 1;
                         this.Close();
                     }
                     catch (Exception ex)
