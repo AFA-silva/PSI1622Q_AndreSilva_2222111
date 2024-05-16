@@ -171,7 +171,7 @@ namespace Dionisios
                 BIUpdate(userId, newBI);
                 EmailUpdate(userId, newEmail);
                 PasswordUpdate(userId, newPassword);
-                if (newRole == "ADMIN")
+                if(newRole == "ADMIN")
                 {
                     DialogResult result = MessageBox.Show("Are you sure you want to change this user to admin?", "Confirmation", MessageBoxButtons.YesNo);
                     if (result == DialogResult.No)
