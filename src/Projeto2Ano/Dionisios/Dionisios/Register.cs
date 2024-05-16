@@ -117,7 +117,6 @@ namespace Dionisios
                 {
                     command.Parameters.AddWithValue("@Username", UsernameBox.Text);
                     command.Parameters.AddWithValue("@Password", Passwordbox.Text);
-                    command.Parameters.AddWithValue("@Role", "MANAGER");
                     command.Parameters.AddWithValue("@Role", "EMPLOYEE");
                     command.Parameters.AddWithValue("@Email", Emailbox.Text);
                     command.Parameters.AddWithValue("@BI", BIbox.Text);
