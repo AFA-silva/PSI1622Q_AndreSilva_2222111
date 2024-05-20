@@ -43,7 +43,7 @@ namespace Dionisios
             if (e.RowIndex >= 0)
             {
                 UsersGridView.Rows[e.RowIndex].Selected = true;
-                RoleCombo.Text = UsersGridView.Rows[e.RowIndex].Cells["RoleCol"].Value.ToString();
+                RoleCombo.Text = UsersGridView.Rows[e.RowIndex].Cells["Role"].Value.ToString();
                 UsernameBox.Text = UsersGridView.Rows[e.RowIndex].Cells["UsernameCol"].Value.ToString();
                 BIbox.Text = UsersGridView.Rows[e.RowIndex].Cells["BICol"].Value.ToString();
                 EmailBox.Text = UsersGridView.Rows[e.RowIndex].Cells["EmailCol"].Value.ToString();
@@ -153,7 +153,7 @@ namespace Dionisios
             if (UsersGridView.SelectedRows.Count > 0)
             {
                 DataGridViewRow row = UsersGridView.SelectedRows[0];
-                int userId = Convert.ToInt32(row.Cells["IDcol"].Value);
+                int userId = Convert.ToInt32(row.Cells["ID"].Value);
                 string newRole = RoleCombo.Text;
                 string newUser = UsernameBox.Text;
                 string newEmail = EmailBox.Text;
@@ -243,7 +243,7 @@ namespace Dionisios
             if (UsersGridView.SelectedRows.Count > 0)
             {
                 DataGridViewRow row = UsersGridView.SelectedRows[0];
-                int userId = Convert.ToInt32(row.Cells["IDcol"].Value);
+                int userId = Convert.ToInt32(row.Cells["ID"].Value);
                 DialogResult result = MessageBox.Show("Are you sure you want to delete this user?", "Confirmation", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
