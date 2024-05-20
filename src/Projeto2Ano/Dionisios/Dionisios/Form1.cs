@@ -16,6 +16,7 @@ namespace Dionisios
     {
         bool validationV;
         string role = "";
+        public static int LoggedInUserId { get; set; }
         string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=DionisiosDB;Integrated Security=True";
         public Form1()
         {
@@ -35,7 +36,7 @@ namespace Dionisios
             this.Hide();
             Register RegisterPage = new Register();
             RegisterPage.ShowDialog();
-            if (RegisterPage.fclose == 1)
+            if (RegisterPage.Registerclose == 1)
             {
                 this.Show();
             }
@@ -98,27 +99,21 @@ namespace Dionisios
 
         private void BtnLogin_Click(object sender, EventArgs e)
         {
-            /*ConfirmLogin();
+            ConfirmLogin();
             if(role == "ADMIN")
             {
                 this.Hide();
                 AdminPage adminpage = new AdminPage();
                 adminpage.ShowDialog();
-                int a = 0;
-                if (a == 1)
+                if (adminpage.Adminclose == 1)
                 {
-                    this.Show   ();
+                    this.Show();
                 }
                 else
                 {
                     this.Close();
                 }
-            }
-            */
-            this.Hide();
-            AdminPage adminpage = new AdminPage();
-            adminpage.ShowDialog();
-            this.Show();
+            }      
         }
         private void Passwordbox_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -180,6 +175,7 @@ namespace Dionisios
                                 MessageBox.Show("Wrong Email! Try again.");
                                 return;
                             }
+                            LoggedInUserId = Convert.ToInt32(reader["ID"]);
                         }
                     }
                     else
