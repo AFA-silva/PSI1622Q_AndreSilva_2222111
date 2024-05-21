@@ -15,7 +15,7 @@ namespace Dionisios
     public partial class Form1 : Form
     {
         bool validationV;
-        string role = "";
+        string role;
         public static int LoggedInUserId { get; set; }
         string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=DionisiosDB;Integrated Security=True";
         public Form1()
@@ -169,7 +169,6 @@ namespace Dionisios
             validationV = false;
             bool biFound = false;
             int v1 = 0;
-
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 string biQuery = "SELECT * FROM UserAccount WHERE BI = @BI";
@@ -190,6 +189,7 @@ namespace Dionisios
                             else
                             {
                                 MessageBox.Show("Wrong Password! Try Again.");
+                                role = "";
                                 return;
                             }
                             string storedEmail = reader["Email"].ToString();
@@ -200,7 +200,8 @@ namespace Dionisios
                             }
                             else
                             {
-                                MessageBox.Show("Wrong Email! Try again.");
+                                MessageBox.Show("Wrong Email/BI! Try again.");
+                                role = "";
                                 return;
                             }
                             LoggedInUserId = Convert.ToInt32(reader["ID"]);
@@ -209,6 +210,7 @@ namespace Dionisios
                     else
                     {
                         MessageBox.Show("BI not found! Try another.");
+                        role = "";
                         return;
                     }
                 }
@@ -216,10 +218,6 @@ namespace Dionisios
             if (v1==2)
             {
                 MessageBox.Show("Login Successful!");
-            }
-            else
-            {
-                MessageBox.Show("Email/Password/BI combination not found! Try another.");
             }
         }
     }

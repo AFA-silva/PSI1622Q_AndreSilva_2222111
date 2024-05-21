@@ -37,6 +37,12 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.RoleCombo = new System.Windows.Forms.ComboBox();
             this.UsersGridView = new System.Windows.Forms.DataGridView();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Role = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EmailCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UsernameCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PasswordCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BICol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.userAccountBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.dionisiosDBDataSet = new Dionisios.DionisiosDBDataSet();
             this.userAccountBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -57,12 +63,6 @@
             this.ingredientsInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ingredientsInfoTableAdapter = new Dionisios.DionisiosDBDataSetTableAdapters.IngredientsInfoTableAdapter();
             this.userAccountTableAdapter = new Dionisios.DionisiosDBDataSetTableAdapters.UserAccountTableAdapter();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Role = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EmailCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UsernameCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PasswordCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BICol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.BackgroundTab)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -162,9 +162,52 @@
             this.UsersGridView.DataSource = this.userAccountBindingSource1;
             this.UsersGridView.Location = new System.Drawing.Point(12, 51);
             this.UsersGridView.Name = "UsersGridView";
+            this.UsersGridView.ReadOnly = true;
             this.UsersGridView.Size = new System.Drawing.Size(644, 154);
             this.UsersGridView.TabIndex = 8;
             this.UsersGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.UserGrid_CellClick);
+            // 
+            // ID
+            // 
+            this.ID.DataPropertyName = "ID";
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            // 
+            // Role
+            // 
+            this.Role.DataPropertyName = "Role";
+            this.Role.HeaderText = "Role";
+            this.Role.Name = "Role";
+            this.Role.ReadOnly = true;
+            // 
+            // EmailCol
+            // 
+            this.EmailCol.DataPropertyName = "Email";
+            this.EmailCol.HeaderText = "Email";
+            this.EmailCol.Name = "EmailCol";
+            this.EmailCol.ReadOnly = true;
+            // 
+            // UsernameCol
+            // 
+            this.UsernameCol.DataPropertyName = "Username";
+            this.UsernameCol.HeaderText = "Username";
+            this.UsernameCol.Name = "UsernameCol";
+            this.UsernameCol.ReadOnly = true;
+            // 
+            // PasswordCol
+            // 
+            this.PasswordCol.DataPropertyName = "Password";
+            this.PasswordCol.HeaderText = "Password";
+            this.PasswordCol.Name = "PasswordCol";
+            this.PasswordCol.ReadOnly = true;
+            // 
+            // BICol
+            // 
+            this.BICol.DataPropertyName = "BI";
+            this.BICol.HeaderText = "BI";
+            this.BICol.Name = "BICol";
+            this.BICol.ReadOnly = true;
             // 
             // userAccountBindingSource1
             // 
@@ -331,43 +374,6 @@
             // userAccountTableAdapter
             // 
             this.userAccountTableAdapter.ClearBeforeFill = true;
-            // 
-            // ID
-            // 
-            this.ID.DataPropertyName = "ID";
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            // 
-            // Role
-            // 
-            this.Role.DataPropertyName = "Role";
-            this.Role.HeaderText = "Role";
-            this.Role.Name = "Role";
-            // 
-            // EmailCol
-            // 
-            this.EmailCol.DataPropertyName = "Email";
-            this.EmailCol.HeaderText = "Email";
-            this.EmailCol.Name = "EmailCol";
-            // 
-            // UsernameCol
-            // 
-            this.UsernameCol.DataPropertyName = "Username";
-            this.UsernameCol.HeaderText = "Username";
-            this.UsernameCol.Name = "UsernameCol";
-            // 
-            // PasswordCol
-            // 
-            this.PasswordCol.DataPropertyName = "Password";
-            this.PasswordCol.HeaderText = "Password";
-            this.PasswordCol.Name = "PasswordCol";
-            // 
-            // BICol
-            // 
-            this.BICol.DataPropertyName = "BI";
-            this.BICol.HeaderText = "BI";
-            this.BICol.Name = "BICol";
             // 
             // AdminPage
             // 
