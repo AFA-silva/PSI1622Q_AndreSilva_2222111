@@ -113,7 +113,35 @@ namespace Dionisios
                 {
                     this.Close();
                 }
-            }      
+            }
+            if (role == "EMPLOYEE")
+            {
+                this.Hide();
+                EmployeePage employeepage = new EmployeePage();
+                employeepage.ShowDialog();
+                if (employeepage.EmployeeClose == 1)
+                {
+                    this.Show();
+                }
+                else
+                {
+                    this.Close();
+                }
+            }
+            if (role == "MANAGER")
+            {
+                this.Hide();
+                ManagerPage managerPage = new ManagerPage();
+                managerPage.ShowDialog();
+                if (managerPage.Managerclose == 1)
+                {
+                    this.Show();
+                }
+                else
+                {
+                    this.Close();
+                }
+            }
         }
         private void Passwordbox_KeyPress(object sender, KeyPressEventArgs e)
         {
