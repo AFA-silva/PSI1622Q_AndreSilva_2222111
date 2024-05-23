@@ -37,15 +37,6 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.RoleCombo = new System.Windows.Forms.ComboBox();
             this.UsersGridView = new System.Windows.Forms.DataGridView();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Role = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EmailCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UsernameCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PasswordCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BICol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.userAccountBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.dionisiosDBDataSet = new Dionisios.DionisiosDBDataSet();
-            this.userAccountBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btnSave = new System.Windows.Forms.Button();
             this.LabelRole = new System.Windows.Forms.Label();
             this.LabelUsername = new System.Windows.Forms.Label();
@@ -60,19 +51,23 @@
             this.BackgroundSquare2 = new System.Windows.Forms.PictureBox();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.ingredientsInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.ingredientsInfoTableAdapter = new Dionisios.DionisiosDBDataSetTableAdapters.IngredientsInfoTableAdapter();
+            this.dionisiosDBDataSet = new Dionisios.DionisiosDBDataSet();
+            this.userAccountBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.userAccountTableAdapter = new Dionisios.DionisiosDBDataSetTableAdapters.UserAccountTableAdapter();
+            this.IDColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UsernameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PasswordColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EmailColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RoleColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BIColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.BackgroundTab)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UsersGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.userAccountBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dionisiosDBDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.userAccountBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BackgroundSquare1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BackgroundSquare2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ingredientsInfoBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dionisiosDBDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.userAccountBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // BackgroundTab
@@ -153,75 +148,20 @@
             this.UsersGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(34)))), ((int)(((byte)(41)))));
             this.UsersGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.UsersGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ID,
-            this.Role,
-            this.EmailCol,
-            this.UsernameCol,
-            this.PasswordCol,
-            this.BICol});
-            this.UsersGridView.DataSource = this.userAccountBindingSource1;
+            this.IDColumn,
+            this.UsernameColumn,
+            this.PasswordColumn,
+            this.EmailColumn,
+            this.RoleColumn,
+            this.BIColumn});
+            this.UsersGridView.DataSource = this.userAccountBindingSource;
             this.UsersGridView.Location = new System.Drawing.Point(12, 51);
             this.UsersGridView.Name = "UsersGridView";
             this.UsersGridView.ReadOnly = true;
+            this.UsersGridView.RowHeadersVisible = false;
             this.UsersGridView.Size = new System.Drawing.Size(644, 154);
             this.UsersGridView.TabIndex = 8;
             this.UsersGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.UserGrid_CellClick);
-            // 
-            // ID
-            // 
-            this.ID.DataPropertyName = "ID";
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            // 
-            // Role
-            // 
-            this.Role.DataPropertyName = "Role";
-            this.Role.HeaderText = "Role";
-            this.Role.Name = "Role";
-            this.Role.ReadOnly = true;
-            // 
-            // EmailCol
-            // 
-            this.EmailCol.DataPropertyName = "Email";
-            this.EmailCol.HeaderText = "Email";
-            this.EmailCol.Name = "EmailCol";
-            this.EmailCol.ReadOnly = true;
-            // 
-            // UsernameCol
-            // 
-            this.UsernameCol.DataPropertyName = "Username";
-            this.UsernameCol.HeaderText = "Username";
-            this.UsernameCol.Name = "UsernameCol";
-            this.UsernameCol.ReadOnly = true;
-            // 
-            // PasswordCol
-            // 
-            this.PasswordCol.DataPropertyName = "Password";
-            this.PasswordCol.HeaderText = "Password";
-            this.PasswordCol.Name = "PasswordCol";
-            this.PasswordCol.ReadOnly = true;
-            // 
-            // BICol
-            // 
-            this.BICol.DataPropertyName = "BI";
-            this.BICol.HeaderText = "BI";
-            this.BICol.Name = "BICol";
-            this.BICol.ReadOnly = true;
-            // 
-            // userAccountBindingSource1
-            // 
-            this.userAccountBindingSource1.DataMember = "UserAccount";
-            this.userAccountBindingSource1.DataSource = this.dionisiosDBDataSet;
-            // 
-            // dionisiosDBDataSet
-            // 
-            this.dionisiosDBDataSet.DataSetName = "DionisiosDBDataSet";
-            this.dionisiosDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // userAccountBindingSource
-            // 
-            this.userAccountBindingSource.DataMember = "UserAccount";
             // 
             // btnSave
             // 
@@ -362,18 +302,62 @@
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // ingredientsInfoBindingSource
+            // dionisiosDBDataSet
             // 
-            this.ingredientsInfoBindingSource.DataMember = "IngredientsInfo";
-            this.ingredientsInfoBindingSource.DataSource = this.dionisiosDBDataSet;
+            this.dionisiosDBDataSet.DataSetName = "DionisiosDBDataSet";
+            this.dionisiosDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // ingredientsInfoTableAdapter
+            // userAccountBindingSource
             // 
-            this.ingredientsInfoTableAdapter.ClearBeforeFill = true;
+            this.userAccountBindingSource.DataMember = "UserAccount";
+            this.userAccountBindingSource.DataSource = this.dionisiosDBDataSet;
             // 
             // userAccountTableAdapter
             // 
             this.userAccountTableAdapter.ClearBeforeFill = true;
+            // 
+            // IDColumn
+            // 
+            this.IDColumn.DataPropertyName = "ID";
+            this.IDColumn.HeaderText = "ID";
+            this.IDColumn.Name = "IDColumn";
+            this.IDColumn.ReadOnly = true;
+            // 
+            // UsernameColumn
+            // 
+            this.UsernameColumn.DataPropertyName = "Username";
+            this.UsernameColumn.HeaderText = "Username";
+            this.UsernameColumn.Name = "UsernameColumn";
+            this.UsernameColumn.ReadOnly = true;
+            // 
+            // PasswordColumn
+            // 
+            this.PasswordColumn.DataPropertyName = "Password";
+            this.PasswordColumn.HeaderText = "Password";
+            this.PasswordColumn.Name = "PasswordColumn";
+            this.PasswordColumn.ReadOnly = true;
+            // 
+            // EmailColumn
+            // 
+            this.EmailColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.EmailColumn.DataPropertyName = "Email";
+            this.EmailColumn.HeaderText = "Email";
+            this.EmailColumn.Name = "EmailColumn";
+            this.EmailColumn.ReadOnly = true;
+            // 
+            // RoleColumn
+            // 
+            this.RoleColumn.DataPropertyName = "Role";
+            this.RoleColumn.HeaderText = "Role";
+            this.RoleColumn.Name = "RoleColumn";
+            this.RoleColumn.ReadOnly = true;
+            // 
+            // BIColumn
+            // 
+            this.BIColumn.DataPropertyName = "BI";
+            this.BIColumn.HeaderText = "BI";
+            this.BIColumn.Name = "BIColumn";
+            this.BIColumn.ReadOnly = true;
             // 
             // AdminPage
             // 
@@ -414,12 +398,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.UsersGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.userAccountBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dionisiosDBDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.userAccountBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BackgroundSquare1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BackgroundSquare2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ingredientsInfoBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dionisiosDBDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.userAccountBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -434,7 +416,6 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.ComboBox RoleCombo;
         private System.Windows.Forms.DataGridView UsersGridView;
-        private System.Windows.Forms.BindingSource userAccountBindingSource;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Label LabelRole;
         private System.Windows.Forms.DataGridViewTextBoxColumn IDcol;
@@ -451,16 +432,16 @@
         private System.Windows.Forms.PictureBox BackgroundSquare2;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnAdd;
-        private DionisiosDBDataSet dionisiosDBDataSet;
-        private System.Windows.Forms.BindingSource ingredientsInfoBindingSource;
-        private DionisiosDBDataSetTableAdapters.IngredientsInfoTableAdapter ingredientsInfoTableAdapter;
-        private System.Windows.Forms.BindingSource userAccountBindingSource1;
-        private DionisiosDBDataSetTableAdapters.UserAccountTableAdapter userAccountTableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Role;
-        private System.Windows.Forms.DataGridViewTextBoxColumn EmailCol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn UsernameCol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PasswordCol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn BICol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColID;
+        private DionisiosDBDataSet dionisiosDBDataSet;
+        private System.Windows.Forms.BindingSource userAccountBindingSource;
+        private DionisiosDBDataSetTableAdapters.UserAccountTableAdapter userAccountTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UsernameColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PasswordColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EmailColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RoleColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BIColumn;
     }
 }

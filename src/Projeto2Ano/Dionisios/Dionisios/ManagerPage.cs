@@ -22,14 +22,16 @@ namespace Dionisios
         {
             Managerclose = 0;   
             InitializeComponent();
+            this.MinimumSize = new System.Drawing.Size(910, 489);
+            this.MaximumSize = new System.Drawing.Size(910, 489);
         }
         private void ManagerPage_Load(object sender, EventArgs e)
         {
-            this.ingredientsInfoTableAdapter1.Fill(this.dionisiosDBDataSet1.IngredientsInfo);
+            this.ingredientsInfoTableAdapter.Fill(this.dionisiosDBDataSet.IngredientsInfo);
         }
         private void IngredientAddBtn_Click(object sender, EventArgs e)
         {
-            if (IngNameBox.Text != "" && UnitBox.Text != "")
+            if (IngNameBox.Text != "" && UnitBox.Text != "" && selectedImage != null)
             {
                 AddIngredient();
                 RefreshGridView();
@@ -66,8 +68,8 @@ namespace Dionisios
         private void RefreshGridView()
         {
             IngredientGridView.DataSource = null;
-            this.ingredientsInfoTableAdapter1.Fill(this.dionisiosDBDataSet1.IngredientsInfo);
-            IngredientGridView.DataSource = this.dionisiosDBDataSet1.IngredientsInfo;
+            this.ingredientsInfoTableAdapter.Fill(this.dionisiosDBDataSet.IngredientsInfo);
+            IngredientGridView.DataSource = this.dionisiosDBDataSet.IngredientsInfo;
         }
         private void NewIngImage_Click(object sender, EventArgs e)
         {
@@ -84,6 +86,29 @@ namespace Dionisios
                 catch (Exception ex)
                 {
                     MessageBox.Show("Ocorreu um erro ao carregar a imagem: " + ex.Message);
+                }
+            }
+        }
+        private void IngredientGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0) 
+            {
+                DataGridViewRow row = IngredientGridView.Rows[e.RowIndex];
+                IngNameB.Text = row.Cells["NameCol"].Value.ToString();
+                IngUnitB.Text = row.Cells["UnitCol"].Value.ToString();
+                IngQuantityB.Text = row.Cells["QuantityCol"].Value.ToString();
+                if (row.Cells["ImageCol"].Value != DBNull.Value)
+                {
+                    byte[] imageData = (byte[])row.Cells["ImageCol"].Value;
+                    using (MemoryStream stream = new MemoryStream(imageData))
+                    {
+                        selectedImage = Image.FromStream(stream);
+                        IngredientsImage.Image = selectedImage;
+                    }
+                }
+                else
+                {
+                    NewIngImage.Image = null;
                 }
             }
         }

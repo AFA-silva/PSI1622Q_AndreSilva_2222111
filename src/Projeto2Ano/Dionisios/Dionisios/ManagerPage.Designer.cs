@@ -31,10 +31,6 @@
             this.components = new System.ComponentModel.Container();
             this.btnHome = new System.Windows.Forms.Button();
             this.StockBtn = new System.Windows.Forms.Button();
-            this.IngredientGridView = new System.Windows.Forms.DataGridView();
-            this.ingredientsInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dionisiosDBDataSet = new Dionisios.DionisiosDBDataSet();
-            this.ingredientsInfoTableAdapter = new Dionisios.DionisiosDBDataSetTableAdapters.IngredientsInfoTableAdapter();
             this.IngredientAddBtn = new System.Windows.Forms.Button();
             this.IngNameBox = new System.Windows.Forms.TextBox();
             this.QuantityAddedBox = new System.Windows.Forms.TextBox();
@@ -46,26 +42,28 @@
             this.BackgroundTab = new System.Windows.Forms.PictureBox();
             this.IngDescriptionBox = new System.Windows.Forms.RichTextBox();
             this.IngNameB = new System.Windows.Forms.TextBox();
-            this.IngPriceB = new System.Windows.Forms.TextBox();
+            this.IngUnitB = new System.Windows.Forms.TextBox();
             this.IngQuantityB = new System.Windows.Forms.TextBox();
-            this.dionisiosDBDataSet1 = new Dionisios.DionisiosDBDataSet1();
-            this.ingredientsInfoBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.ingredientsInfoTableAdapter1 = new Dionisios.DionisiosDBDataSet1TableAdapters.IngredientsInfoTableAdapter();
-            this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quantityStockDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UnitBox = new System.Windows.Forms.ComboBox();
-            ((System.ComponentModel.ISupportInitialize)(this.IngredientGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ingredientsInfoBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dionisiosDBDataSet)).BeginInit();
+            this.BtnDeleteIng = new System.Windows.Forms.Button();
+            this.IngredientGridView = new System.Windows.Forms.DataGridView();
+            this.dionisiosDBDataSet = new Dionisios.DionisiosDBDataSet();
+            this.ingredientsInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.ingredientsInfoTableAdapter = new Dionisios.DionisiosDBDataSetTableAdapters.IngredientsInfoTableAdapter();
+            this.IDCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DescriptionCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ImageCol = new System.Windows.Forms.DataGridViewImageColumn();
+            this.NameCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.QuantityCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UnitCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.NewIngImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.IngredientsImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BackgroundTab)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dionisiosDBDataSet1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ingredientsInfoBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.IngredientGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dionisiosDBDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ingredientsInfoBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // btnHome
@@ -96,39 +94,6 @@
             this.StockBtn.Text = "Stock";
             this.StockBtn.UseVisualStyleBackColor = false;
             // 
-            // IngredientGridView
-            // 
-            this.IngredientGridView.AllowUserToAddRows = false;
-            this.IngredientGridView.AllowUserToOrderColumns = true;
-            this.IngredientGridView.AutoGenerateColumns = false;
-            this.IngredientGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(34)))), ((int)(((byte)(41)))));
-            this.IngredientGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.IngredientGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.iDDataGridViewTextBoxColumn,
-            this.Unit,
-            this.nameDataGridViewTextBoxColumn,
-            this.quantityStockDataGridViewTextBoxColumn});
-            this.IngredientGridView.DataSource = this.ingredientsInfoBindingSource1;
-            this.IngredientGridView.Location = new System.Drawing.Point(28, 64);
-            this.IngredientGridView.Name = "IngredientGridView";
-            this.IngredientGridView.ReadOnly = true;
-            this.IngredientGridView.Size = new System.Drawing.Size(444, 161);
-            this.IngredientGridView.TabIndex = 13;
-            // 
-            // ingredientsInfoBindingSource
-            // 
-            this.ingredientsInfoBindingSource.DataMember = "IngredientsInfo";
-            this.ingredientsInfoBindingSource.DataSource = this.dionisiosDBDataSet;
-            // 
-            // dionisiosDBDataSet
-            // 
-            this.dionisiosDBDataSet.DataSetName = "DionisiosDBDataSet";
-            this.dionisiosDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // ingredientsInfoTableAdapter
-            // 
-            this.ingredientsInfoTableAdapter.ClearBeforeFill = true;
-            // 
             // IngredientAddBtn
             // 
             this.IngredientAddBtn.Location = new System.Drawing.Point(756, 162);
@@ -156,7 +121,7 @@
             // 
             // StockAddBtn
             // 
-            this.StockAddBtn.Location = new System.Drawing.Point(372, 354);
+            this.StockAddBtn.Location = new System.Drawing.Point(372, 351);
             this.StockAddBtn.Name = "StockAddBtn";
             this.StockAddBtn.Size = new System.Drawing.Size(100, 23);
             this.StockAddBtn.TabIndex = 20;
@@ -176,9 +141,11 @@
             // 
             // IngredientsImage
             // 
+            this.IngredientsImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.IngredientsImage.Location = new System.Drawing.Point(28, 243);
             this.IngredientsImage.Name = "IngredientsImage";
             this.IngredientsImage.Size = new System.Drawing.Size(175, 159);
+            this.IngredientsImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.IngredientsImage.TabIndex = 14;
             this.IngredientsImage.TabStop = false;
             // 
@@ -224,12 +191,12 @@
             this.IngNameB.Size = new System.Drawing.Size(100, 20);
             this.IngNameB.TabIndex = 23;
             // 
-            // IngPriceB
+            // IngUnitB
             // 
-            this.IngPriceB.Location = new System.Drawing.Point(209, 354);
-            this.IngPriceB.Name = "IngPriceB";
-            this.IngPriceB.Size = new System.Drawing.Size(100, 20);
-            this.IngPriceB.TabIndex = 24;
+            this.IngUnitB.Location = new System.Drawing.Point(209, 354);
+            this.IngUnitB.Name = "IngUnitB";
+            this.IngUnitB.Size = new System.Drawing.Size(100, 20);
+            this.IngUnitB.TabIndex = 24;
             // 
             // IngQuantityB
             // 
@@ -237,48 +204,6 @@
             this.IngQuantityB.Name = "IngQuantityB";
             this.IngQuantityB.Size = new System.Drawing.Size(100, 20);
             this.IngQuantityB.TabIndex = 25;
-            // 
-            // dionisiosDBDataSet1
-            // 
-            this.dionisiosDBDataSet1.DataSetName = "DionisiosDBDataSet1";
-            this.dionisiosDBDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // ingredientsInfoBindingSource1
-            // 
-            this.ingredientsInfoBindingSource1.DataMember = "IngredientsInfo";
-            this.ingredientsInfoBindingSource1.DataSource = this.dionisiosDBDataSet1;
-            // 
-            // ingredientsInfoTableAdapter1
-            // 
-            this.ingredientsInfoTableAdapter1.ClearBeforeFill = true;
-            // 
-            // iDDataGridViewTextBoxColumn
-            // 
-            this.iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
-            this.iDDataGridViewTextBoxColumn.HeaderText = "ID";
-            this.iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
-            this.iDDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // Unit
-            // 
-            this.Unit.DataPropertyName = "Unit";
-            this.Unit.HeaderText = "Unit";
-            this.Unit.Name = "Unit";
-            this.Unit.ReadOnly = true;
-            // 
-            // nameDataGridViewTextBoxColumn
-            // 
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // quantityStockDataGridViewTextBoxColumn
-            // 
-            this.quantityStockDataGridViewTextBoxColumn.DataPropertyName = "QuantityStock";
-            this.quantityStockDataGridViewTextBoxColumn.HeaderText = "QuantityStock";
-            this.quantityStockDataGridViewTextBoxColumn.Name = "quantityStockDataGridViewTextBoxColumn";
-            this.quantityStockDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // UnitBox
             // 
@@ -294,15 +219,107 @@
             this.UnitBox.Size = new System.Drawing.Size(100, 21);
             this.UnitBox.TabIndex = 26;
             // 
+            // BtnDeleteIng
+            // 
+            this.BtnDeleteIng.Location = new System.Drawing.Point(372, 379);
+            this.BtnDeleteIng.Name = "BtnDeleteIng";
+            this.BtnDeleteIng.Size = new System.Drawing.Size(100, 23);
+            this.BtnDeleteIng.TabIndex = 27;
+            this.BtnDeleteIng.Text = "Delete Ingredient";
+            this.BtnDeleteIng.UseVisualStyleBackColor = true;
+            // 
+            // IngredientGridView
+            // 
+            this.IngredientGridView.AllowUserToAddRows = false;
+            this.IngredientGridView.AllowUserToOrderColumns = true;
+            this.IngredientGridView.AutoGenerateColumns = false;
+            this.IngredientGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(34)))), ((int)(((byte)(41)))));
+            this.IngredientGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.IngredientGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.IDCol,
+            this.DescriptionCol,
+            this.ImageCol,
+            this.NameCol,
+            this.QuantityCol,
+            this.UnitCol});
+            this.IngredientGridView.DataSource = this.ingredientsInfoBindingSource;
+            this.IngredientGridView.Location = new System.Drawing.Point(28, 64);
+            this.IngredientGridView.Name = "IngredientGridView";
+            this.IngredientGridView.ReadOnly = true;
+            this.IngredientGridView.RowHeadersVisible = false;
+            this.IngredientGridView.Size = new System.Drawing.Size(444, 161);
+            this.IngredientGridView.TabIndex = 13;
+            this.IngredientGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.IngredientGridView_CellClick);
+            // 
+            // dionisiosDBDataSet
+            // 
+            this.dionisiosDBDataSet.DataSetName = "DionisiosDBDataSet";
+            this.dionisiosDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // ingredientsInfoBindingSource
+            // 
+            this.ingredientsInfoBindingSource.DataMember = "IngredientsInfo";
+            this.ingredientsInfoBindingSource.DataSource = this.dionisiosDBDataSet;
+            // 
+            // ingredientsInfoTableAdapter
+            // 
+            this.ingredientsInfoTableAdapter.ClearBeforeFill = true;
+            // 
+            // IDCol
+            // 
+            this.IDCol.DataPropertyName = "ID";
+            this.IDCol.HeaderText = "ID";
+            this.IDCol.Name = "IDCol";
+            this.IDCol.ReadOnly = true;
+            // 
+            // DescriptionCol
+            // 
+            this.DescriptionCol.DataPropertyName = "Description";
+            this.DescriptionCol.HeaderText = "Description";
+            this.DescriptionCol.Name = "DescriptionCol";
+            this.DescriptionCol.ReadOnly = true;
+            this.DescriptionCol.Visible = false;
+            // 
+            // ImageCol
+            // 
+            this.ImageCol.DataPropertyName = "Image";
+            this.ImageCol.HeaderText = "Image";
+            this.ImageCol.Name = "ImageCol";
+            this.ImageCol.ReadOnly = true;
+            this.ImageCol.Visible = false;
+            // 
+            // NameCol
+            // 
+            this.NameCol.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.NameCol.DataPropertyName = "Name";
+            this.NameCol.HeaderText = "Name";
+            this.NameCol.Name = "NameCol";
+            this.NameCol.ReadOnly = true;
+            // 
+            // QuantityCol
+            // 
+            this.QuantityCol.DataPropertyName = "QuantityStock";
+            this.QuantityCol.HeaderText = "Quantity Stock";
+            this.QuantityCol.Name = "QuantityCol";
+            this.QuantityCol.ReadOnly = true;
+            // 
+            // UnitCol
+            // 
+            this.UnitCol.DataPropertyName = "Unit";
+            this.UnitCol.HeaderText = "Unit";
+            this.UnitCol.Name = "UnitCol";
+            this.UnitCol.ReadOnly = true;
+            // 
             // ManagerPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(63)))), ((int)(((byte)(77)))));
             this.ClientSize = new System.Drawing.Size(894, 450);
+            this.Controls.Add(this.BtnDeleteIng);
             this.Controls.Add(this.UnitBox);
             this.Controls.Add(this.IngQuantityB);
-            this.Controls.Add(this.IngPriceB);
+            this.Controls.Add(this.IngUnitB);
             this.Controls.Add(this.IngNameB);
             this.Controls.Add(this.IngDescriptionBox);
             this.Controls.Add(this.NewIngImage);
@@ -319,18 +336,17 @@
             this.Controls.Add(this.BackgroundTab);
             this.MaximizeBox = false;
             this.Name = "ManagerPage";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ManagerPage";
             this.Load += new System.EventHandler(this.ManagerPage_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.IngredientGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ingredientsInfoBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dionisiosDBDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NewIngImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.IngredientsImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BackgroundTab)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dionisiosDBDataSet1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ingredientsInfoBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.IngredientGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dionisiosDBDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ingredientsInfoBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -343,10 +359,6 @@
         private System.Windows.Forms.Button btnHome;
         private System.Windows.Forms.PictureBox BackgroundTab;
         private System.Windows.Forms.Button StockBtn;
-        private System.Windows.Forms.DataGridView IngredientGridView;
-        private DionisiosDBDataSet dionisiosDBDataSet;
-        private System.Windows.Forms.BindingSource ingredientsInfoBindingSource;
-        private DionisiosDBDataSetTableAdapters.IngredientsInfoTableAdapter ingredientsInfoTableAdapter;
         private System.Windows.Forms.PictureBox IngredientsImage;
         private System.Windows.Forms.Button IngredientAddBtn;
         private System.Windows.Forms.TextBox IngNameBox;
@@ -355,15 +367,19 @@
         private System.Windows.Forms.PictureBox NewIngImage;
         private System.Windows.Forms.RichTextBox IngDescriptionBox;
         private System.Windows.Forms.TextBox IngNameB;
-        private System.Windows.Forms.TextBox IngPriceB;
+        private System.Windows.Forms.TextBox IngUnitB;
         private System.Windows.Forms.TextBox IngQuantityB;
-        private DionisiosDBDataSet1 dionisiosDBDataSet1;
-        private System.Windows.Forms.BindingSource ingredientsInfoBindingSource1;
-        private DionisiosDBDataSet1TableAdapters.IngredientsInfoTableAdapter ingredientsInfoTableAdapter1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Unit;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn quantityStockDataGridViewTextBoxColumn;
         private System.Windows.Forms.ComboBox UnitBox;
+        private System.Windows.Forms.Button BtnDeleteIng;
+        private System.Windows.Forms.DataGridView IngredientGridView;
+        private DionisiosDBDataSet dionisiosDBDataSet;
+        private System.Windows.Forms.BindingSource ingredientsInfoBindingSource;
+        private DionisiosDBDataSetTableAdapters.IngredientsInfoTableAdapter ingredientsInfoTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DescriptionCol;
+        private System.Windows.Forms.DataGridViewImageColumn ImageCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NameCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn QuantityCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UnitCol;
     }
 }

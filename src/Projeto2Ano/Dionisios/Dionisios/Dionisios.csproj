@@ -57,11 +57,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DionisiosDBDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="DionisiosDBDataSet1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DionisiosDBDataSet1.xsd</DependentUpon>
-    </Compile>
     <Compile Include="EmployeePage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -120,17 +115,6 @@
     </None>
     <None Include="DionisiosDBDataSet.xss">
       <DependentUpon>DionisiosDBDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="DionisiosDBDataSet1.xsc">
-      <DependentUpon>DionisiosDBDataSet1.xsd</DependentUpon>
-    </None>
-    <None Include="DionisiosDBDataSet1.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DionisiosDBDataSet1.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="DionisiosDBDataSet1.xss">
-      <DependentUpon>DionisiosDBDataSet1.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -167,7 +167,6 @@ namespace Dionisios
         private void ConfirmLogin()
         {
             validationV = false;
-            bool biFound = false;
             int v1 = 0;
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
