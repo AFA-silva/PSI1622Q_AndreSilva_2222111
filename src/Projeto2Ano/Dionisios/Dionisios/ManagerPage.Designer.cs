@@ -37,8 +37,8 @@
             this.StockAddBtn = new System.Windows.Forms.Button();
             this.NewIngImage = new System.Windows.Forms.PictureBox();
             this.IngredientsImage = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.Bar2 = new System.Windows.Forms.PictureBox();
+            this.Bar1 = new System.Windows.Forms.PictureBox();
             this.BackgroundTab = new System.Windows.Forms.PictureBox();
             this.IngDescriptionBox = new System.Windows.Forms.RichTextBox();
             this.IngNameB = new System.Windows.Forms.TextBox();
@@ -47,23 +47,37 @@
             this.UnitBox = new System.Windows.Forms.ComboBox();
             this.BtnDeleteIng = new System.Windows.Forms.Button();
             this.IngredientGridView = new System.Windows.Forms.DataGridView();
-            this.dionisiosDBDataSet = new Dionisios.DionisiosDBDataSet();
-            this.ingredientsInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.ingredientsInfoTableAdapter = new Dionisios.DionisiosDBDataSetTableAdapters.IngredientsInfoTableAdapter();
             this.IDCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DescriptionCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ImageCol = new System.Windows.Forms.DataGridViewImageColumn();
             this.NameCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.QuantityCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UnitCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ingredientsInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dionisiosDBDataSet = new Dionisios.DionisiosDBDataSet();
+            this.ingredientsInfoTableAdapter = new Dionisios.DionisiosDBDataSetTableAdapters.IngredientsInfoTableAdapter();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btnDrinks = new System.Windows.Forms.Button();
+            this.Bar3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.x2 = new System.Windows.Forms.PictureBox();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.NewIngImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.IngredientsImage)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Bar2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Bar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BackgroundTab)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.IngredientGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dionisiosDBDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ingredientsInfoBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dionisiosDBDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Bar3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.x2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // btnHome
@@ -73,9 +87,9 @@
             this.btnHome.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnHome.Font = new System.Drawing.Font("MV Boli", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHome.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(172)))), ((int)(((byte)(100)))));
-            this.btnHome.Location = new System.Drawing.Point(0, 1);
+            this.btnHome.Location = new System.Drawing.Point(3, 0);
             this.btnHome.Name = "btnHome";
-            this.btnHome.Size = new System.Drawing.Size(127, 42);
+            this.btnHome.Size = new System.Drawing.Size(159, 41);
             this.btnHome.TabIndex = 8;
             this.btnHome.Text = "Home";
             this.btnHome.UseVisualStyleBackColor = false;
@@ -87,9 +101,9 @@
             this.StockBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.StockBtn.Font = new System.Drawing.Font("MV Boli", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.StockBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(172)))), ((int)(((byte)(100)))));
-            this.StockBtn.Location = new System.Drawing.Point(124, 1);
+            this.StockBtn.Location = new System.Drawing.Point(159, -1);
             this.StockBtn.Name = "StockBtn";
-            this.StockBtn.Size = new System.Drawing.Size(118, 42);
+            this.StockBtn.Size = new System.Drawing.Size(150, 41);
             this.StockBtn.TabIndex = 12;
             this.StockBtn.Text = "Stock";
             this.StockBtn.UseVisualStyleBackColor = false;
@@ -149,30 +163,30 @@
             this.IngredientsImage.TabIndex = 14;
             this.IngredientsImage.TabStop = false;
             // 
-            // pictureBox2
+            // Bar2
             // 
-            this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(172)))), ((int)(((byte)(100)))));
-            this.pictureBox2.Location = new System.Drawing.Point(239, 1);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(3, 42);
-            this.pictureBox2.TabIndex = 11;
-            this.pictureBox2.TabStop = false;
+            this.Bar2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(172)))), ((int)(((byte)(100)))));
+            this.Bar2.Location = new System.Drawing.Point(600, 0);
+            this.Bar2.Name = "Bar2";
+            this.Bar2.Size = new System.Drawing.Size(3, 42);
+            this.Bar2.TabIndex = 11;
+            this.Bar2.TabStop = false;
             // 
-            // pictureBox3
+            // Bar1
             // 
-            this.pictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(172)))), ((int)(((byte)(100)))));
-            this.pictureBox3.Location = new System.Drawing.Point(124, 1);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(3, 42);
-            this.pictureBox3.TabIndex = 10;
-            this.pictureBox3.TabStop = false;
+            this.Bar1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(172)))), ((int)(((byte)(100)))));
+            this.Bar1.Location = new System.Drawing.Point(747, -1);
+            this.Bar1.Name = "Bar1";
+            this.Bar1.Size = new System.Drawing.Size(3, 42);
+            this.Bar1.TabIndex = 10;
+            this.Bar1.TabStop = false;
             // 
             // BackgroundTab
             // 
             this.BackgroundTab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(34)))), ((int)(((byte)(41)))));
-            this.BackgroundTab.Location = new System.Drawing.Point(0, 1);
+            this.BackgroundTab.Location = new System.Drawing.Point(-6, 0);
             this.BackgroundTab.Name = "BackgroundTab";
-            this.BackgroundTab.Size = new System.Drawing.Size(898, 42);
+            this.BackgroundTab.Size = new System.Drawing.Size(900, 41);
             this.BackgroundTab.TabIndex = 7;
             this.BackgroundTab.TabStop = false;
             // 
@@ -251,20 +265,6 @@
             this.IngredientGridView.TabIndex = 13;
             this.IngredientGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.IngredientGridView_CellClick);
             // 
-            // dionisiosDBDataSet
-            // 
-            this.dionisiosDBDataSet.DataSetName = "DionisiosDBDataSet";
-            this.dionisiosDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // ingredientsInfoBindingSource
-            // 
-            this.ingredientsInfoBindingSource.DataMember = "IngredientsInfo";
-            this.ingredientsInfoBindingSource.DataSource = this.dionisiosDBDataSet;
-            // 
-            // ingredientsInfoTableAdapter
-            // 
-            this.ingredientsInfoTableAdapter.ClearBeforeFill = true;
-            // 
             // IDCol
             // 
             this.IDCol.DataPropertyName = "ID";
@@ -310,12 +310,138 @@
             this.UnitCol.Name = "UnitCol";
             this.UnitCol.ReadOnly = true;
             // 
+            // ingredientsInfoBindingSource
+            // 
+            this.ingredientsInfoBindingSource.DataMember = "IngredientsInfo";
+            this.ingredientsInfoBindingSource.DataSource = this.dionisiosDBDataSet;
+            // 
+            // dionisiosDBDataSet
+            // 
+            this.dionisiosDBDataSet.DataSetName = "DionisiosDBDataSet";
+            this.dionisiosDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // ingredientsInfoTableAdapter
+            // 
+            this.ingredientsInfoTableAdapter.ClearBeforeFill = true;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(34)))), ((int)(((byte)(41)))));
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(34)))), ((int)(((byte)(41)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("MV Boli", 14.25F);
+            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(172)))), ((int)(((byte)(100)))));
+            this.button1.Location = new System.Drawing.Point(600, 0);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(150, 41);
+            this.button1.TabIndex = 28;
+            this.button1.Text = "Income";
+            this.button1.UseVisualStyleBackColor = false;
+            // 
+            // btnDrinks
+            // 
+            this.btnDrinks.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(34)))), ((int)(((byte)(41)))));
+            this.btnDrinks.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(34)))), ((int)(((byte)(41)))));
+            this.btnDrinks.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDrinks.Font = new System.Drawing.Font("MV Boli", 14.25F);
+            this.btnDrinks.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(172)))), ((int)(((byte)(100)))));
+            this.btnDrinks.Location = new System.Drawing.Point(306, 1);
+            this.btnDrinks.Name = "btnDrinks";
+            this.btnDrinks.Size = new System.Drawing.Size(150, 41);
+            this.btnDrinks.TabIndex = 30;
+            this.btnDrinks.Text = "Drinks";
+            this.btnDrinks.UseVisualStyleBackColor = false;
+            // 
+            // Bar3
+            // 
+            this.Bar3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(172)))), ((int)(((byte)(100)))));
+            this.Bar3.Location = new System.Drawing.Point(453, -1);
+            this.Bar3.Name = "Bar3";
+            this.Bar3.Size = new System.Drawing.Size(3, 42);
+            this.Bar3.TabIndex = 31;
+            this.Bar3.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(172)))), ((int)(((byte)(100)))));
+            this.pictureBox1.Location = new System.Drawing.Point(159, -1);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(3, 42);
+            this.pictureBox1.TabIndex = 32;
+            this.pictureBox1.TabStop = false;
+            // 
+            // x2
+            // 
+            this.x2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(172)))), ((int)(((byte)(100)))));
+            this.x2.Location = new System.Drawing.Point(306, -1);
+            this.x2.Name = "x2";
+            this.x2.Size = new System.Drawing.Size(3, 42);
+            this.x2.TabIndex = 33;
+            this.x2.TabStop = false;
+            this.x2.Click += new System.EventHandler(this.pictureBox2_Click);
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(34)))), ((int)(((byte)(41)))));
+            this.button3.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(34)))), ((int)(((byte)(41)))));
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("MV Boli", 14.25F);
+            this.button3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(172)))), ((int)(((byte)(100)))));
+            this.button3.Location = new System.Drawing.Point(744, 0);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(150, 41);
+            this.button3.TabIndex = 34;
+            this.button3.Text = "Employees";
+            this.button3.UseVisualStyleBackColor = false;
+            // 
+            // button4
+            // 
+            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(34)))), ((int)(((byte)(41)))));
+            this.button4.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(34)))), ((int)(((byte)(41)))));
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.Font = new System.Drawing.Font("MV Boli", 14.25F);
+            this.button4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(172)))), ((int)(((byte)(100)))));
+            this.button4.Location = new System.Drawing.Point(453, 1);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(150, 41);
+            this.button4.TabIndex = 36;
+            this.button4.Text = "Popular";
+            this.button4.UseVisualStyleBackColor = false;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(172)))), ((int)(((byte)(100)))));
+            this.pictureBox3.Location = new System.Drawing.Point(0, -1);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(3, 42);
+            this.pictureBox3.TabIndex = 35;
+            this.pictureBox3.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(172)))), ((int)(((byte)(100)))));
+            this.pictureBox2.Location = new System.Drawing.Point(891, -2);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(3, 42);
+            this.pictureBox2.TabIndex = 37;
+            this.pictureBox2.TabStop = false;
+            // 
             // ManagerPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(63)))), ((int)(((byte)(77)))));
             this.ClientSize = new System.Drawing.Size(894, 450);
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.Bar2);
+            this.Controls.Add(this.Bar3);
+            this.Controls.Add(this.x2);
+            this.Controls.Add(this.Bar1);
+            this.Controls.Add(this.pictureBox3);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.button4);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.BtnDeleteIng);
             this.Controls.Add(this.UnitBox);
             this.Controls.Add(this.IngQuantityB);
@@ -329,10 +455,9 @@
             this.Controls.Add(this.IngredientAddBtn);
             this.Controls.Add(this.IngredientsImage);
             this.Controls.Add(this.IngredientGridView);
-            this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.btnHome);
             this.Controls.Add(this.StockBtn);
+            this.Controls.Add(this.btnDrinks);
             this.Controls.Add(this.BackgroundTab);
             this.MaximizeBox = false;
             this.Name = "ManagerPage";
@@ -341,12 +466,17 @@
             this.Load += new System.EventHandler(this.ManagerPage_Load);
             ((System.ComponentModel.ISupportInitialize)(this.NewIngImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.IngredientsImage)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Bar2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Bar1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BackgroundTab)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.IngredientGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dionisiosDBDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ingredientsInfoBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dionisiosDBDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Bar3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.x2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -354,8 +484,8 @@
 
         #endregion
 
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox Bar2;
+        private System.Windows.Forms.PictureBox Bar1;
         private System.Windows.Forms.Button btnHome;
         private System.Windows.Forms.PictureBox BackgroundTab;
         private System.Windows.Forms.Button StockBtn;
@@ -381,5 +511,14 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NameCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn QuantityCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn UnitCol;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnDrinks;
+        private System.Windows.Forms.PictureBox Bar3;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox x2;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }
