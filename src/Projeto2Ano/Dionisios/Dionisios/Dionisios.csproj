@@ -217,6 +217,7 @@
     <None Include="Resources\olhoF.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Captura de ecrã 2024-05-21 144614.png" />
     <Content Include="Resources\Dionisios.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

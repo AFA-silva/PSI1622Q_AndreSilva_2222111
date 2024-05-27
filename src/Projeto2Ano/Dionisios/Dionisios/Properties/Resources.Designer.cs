@@ -143,6 +143,16 @@ namespace Dionisios.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Captura_de_ecrã_2024_05_21_144614 {
+            get {
+                object obj = ResourceManager.GetObject("Captura de ecrã 2024-05-21 144614", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Dionisios {
             get {
                 object obj = ResourceManager.GetObject("Dionisios", resourceCulture);

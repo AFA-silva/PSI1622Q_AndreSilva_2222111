@@ -1,5 +1,4 @@
-﻿using Dionisios.DionisiosDBDataSetTableAdapters;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -43,11 +42,11 @@ namespace Dionisios
             if (e.RowIndex >= 0)
             {
                 UsersGridView.Rows[e.RowIndex].Selected = true;
-                RoleCombo.Text = UsersGridView.Rows[e.RowIndex].Cells["Role"].Value.ToString();
-                UsernameBox.Text = UsersGridView.Rows[e.RowIndex].Cells["UsernameCol"].Value.ToString();
-                BIbox.Text = UsersGridView.Rows[e.RowIndex].Cells["BICol"].Value.ToString();
-                EmailBox.Text = UsersGridView.Rows[e.RowIndex].Cells["EmailCol"].Value.ToString();
-                PasswordBox.Text = UsersGridView.Rows[e.RowIndex].Cells["PasswordCol"].Value.ToString();
+                RoleCombo.Text = UsersGridView.Rows[e.RowIndex].Cells["RoleColumn"].Value.ToString();
+                UsernameBox.Text = UsersGridView.Rows[e.RowIndex].Cells["UsernameColumn"].Value.ToString();
+                BIbox.Text = UsersGridView.Rows[e.RowIndex].Cells["BIColumn"].Value.ToString();
+                EmailBox.Text = UsersGridView.Rows[e.RowIndex].Cells["EmailColumn"].Value.ToString();
+                PasswordBox.Text = UsersGridView.Rows[e.RowIndex].Cells["PasswordColumn"].Value.ToString();
             }
         }
         private void RoleUpdate(int userId, string newRole)
@@ -153,7 +152,7 @@ namespace Dionisios
             if (UsersGridView.SelectedRows.Count > 0)
             {
                 DataGridViewRow row = UsersGridView.SelectedRows[0];
-                int userId = Convert.ToInt32(row.Cells["ID"].Value);
+                int userId = Convert.ToInt32(row.Cells["IDColumn"].Value);
                 string newRole = RoleCombo.Text;
                 string newUser = UsernameBox.Text;
                 string newEmail = EmailBox.Text;
@@ -243,7 +242,7 @@ namespace Dionisios
             if (UsersGridView.SelectedRows.Count > 0)
             {
                 DataGridViewRow row = UsersGridView.SelectedRows[0];
-                int userId = Convert.ToInt32(row.Cells["ID"].Value);
+                int userId = Convert.ToInt32(row.Cells["IDColumn"].Value);
                 DialogResult result = MessageBox.Show("Are you sure you want to delete this user?", "Confirmation", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
