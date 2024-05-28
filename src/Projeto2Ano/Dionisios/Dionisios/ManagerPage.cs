@@ -133,7 +133,7 @@ namespace Dionisios
 
         private void StockBtn_Click(object sender, EventArgs e)
         {
-            Home.SelectedIndex = 1;
+            Menu.SelectedIndex = 2;
             StockVisualsToggle();
         }
 

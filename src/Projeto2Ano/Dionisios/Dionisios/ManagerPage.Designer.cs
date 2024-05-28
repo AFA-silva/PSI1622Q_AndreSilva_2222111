@@ -65,9 +65,9 @@
             this.button4 = new System.Windows.Forms.Button();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.Home = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.Menu = new System.Windows.Forms.TabControl();
+            this.TabHome = new System.Windows.Forms.TabPage();
+            this.TabStock = new System.Windows.Forms.TabPage();
             ((System.ComponentModel.ISupportInitialize)(this.NewIngImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.IngredientsImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Bar2)).BeginInit();
@@ -81,7 +81,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.x2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            this.Home.SuspendLayout();
+            this.Menu.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnHome
@@ -116,7 +116,7 @@
             // 
             // IngredientAddBtn
             // 
-            this.IngredientAddBtn.Location = new System.Drawing.Point(1105, 232);
+            this.IngredientAddBtn.Location = new System.Drawing.Point(767, 191);
             this.IngredientAddBtn.Name = "IngredientAddBtn";
             this.IngredientAddBtn.Size = new System.Drawing.Size(96, 23);
             this.IngredientAddBtn.TabIndex = 15;
@@ -127,7 +127,7 @@
             // 
             // IngNameBox
             // 
-            this.IngNameBox.Location = new System.Drawing.Point(1105, 149);
+            this.IngNameBox.Location = new System.Drawing.Point(767, 108);
             this.IngNameBox.Name = "IngNameBox";
             this.IngNameBox.Size = new System.Drawing.Size(100, 20);
             this.IngNameBox.TabIndex = 16;
@@ -136,7 +136,7 @@
             // 
             // QuantityAddedBox
             // 
-            this.QuantityAddedBox.Location = new System.Drawing.Point(1257, 381);
+            this.QuantityAddedBox.Location = new System.Drawing.Point(919, 340);
             this.QuantityAddedBox.Name = "QuantityAddedBox";
             this.QuantityAddedBox.Size = new System.Drawing.Size(100, 20);
             this.QuantityAddedBox.TabIndex = 19;
@@ -144,7 +144,7 @@
             // 
             // StockAddBtn
             // 
-            this.StockAddBtn.Location = new System.Drawing.Point(1257, 404);
+            this.StockAddBtn.Location = new System.Drawing.Point(919, 363);
             this.StockAddBtn.Name = "StockAddBtn";
             this.StockAddBtn.Size = new System.Drawing.Size(100, 23);
             this.StockAddBtn.TabIndex = 20;
@@ -156,7 +156,7 @@
             // NewIngImage
             // 
             this.NewIngImage.Image = global::Dionisios.Properties.Resources.Captura_de_ecrã_2024_05_21_144614;
-            this.NewIngImage.Location = new System.Drawing.Point(930, 149);
+            this.NewIngImage.Location = new System.Drawing.Point(592, 108);
             this.NewIngImage.Name = "NewIngImage";
             this.NewIngImage.Size = new System.Drawing.Size(158, 106);
             this.NewIngImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -168,7 +168,7 @@
             // IngredientsImage
             // 
             this.IngredientsImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.IngredientsImage.Location = new System.Drawing.Point(913, 296);
+            this.IngredientsImage.Location = new System.Drawing.Point(575, 255);
             this.IngredientsImage.Name = "IngredientsImage";
             this.IngredientsImage.Size = new System.Drawing.Size(175, 159);
             this.IngredientsImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -205,7 +205,7 @@
             // 
             // IngDescriptionBox
             // 
-            this.IngDescriptionBox.Location = new System.Drawing.Point(1094, 296);
+            this.IngDescriptionBox.Location = new System.Drawing.Point(756, 255);
             this.IngDescriptionBox.Name = "IngDescriptionBox";
             this.IngDescriptionBox.Size = new System.Drawing.Size(263, 79);
             this.IngDescriptionBox.TabIndex = 22;
@@ -214,7 +214,7 @@
             // 
             // IngNameB
             // 
-            this.IngNameB.Location = new System.Drawing.Point(1094, 381);
+            this.IngNameB.Location = new System.Drawing.Point(756, 340);
             this.IngNameB.Name = "IngNameB";
             this.IngNameB.Size = new System.Drawing.Size(100, 20);
             this.IngNameB.TabIndex = 23;
@@ -222,7 +222,7 @@
             // 
             // IngUnitB
             // 
-            this.IngUnitB.Location = new System.Drawing.Point(1094, 407);
+            this.IngUnitB.Location = new System.Drawing.Point(756, 366);
             this.IngUnitB.Name = "IngUnitB";
             this.IngUnitB.Size = new System.Drawing.Size(100, 20);
             this.IngUnitB.TabIndex = 24;
@@ -230,7 +230,7 @@
             // 
             // IngQuantityB
             // 
-            this.IngQuantityB.Location = new System.Drawing.Point(1094, 433);
+            this.IngQuantityB.Location = new System.Drawing.Point(756, 392);
             this.IngQuantityB.Name = "IngQuantityB";
             this.IngQuantityB.Size = new System.Drawing.Size(100, 20);
             this.IngQuantityB.TabIndex = 25;
@@ -245,7 +245,7 @@
             "mL",
             "L",
             "Unit"});
-            this.UnitBox.Location = new System.Drawing.Point(1105, 175);
+            this.UnitBox.Location = new System.Drawing.Point(767, 134);
             this.UnitBox.Name = "UnitBox";
             this.UnitBox.Size = new System.Drawing.Size(100, 21);
             this.UnitBox.TabIndex = 26;
@@ -253,7 +253,7 @@
             // 
             // BtnDeleteIng
             // 
-            this.BtnDeleteIng.Location = new System.Drawing.Point(1257, 432);
+            this.BtnDeleteIng.Location = new System.Drawing.Point(919, 391);
             this.BtnDeleteIng.Name = "BtnDeleteIng";
             this.BtnDeleteIng.Size = new System.Drawing.Size(100, 23);
             this.BtnDeleteIng.TabIndex = 27;
@@ -276,7 +276,7 @@
             this.QuantityCol,
             this.UnitCol});
             this.IngredientGridView.DataSource = this.ingredientsInfoBindingSource;
-            this.IngredientGridView.Location = new System.Drawing.Point(913, 109);
+            this.IngredientGridView.Location = new System.Drawing.Point(575, 68);
             this.IngredientGridView.Name = "IngredientGridView";
             this.IngredientGridView.ReadOnly = true;
             this.IngredientGridView.RowHeadersVisible = false;
@@ -445,46 +445,46 @@
             this.pictureBox2.TabIndex = 37;
             this.pictureBox2.TabStop = false;
             // 
-            // Home
+            // Menu
             // 
-            this.Home.Controls.Add(this.tabPage1);
-            this.Home.Controls.Add(this.tabPage2);
-            this.Home.Location = new System.Drawing.Point(127, 68);
-            this.Home.Name = "Home";
-            this.Home.SelectedIndex = 0;
-            this.Home.Size = new System.Drawing.Size(429, 260);
-            this.Home.TabIndex = 38;
+            this.Menu.Controls.Add(this.TabHome);
+            this.Menu.Controls.Add(this.TabStock);
+            this.Menu.Location = new System.Drawing.Point(30, 77);
+            this.Menu.Name = "Menu";
+            this.Menu.SelectedIndex = 0;
+            this.Menu.Size = new System.Drawing.Size(405, 309);
+            this.Menu.TabIndex = 38;
             // 
-            // tabPage1
+            // TabHome
             // 
-            this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(63)))), ((int)(((byte)(77)))));
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(421, 234);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "tabPage1";
+            this.TabHome.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(63)))), ((int)(((byte)(77)))));
+            this.TabHome.Location = new System.Drawing.Point(4, 22);
+            this.TabHome.Name = "TabHome";
+            this.TabHome.Padding = new System.Windows.Forms.Padding(3);
+            this.TabHome.Size = new System.Drawing.Size(397, 283);
+            this.TabHome.TabIndex = 0;
+            this.TabHome.Text = "Home";
             // 
-            // tabPage2
+            // TabStock
             // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(421, 234);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.TabStock.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(63)))), ((int)(((byte)(77)))));
+            this.TabStock.Location = new System.Drawing.Point(4, 22);
+            this.TabStock.Name = "TabStock";
+            this.TabStock.Padding = new System.Windows.Forms.Padding(3);
+            this.TabStock.Size = new System.Drawing.Size(397, 283);
+            this.TabStock.TabIndex = 1;
+            this.TabStock.Text = "Stock";
             // 
             // ManagerPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(63)))), ((int)(((byte)(77)))));
-            this.ClientSize = new System.Drawing.Size(1924, 621);
+            this.ClientSize = new System.Drawing.Size(1045, 445);
             this.Controls.Add(this.Bar2);
             this.Controls.Add(this.NewIngImage);
             this.Controls.Add(this.Bar3);
-            this.Controls.Add(this.Home);
+            this.Controls.Add(this.Menu);
             this.Controls.Add(this.x2);
             this.Controls.Add(this.IngredientGridView);
             this.Controls.Add(this.Bar1);
@@ -527,7 +527,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.x2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            this.Home.ResumeLayout(false);
+            this.Menu.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -571,8 +571,8 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.TabControl Home;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabControl Menu;
+        private System.Windows.Forms.TabPage TabHome;
+        private System.Windows.Forms.TabPage TabStock;
     }
 }
