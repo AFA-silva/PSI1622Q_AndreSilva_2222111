@@ -65,6 +65,9 @@
             this.button4 = new System.Windows.Forms.Button();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.Menu = new System.Windows.Forms.TabControl();
+            this.TabHome = new System.Windows.Forms.TabPage();
+            this.TabStock = new System.Windows.Forms.TabPage();
             ((System.ComponentModel.ISupportInitialize)(this.NewIngImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.IngredientsImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Bar2)).BeginInit();
@@ -78,6 +81,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.x2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.Menu.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnHome
@@ -87,12 +91,13 @@
             this.btnHome.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnHome.Font = new System.Drawing.Font("MV Boli", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHome.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(172)))), ((int)(((byte)(100)))));
-            this.btnHome.Location = new System.Drawing.Point(3, 0);
+            this.btnHome.Location = new System.Drawing.Point(9, -1);
             this.btnHome.Name = "btnHome";
             this.btnHome.Size = new System.Drawing.Size(159, 41);
             this.btnHome.TabIndex = 8;
             this.btnHome.Text = "Home";
             this.btnHome.UseVisualStyleBackColor = false;
+            this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
             // 
             // StockBtn
             // 
@@ -101,72 +106,80 @@
             this.StockBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.StockBtn.Font = new System.Drawing.Font("MV Boli", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.StockBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(172)))), ((int)(((byte)(100)))));
-            this.StockBtn.Location = new System.Drawing.Point(159, -1);
+            this.StockBtn.Location = new System.Drawing.Point(165, -1);
             this.StockBtn.Name = "StockBtn";
             this.StockBtn.Size = new System.Drawing.Size(150, 41);
             this.StockBtn.TabIndex = 12;
             this.StockBtn.Text = "Stock";
             this.StockBtn.UseVisualStyleBackColor = false;
+            this.StockBtn.Click += new System.EventHandler(this.StockBtn_Click);
             // 
             // IngredientAddBtn
             // 
-            this.IngredientAddBtn.Location = new System.Drawing.Point(756, 162);
+            this.IngredientAddBtn.Location = new System.Drawing.Point(767, 191);
             this.IngredientAddBtn.Name = "IngredientAddBtn";
             this.IngredientAddBtn.Size = new System.Drawing.Size(96, 23);
             this.IngredientAddBtn.TabIndex = 15;
             this.IngredientAddBtn.Text = "New Ingrediente";
             this.IngredientAddBtn.UseVisualStyleBackColor = true;
+            this.IngredientAddBtn.Visible = false;
             this.IngredientAddBtn.Click += new System.EventHandler(this.IngredientAddBtn_Click);
             // 
             // IngNameBox
             // 
-            this.IngNameBox.Location = new System.Drawing.Point(756, 79);
+            this.IngNameBox.Location = new System.Drawing.Point(767, 108);
             this.IngNameBox.Name = "IngNameBox";
             this.IngNameBox.Size = new System.Drawing.Size(100, 20);
             this.IngNameBox.TabIndex = 16;
             this.IngNameBox.Text = "Name";
+            this.IngNameBox.Visible = false;
             // 
             // QuantityAddedBox
             // 
-            this.QuantityAddedBox.Location = new System.Drawing.Point(372, 328);
+            this.QuantityAddedBox.Location = new System.Drawing.Point(919, 340);
             this.QuantityAddedBox.Name = "QuantityAddedBox";
             this.QuantityAddedBox.Size = new System.Drawing.Size(100, 20);
             this.QuantityAddedBox.TabIndex = 19;
+            this.QuantityAddedBox.Visible = false;
             // 
             // StockAddBtn
             // 
-            this.StockAddBtn.Location = new System.Drawing.Point(372, 351);
+            this.StockAddBtn.Location = new System.Drawing.Point(919, 363);
             this.StockAddBtn.Name = "StockAddBtn";
             this.StockAddBtn.Size = new System.Drawing.Size(100, 23);
             this.StockAddBtn.TabIndex = 20;
             this.StockAddBtn.Text = "Adicionar Stock";
             this.StockAddBtn.UseVisualStyleBackColor = true;
+            this.StockAddBtn.Visible = false;
+            this.StockAddBtn.Click += new System.EventHandler(this.StockAddBtn_Click);
             // 
             // NewIngImage
             // 
             this.NewIngImage.Image = global::Dionisios.Properties.Resources.Captura_de_ecrã_2024_05_21_144614;
-            this.NewIngImage.Location = new System.Drawing.Point(592, 79);
+            this.NewIngImage.Location = new System.Drawing.Point(592, 108);
             this.NewIngImage.Name = "NewIngImage";
             this.NewIngImage.Size = new System.Drawing.Size(158, 106);
             this.NewIngImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.NewIngImage.TabIndex = 21;
             this.NewIngImage.TabStop = false;
+            this.NewIngImage.Visible = false;
             this.NewIngImage.Click += new System.EventHandler(this.NewIngImage_Click);
             // 
             // IngredientsImage
             // 
             this.IngredientsImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.IngredientsImage.Location = new System.Drawing.Point(28, 243);
+            this.IngredientsImage.Location = new System.Drawing.Point(575, 255);
             this.IngredientsImage.Name = "IngredientsImage";
             this.IngredientsImage.Size = new System.Drawing.Size(175, 159);
             this.IngredientsImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.IngredientsImage.TabIndex = 14;
             this.IngredientsImage.TabStop = false;
+            this.IngredientsImage.Visible = false;
             // 
             // Bar2
             // 
             this.Bar2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(172)))), ((int)(((byte)(100)))));
-            this.Bar2.Location = new System.Drawing.Point(600, 0);
+            this.Bar2.Location = new System.Drawing.Point(600, -1);
             this.Bar2.Name = "Bar2";
             this.Bar2.Size = new System.Drawing.Size(3, 42);
             this.Bar2.TabIndex = 11;
@@ -175,7 +188,7 @@
             // Bar1
             // 
             this.Bar1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(172)))), ((int)(((byte)(100)))));
-            this.Bar1.Location = new System.Drawing.Point(747, -1);
+            this.Bar1.Location = new System.Drawing.Point(747, -2);
             this.Bar1.Name = "Bar1";
             this.Bar1.Size = new System.Drawing.Size(3, 42);
             this.Bar1.TabIndex = 10;
@@ -184,7 +197,7 @@
             // BackgroundTab
             // 
             this.BackgroundTab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(34)))), ((int)(((byte)(41)))));
-            this.BackgroundTab.Location = new System.Drawing.Point(-6, 0);
+            this.BackgroundTab.Location = new System.Drawing.Point(0, 0);
             this.BackgroundTab.Name = "BackgroundTab";
             this.BackgroundTab.Size = new System.Drawing.Size(900, 41);
             this.BackgroundTab.TabIndex = 7;
@@ -192,32 +205,36 @@
             // 
             // IngDescriptionBox
             // 
-            this.IngDescriptionBox.Location = new System.Drawing.Point(209, 243);
+            this.IngDescriptionBox.Location = new System.Drawing.Point(756, 255);
             this.IngDescriptionBox.Name = "IngDescriptionBox";
             this.IngDescriptionBox.Size = new System.Drawing.Size(263, 79);
             this.IngDescriptionBox.TabIndex = 22;
             this.IngDescriptionBox.Text = "";
+            this.IngDescriptionBox.Visible = false;
             // 
             // IngNameB
             // 
-            this.IngNameB.Location = new System.Drawing.Point(209, 328);
+            this.IngNameB.Location = new System.Drawing.Point(756, 340);
             this.IngNameB.Name = "IngNameB";
             this.IngNameB.Size = new System.Drawing.Size(100, 20);
             this.IngNameB.TabIndex = 23;
+            this.IngNameB.Visible = false;
             // 
             // IngUnitB
             // 
-            this.IngUnitB.Location = new System.Drawing.Point(209, 354);
+            this.IngUnitB.Location = new System.Drawing.Point(756, 366);
             this.IngUnitB.Name = "IngUnitB";
             this.IngUnitB.Size = new System.Drawing.Size(100, 20);
             this.IngUnitB.TabIndex = 24;
+            this.IngUnitB.Visible = false;
             // 
             // IngQuantityB
             // 
-            this.IngQuantityB.Location = new System.Drawing.Point(209, 380);
+            this.IngQuantityB.Location = new System.Drawing.Point(756, 392);
             this.IngQuantityB.Name = "IngQuantityB";
             this.IngQuantityB.Size = new System.Drawing.Size(100, 20);
             this.IngQuantityB.TabIndex = 25;
+            this.IngQuantityB.Visible = false;
             // 
             // UnitBox
             // 
@@ -228,19 +245,21 @@
             "mL",
             "L",
             "Unit"});
-            this.UnitBox.Location = new System.Drawing.Point(756, 105);
+            this.UnitBox.Location = new System.Drawing.Point(767, 134);
             this.UnitBox.Name = "UnitBox";
             this.UnitBox.Size = new System.Drawing.Size(100, 21);
             this.UnitBox.TabIndex = 26;
+            this.UnitBox.Visible = false;
             // 
             // BtnDeleteIng
             // 
-            this.BtnDeleteIng.Location = new System.Drawing.Point(372, 379);
+            this.BtnDeleteIng.Location = new System.Drawing.Point(919, 391);
             this.BtnDeleteIng.Name = "BtnDeleteIng";
             this.BtnDeleteIng.Size = new System.Drawing.Size(100, 23);
             this.BtnDeleteIng.TabIndex = 27;
             this.BtnDeleteIng.Text = "Delete Ingredient";
             this.BtnDeleteIng.UseVisualStyleBackColor = true;
+            this.BtnDeleteIng.Visible = false;
             // 
             // IngredientGridView
             // 
@@ -257,12 +276,13 @@
             this.QuantityCol,
             this.UnitCol});
             this.IngredientGridView.DataSource = this.ingredientsInfoBindingSource;
-            this.IngredientGridView.Location = new System.Drawing.Point(28, 64);
+            this.IngredientGridView.Location = new System.Drawing.Point(575, 68);
             this.IngredientGridView.Name = "IngredientGridView";
             this.IngredientGridView.ReadOnly = true;
             this.IngredientGridView.RowHeadersVisible = false;
             this.IngredientGridView.Size = new System.Drawing.Size(444, 161);
             this.IngredientGridView.TabIndex = 13;
+            this.IngredientGridView.Visible = false;
             this.IngredientGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.IngredientGridView_CellClick);
             // 
             // IDCol
@@ -331,7 +351,7 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("MV Boli", 14.25F);
             this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(172)))), ((int)(((byte)(100)))));
-            this.button1.Location = new System.Drawing.Point(600, 0);
+            this.button1.Location = new System.Drawing.Point(600, -1);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(150, 41);
             this.button1.TabIndex = 28;
@@ -345,7 +365,7 @@
             this.btnDrinks.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDrinks.Font = new System.Drawing.Font("MV Boli", 14.25F);
             this.btnDrinks.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(172)))), ((int)(((byte)(100)))));
-            this.btnDrinks.Location = new System.Drawing.Point(306, 1);
+            this.btnDrinks.Location = new System.Drawing.Point(306, 0);
             this.btnDrinks.Name = "btnDrinks";
             this.btnDrinks.Size = new System.Drawing.Size(150, 41);
             this.btnDrinks.TabIndex = 30;
@@ -355,7 +375,7 @@
             // Bar3
             // 
             this.Bar3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(172)))), ((int)(((byte)(100)))));
-            this.Bar3.Location = new System.Drawing.Point(453, -1);
+            this.Bar3.Location = new System.Drawing.Point(453, -2);
             this.Bar3.Name = "Bar3";
             this.Bar3.Size = new System.Drawing.Size(3, 42);
             this.Bar3.TabIndex = 31;
@@ -364,7 +384,7 @@
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(172)))), ((int)(((byte)(100)))));
-            this.pictureBox1.Location = new System.Drawing.Point(159, -1);
+            this.pictureBox1.Location = new System.Drawing.Point(165, -1);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(3, 42);
             this.pictureBox1.TabIndex = 32;
@@ -373,12 +393,11 @@
             // x2
             // 
             this.x2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(172)))), ((int)(((byte)(100)))));
-            this.x2.Location = new System.Drawing.Point(306, -1);
+            this.x2.Location = new System.Drawing.Point(306, -2);
             this.x2.Name = "x2";
             this.x2.Size = new System.Drawing.Size(3, 42);
             this.x2.TabIndex = 33;
             this.x2.TabStop = false;
-            this.x2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // button3
             // 
@@ -387,7 +406,7 @@
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("MV Boli", 14.25F);
             this.button3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(172)))), ((int)(((byte)(100)))));
-            this.button3.Location = new System.Drawing.Point(744, 0);
+            this.button3.Location = new System.Drawing.Point(744, -1);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(150, 41);
             this.button3.TabIndex = 34;
@@ -401,7 +420,7 @@
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Font = new System.Drawing.Font("MV Boli", 14.25F);
             this.button4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(172)))), ((int)(((byte)(100)))));
-            this.button4.Location = new System.Drawing.Point(453, 1);
+            this.button4.Location = new System.Drawing.Point(453, 0);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(150, 41);
             this.button4.TabIndex = 36;
@@ -420,45 +439,76 @@
             // pictureBox2
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(172)))), ((int)(((byte)(100)))));
-            this.pictureBox2.Location = new System.Drawing.Point(891, -2);
+            this.pictureBox2.Location = new System.Drawing.Point(897, -1);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(3, 42);
             this.pictureBox2.TabIndex = 37;
             this.pictureBox2.TabStop = false;
+            // 
+            // Menu
+            // 
+            this.Menu.Controls.Add(this.TabHome);
+            this.Menu.Controls.Add(this.TabStock);
+            this.Menu.Location = new System.Drawing.Point(30, 77);
+            this.Menu.Name = "Menu";
+            this.Menu.SelectedIndex = 0;
+            this.Menu.Size = new System.Drawing.Size(405, 309);
+            this.Menu.TabIndex = 38;
+            // 
+            // TabHome
+            // 
+            this.TabHome.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(63)))), ((int)(((byte)(77)))));
+            this.TabHome.Location = new System.Drawing.Point(4, 22);
+            this.TabHome.Name = "TabHome";
+            this.TabHome.Padding = new System.Windows.Forms.Padding(3);
+            this.TabHome.Size = new System.Drawing.Size(397, 283);
+            this.TabHome.TabIndex = 0;
+            this.TabHome.Text = "Home";
+            // 
+            // TabStock
+            // 
+            this.TabStock.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(63)))), ((int)(((byte)(77)))));
+            this.TabStock.Location = new System.Drawing.Point(4, 22);
+            this.TabStock.Name = "TabStock";
+            this.TabStock.Padding = new System.Windows.Forms.Padding(3);
+            this.TabStock.Size = new System.Drawing.Size(397, 283);
+            this.TabStock.TabIndex = 1;
+            this.TabStock.Text = "Stock";
             // 
             // ManagerPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(63)))), ((int)(((byte)(77)))));
-            this.ClientSize = new System.Drawing.Size(894, 450);
-            this.Controls.Add(this.pictureBox2);
+            this.ClientSize = new System.Drawing.Size(1045, 445);
             this.Controls.Add(this.Bar2);
-            this.Controls.Add(this.Bar3);
-            this.Controls.Add(this.x2);
-            this.Controls.Add(this.Bar1);
-            this.Controls.Add(this.pictureBox3);
-            this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.BtnDeleteIng);
-            this.Controls.Add(this.UnitBox);
-            this.Controls.Add(this.IngQuantityB);
-            this.Controls.Add(this.IngUnitB);
-            this.Controls.Add(this.IngNameB);
-            this.Controls.Add(this.IngDescriptionBox);
             this.Controls.Add(this.NewIngImage);
-            this.Controls.Add(this.StockAddBtn);
-            this.Controls.Add(this.QuantityAddedBox);
-            this.Controls.Add(this.IngNameBox);
-            this.Controls.Add(this.IngredientAddBtn);
-            this.Controls.Add(this.IngredientsImage);
+            this.Controls.Add(this.Bar3);
+            this.Controls.Add(this.Menu);
+            this.Controls.Add(this.x2);
             this.Controls.Add(this.IngredientGridView);
+            this.Controls.Add(this.Bar1);
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.IngredientsImage);
+            this.Controls.Add(this.button4);
+            this.Controls.Add(this.pictureBox3);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.BtnDeleteIng);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.QuantityAddedBox);
             this.Controls.Add(this.btnHome);
             this.Controls.Add(this.StockBtn);
+            this.Controls.Add(this.IngQuantityB);
             this.Controls.Add(this.btnDrinks);
+            this.Controls.Add(this.IngNameBox);
             this.Controls.Add(this.BackgroundTab);
+            this.Controls.Add(this.IngUnitB);
+            this.Controls.Add(this.StockAddBtn);
+            this.Controls.Add(this.IngNameB);
+            this.Controls.Add(this.UnitBox);
+            this.Controls.Add(this.IngDescriptionBox);
+            this.Controls.Add(this.IngredientAddBtn);
             this.MaximizeBox = false;
             this.Name = "ManagerPage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -477,6 +527,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.x2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.Menu.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -520,5 +571,8 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.TabControl Menu;
+        private System.Windows.Forms.TabPage TabHome;
+        private System.Windows.Forms.TabPage TabStock;
     }
 }

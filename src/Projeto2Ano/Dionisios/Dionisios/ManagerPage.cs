@@ -17,6 +17,7 @@ namespace Dionisios
     {
         string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=DionisiosDB;Integrated Security=True";
         private Image selectedImage;
+        private int ingId;
         public int Managerclose { get; set; }
         public ManagerPage()
         {
@@ -113,9 +114,65 @@ namespace Dionisios
             }
         }
 
-        private void pictureBox2_Click(object sender, EventArgs e)
+        private void StockVisualsToggle()
         {
+            IngredientGridView.Visible = true;
+            IngredientsImage.Visible = true;    
+            IngUnitB.Visible = true;
+            IngQuantityB.Visible = true;
+            IngNameB.Visible = true;
+            IngDescriptionBox.Visible = true;
+            QuantityAddedBox.Visible = true;
+            BtnDeleteIng.Visible = true;
+            StockAddBtn.Visible = true;
+            NewIngImage.Visible = true; 
+            IngNameBox.Visible = true;  
+            UnitBox.Visible = true; 
+            IngredientAddBtn.Visible = true;
+        }
 
+        private void StockBtn_Click(object sender, EventArgs e)
+        {
+            Menu.SelectedIndex = 2;
+            StockVisualsToggle();
+        }
+
+        private void btnHome_Click(object sender, EventArgs e)
+        {
+            Managerclose = 1;
+            this.Close();
+        }
+        private void StockAddBtn_Click(object sender, EventArgs e)
+        {
+            if (IngredientGridView.SelectedRows.Count > 0 && int.TryParse(QuantityAddedBox.Text, out int quantityToAdd))
+            {
+                DataGridViewRow selectedRow = IngredientGridView.SelectedRows[0];
+                int ingredientId = (int)selectedRow.Cells["IngredientID"].Value;
+                int currentStock = (int)selectedRow.Cells["QuantityStock"].Value;
+                int newStock = currentStock + quantityToAdd;
+
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    string query = "UPDATE IngredientsInfo SET QuantityStock = @QuantityStock WHERE IngredientID = @IngredientID";
+                    SqlCommand command = new SqlCommand(query, connection);
+                    command.Parameters.AddWithValue("@QuantityStock", newStock);
+                    command.Parameters.AddWithValue("@IngredientID", ingredientId);
+
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+
+                RefreshGridView();
+                QuantityAddedBox.Text = "";
+                IngNameB.Text = "";
+                IngQuantityB.Text = "";
+                IngUnitB.Text = "";
+                MessageBox.Show("Stock added successfully!");
+            }
+            else
+            {
+                MessageBox.Show("Please select an ingredient and enter a valid quantity.");
+            }
         }
     }
 }
