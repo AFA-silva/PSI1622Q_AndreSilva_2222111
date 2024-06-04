@@ -70,6 +70,7 @@ namespace Dionisios
                     imageData = stream.ToArray();
                 }
                 command.Parameters.AddWithValue("@Image", imageData);
+
                 connection.Open();
                 command.ExecuteNonQuery();
             }
