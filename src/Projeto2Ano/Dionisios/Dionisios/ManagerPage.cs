@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+﻿using Dionisios.Properties;
+using System;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Dionisios
@@ -18,26 +13,29 @@ namespace Dionisios
         string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=DionisiosDB;Integrated Security=True";
         private Image selectedImage;
         private int ingId;
+        private int retorno;
         public int Managerclose { get; set; }
+
         public ManagerPage()
         {
-            Managerclose = 0;   
+            Managerclose = 0;
             InitializeComponent();
             this.MinimumSize = new System.Drawing.Size(725, 479);
             this.MaximumSize = new System.Drawing.Size(725, 479);
         }
+
         private void ManagerPage_Load(object sender, EventArgs e)
         {
             this.ingredientsInfoTableAdapter.Fill(this.dionisiosDBDataSet.IngredientsInfo);
         }
+
         private void IngredientAddBtn_Click(object sender, EventArgs e)
         {
-            if (IngNameBox.Text != "" && UnitBox.Text != "" && selectedImage != null)
+            if (IngNameBox.Text != "" && IngUnitBox.Text != "" && selectedImage != null)
             {
                 AddIngredient();
                 RefreshGridView();
-                IngNameBox.Text = "";
-                UnitBox.Text = "";
+                ClearForm();
                 MessageBox.Show("Ingredient added successfully!");
             }
             else
@@ -45,15 +43,26 @@ namespace Dionisios
                 MessageBox.Show("Please fill in all required fields.");
             }
         }
+
         private void AddIngredient()
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string query = "INSERT INTO IngredientsInfo (Name, Unit, QuantityStock, Image) VALUES (@Name, @Unit, @Quantity, @Image)";
+                string query = "INSERT INTO IngredientsInfo (Name, Unit, QuantityStock, Image, Description) VALUES (@Name, @Unit, @Quantity, @Image, @Description)";
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@Name", IngNameBox.Text);
-                command.Parameters.AddWithValue("@Unit", UnitBox.Text);
-                command.Parameters.AddWithValue("@Quantity", 0);
+                command.Parameters.AddWithValue("@Unit", IngUnitBox.Text);
+                command.Parameters.AddWithValue("@Description", IngDescriptionBox.Text);
+                float quantity;
+                if (float.TryParse(IngQuantityBox.Text, out quantity))
+                {
+                    command.Parameters.AddWithValue("@Quantity", quantity);
+                }
+                else
+                {
+                    MessageBox.Show("Please enter a valid floating point number for the quantity.");
+                    return;
+                }
                 byte[] imageData;
                 using (MemoryStream stream = new MemoryStream())
                 {
@@ -61,17 +70,18 @@ namespace Dionisios
                     imageData = stream.ToArray();
                 }
                 command.Parameters.AddWithValue("@Image", imageData);
-
                 connection.Open();
                 command.ExecuteNonQuery();
             }
         }
+
         private void RefreshGridView()
         {
             IngredientGridView.DataSource = null;
             this.ingredientsInfoTableAdapter.Fill(this.dionisiosDBDataSet.IngredientsInfo);
             IngredientGridView.DataSource = this.dionisiosDBDataSet.IngredientsInfo;
         }
+
         private void NewIngImage_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -82,7 +92,7 @@ namespace Dionisios
                 try
                 {
                     selectedImage = new Bitmap(openFileDialog.FileName);
-                    NewIngImage.Image = selectedImage;
+                    IngImageBox.Image = selectedImage;
                 }
                 catch (Exception ex)
                 {
@@ -90,51 +100,36 @@ namespace Dionisios
                 }
             }
         }
+
         private void IngredientGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0) 
+            if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = IngredientGridView.Rows[e.RowIndex];
-                IngNameB.Text = row.Cells["NameCol"].Value.ToString();
-                IngUnitB.Text = row.Cells["UnitCol"].Value.ToString();
-                IngQuantityB.Text = row.Cells["QuantityCol"].Value.ToString();
+                ingId = Convert.ToInt32(row.Cells["IdCol"].Value);
+                IngNameBox.Text = row.Cells["NameCol"].Value.ToString();
+                IngDescriptionBox.Text = row.Cells["DescriptionCol"].Value.ToString();
+                IngUnitBox.Text = row.Cells["UnitCol"].Value.ToString();
+                IngQuantityBox.Text = row.Cells["QuantityCol"].Value.ToString();
                 if (row.Cells["ImageCol"].Value != DBNull.Value)
                 {
                     byte[] imageData = (byte[])row.Cells["ImageCol"].Value;
                     using (MemoryStream stream = new MemoryStream(imageData))
                     {
                         selectedImage = Image.FromStream(stream);
-                        IngredientsImage.Image = selectedImage;
+                        IngImageBox.Image = selectedImage;
                     }
                 }
                 else
                 {
-                    NewIngImage.Image = null;
+                    IngImageBox.Image = null;
                 }
             }
-        }
-
-        private void StockVisualsToggle()
-        {
-            IngredientGridView.Visible = true;
-            IngredientsImage.Visible = true;    
-            IngUnitB.Visible = true;
-            IngQuantityB.Visible = true;
-            IngNameB.Visible = true;
-            IngDescriptionBox.Visible = true;
-            QuantityAddedBox.Visible = true;
-            BtnDeleteIng.Visible = true;
-            StockAddBtn.Visible = true;
-            NewIngImage.Visible = true; 
-            IngNameBox.Visible = true;  
-            UnitBox.Visible = true; 
-            IngredientAddBtn.Visible = true;
         }
 
         private void StockBtn_Click(object sender, EventArgs e)
         {
             Menu.SelectedIndex = 1;
-            StockVisualsToggle();
         }
 
         private void btnHome_Click(object sender, EventArgs e)
@@ -142,37 +137,96 @@ namespace Dionisios
             Managerclose = 1;
             this.Close();
         }
-        private void StockAddBtn_Click(object sender, EventArgs e)
+
+        private void UpdateIngBtn_Click(object sender, EventArgs e)
         {
-            if (IngredientGridView.SelectedRows.Count > 0 && int.TryParse(QuantityAddedBox.Text, out int quantityToAdd))
+            if (IngNameBox.Text != "" && IngUnitBox.Text != "" && IngQuantityBox.Text != "")
             {
-                DataGridViewRow selectedRow = IngredientGridView.SelectedRows[0];
-                int ingredientId = (int)selectedRow.Cells["IngredientID"].Value;
-                int currentStock = (int)selectedRow.Cells["QuantityStock"].Value;
-                int newStock = currentStock + quantityToAdd;
-
-                using (SqlConnection connection = new SqlConnection(connectionString))
-                {
-                    string query = "UPDATE IngredientsInfo SET QuantityStock = @QuantityStock WHERE IngredientID = @IngredientID";
-                    SqlCommand command = new SqlCommand(query, connection);
-                    command.Parameters.AddWithValue("@QuantityStock", newStock);
-                    command.Parameters.AddWithValue("@IngredientID", ingredientId);
-
-                    connection.Open();
-                    command.ExecuteNonQuery();
-                }
-
+                UpdateIngredient();
                 RefreshGridView();
-                QuantityAddedBox.Text = "";
-                IngNameB.Text = "";
-                IngQuantityB.Text = "";
-                IngUnitB.Text = "";
-                MessageBox.Show("Stock added successfully!");
+                ClearForm();
+                MessageBox.Show("Ingredient updated successfully!");
             }
             else
             {
-                MessageBox.Show("Please select an ingredient and enter a valid quantity.");
+                MessageBox.Show("Please fill in all required fields.");
             }
+        }
+
+        private void BtnDeleteIng_Click(object sender, EventArgs e)
+        {
+            var confirmResult = MessageBox.Show("Are you sure to delete this item?", "Delete Ingredient", MessageBoxButtons.YesNo);
+            if (confirmResult == DialogResult.Yes)
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    string query = "DELETE FROM IngredientsInfo WHERE Id = @Id";
+                    SqlCommand command = new SqlCommand(query, connection);
+                    command.Parameters.AddWithValue("@Id", ingId);
+
+                    try
+                    {
+                        connection.Open();
+                        command.ExecuteNonQuery();
+                        MessageBox.Show("Ingredient deleted successfully!");
+                    }
+                    catch (SqlException ex)
+                    {
+                        MessageBox.Show("Error deleting ingredient: " + ex.Message);
+                    }
+                    finally
+                    {
+                        connection.Close();
+                    }
+                }
+                RefreshGridView();
+                ClearForm();
+            }
+        }
+        private void UpdateIngredient()
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string query = "UPDATE IngredientsInfo SET Name = @Name, Unit = @Unit, QuantityStock = @Quantity, Image = @Image, Description = @Description WHERE Id = @Id";
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@Name", IngNameBox.Text);
+                command.Parameters.AddWithValue("@Unit", IngUnitBox.Text);
+                command.Parameters.AddWithValue("@Quantity", int.Parse(IngQuantityBox.Text));
+                command.Parameters.AddWithValue("@Description", IngDescriptionBox.Text);
+                byte[] imageData;
+                if (selectedImage != null)
+                {
+                    try
+                    {
+                        using (MemoryStream stream = new MemoryStream())
+                        {
+                            selectedImage.Save(stream, ImageFormat.Png);
+                            imageData = stream.ToArray();
+                        }
+                        command.Parameters.AddWithValue("@Image", imageData);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Erro ao salvar a imagem: " + ex.Message);
+                        return;
+                    }
+                }
+                else
+                {
+                    command.Parameters.AddWithValue("@Image", DBNull.Value);
+                }
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
+        }
+        private void ClearForm()
+        {
+            IngNameBox.Text = "";
+            IngDescriptionBox.Text = "";
+            IngUnitBox.Text = "";
+            IngQuantityBox.Text = "";
+            IngImageBox.Image = Properties.Resources.Captura_de_ecrã_2024_05_21_144614;
+            selectedImage = null;
         }
     }
 }
