@@ -23,8 +23,8 @@ namespace Dionisios
         {
             Managerclose = 0;   
             InitializeComponent();
-            this.MinimumSize = new System.Drawing.Size(910, 489);
-            this.MaximumSize = new System.Drawing.Size(910, 489);
+            this.MinimumSize = new System.Drawing.Size(725, 479);
+            this.MaximumSize = new System.Drawing.Size(725, 479);
         }
         private void ManagerPage_Load(object sender, EventArgs e)
         {
@@ -133,7 +133,7 @@ namespace Dionisios
 
         private void StockBtn_Click(object sender, EventArgs e)
         {
-            Menu.SelectedIndex = 2;
+            Menu.SelectedIndex = 1;
             StockVisualsToggle();
         }
 
