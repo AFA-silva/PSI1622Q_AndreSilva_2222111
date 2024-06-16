@@ -4,6 +4,8 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
+using System.Security.Cryptography;
+using System.Text;
 using System.Windows.Forms;
 
 namespace Dionisios
@@ -15,6 +17,7 @@ namespace Dionisios
         private int ingId;
         private int retorno;
         public int Managerclose { get; set; }
+        private string currentImageHash;
 
         public ManagerPage()
         {
@@ -26,8 +29,13 @@ namespace Dionisios
 
         private void ManagerPage_Load(object sender, EventArgs e)
         {
+            this.drinksInfoTableAdapter.Fill(this.dionisiosDBDataSet.DrinksInfo);
             this.ingredientsInfoTableAdapter.Fill(this.dionisiosDBDataSet.IngredientsInfo);
         }
+
+        // Stock Menu Code -----------------------------------------------------------------------------------------------------------------------
+
+
 
         private void IngredientAddBtn_Click(object sender, EventArgs e)
         {
@@ -48,19 +56,21 @@ namespace Dionisios
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string query = "INSERT INTO IngredientsInfo (Name, Unit, QuantityStock, Image, Description) VALUES (@Name, @Unit, @Quantity, @Image, @Description)";
+                string query = "INSERT INTO IngredientsInfo (Name, Unit, QuantityStock, Image, Description, Price) VALUES (@Name, @Unit, @Quantity, @Image, @Description, @Price)";
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@Name", IngNameBox.Text);
                 command.Parameters.AddWithValue("@Unit", IngUnitBox.Text);
                 command.Parameters.AddWithValue("@Description", IngDescriptionBox.Text);
                 float quantity;
-                if (float.TryParse(IngQuantityBox.Text, out quantity))
+                float price;
+                if (float.TryParse(IngQuantityBox.Text, out quantity) && float.TryParse(IngPriceBox.Text, out price))
                 {
                     command.Parameters.AddWithValue("@Quantity", quantity);
+                    command.Parameters.AddWithValue("@Price", price);
                 }
                 else
                 {
-                    MessageBox.Show("Please enter a valid floating point number for the quantity.");
+                    MessageBox.Show("Please enter a valid floating point number for the quantity/price.");
                     return;
                 }
                 byte[] imageData;
@@ -81,7 +91,7 @@ namespace Dionisios
             IngredientGridView.DataSource = null;
             this.ingredientsInfoTableAdapter.Fill(this.dionisiosDBDataSet.IngredientsInfo);
             IngredientGridView.DataSource = this.dionisiosDBDataSet.IngredientsInfo;
-        }
+        }        
 
         private void NewIngImage_Click(object sender, EventArgs e)
         {
@@ -107,23 +117,26 @@ namespace Dionisios
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = IngredientGridView.Rows[e.RowIndex];
-                ingId = Convert.ToInt32(row.Cells["IdCol"].Value);
-                IngNameBox.Text = row.Cells["NameCol"].Value.ToString();
-                IngDescriptionBox.Text = row.Cells["DescriptionCol"].Value.ToString();
-                IngUnitBox.Text = row.Cells["UnitCol"].Value.ToString();
-                IngQuantityBox.Text = row.Cells["QuantityCol"].Value.ToString();
-                if (row.Cells["ImageCol"].Value != DBNull.Value)
+                ingId = Convert.ToInt32(row.Cells["ColID"].Value);
+                IngNameBox.Text = row.Cells["ColName"].Value.ToString();
+                IngDescriptionBox.Text = row.Cells["ColDescription"].Value.ToString();
+                IngUnitBox.Text = row.Cells["ColUnit"].Value.ToString();
+                IngQuantityBox.Text = row.Cells["ColQuantityStock"].Value.ToString();
+                IngPriceBox.Text = row.Cells["ColPrice"].Value.ToString();
+                if (row.Cells["ColImage"].Value != DBNull.Value)
                 {
-                    byte[] imageData = (byte[])row.Cells["ImageCol"].Value;
+                    byte[] imageData = (byte[])row.Cells["ColImage"].Value;
                     using (MemoryStream stream = new MemoryStream(imageData))
                     {
                         selectedImage = Image.FromStream(stream);
                         IngImageBox.Image = selectedImage;
+                        currentImageHash = GetImageHash(selectedImage);
                     }
                 }
                 else
                 {
                     IngImageBox.Image = null;
+                    currentImageHash = null;
                 }
             }
         }
@@ -184,50 +197,97 @@ namespace Dionisios
                 ClearForm();
             }
         }
+
         private void UpdateIngredient()
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string query = "UPDATE IngredientsInfo SET Name = @Name, Unit = @Unit, QuantityStock = @Quantity, Image = @Image, Description = @Description WHERE Id = @Id";
+                // Base query without the image
+                string query = "UPDATE IngredientsInfo SET Name = @Name, Unit = @Unit, QuantityStock = @Quantity, Description = @Description, Price = @Price";
+                // Check if the image was changed
+                if (selectedImage != null)
+                {
+                    string newImageHash = GetImageHash(selectedImage);
+                    if (newImageHash != currentImageHash)
+                    {
+                        query += ", Image = @Image";
+                    }
+                }
+                query += " WHERE Id = @Id";
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@Name", IngNameBox.Text);
                 command.Parameters.AddWithValue("@Unit", IngUnitBox.Text);
                 command.Parameters.AddWithValue("@Quantity", int.Parse(IngQuantityBox.Text));
                 command.Parameters.AddWithValue("@Description", IngDescriptionBox.Text);
-                byte[] imageData;
+                command.Parameters.AddWithValue("@Price", float.Parse(IngPriceBox.Text)); // Ensure that price is updated
                 if (selectedImage != null)
                 {
-                    try
+                    string newImageHash = GetImageHash(selectedImage);
+                    if (newImageHash != currentImageHash)
                     {
-                        using (MemoryStream stream = new MemoryStream())
+                        byte[] imageData;
+                        try
                         {
-                            selectedImage.Save(stream, ImageFormat.Png);
-                            imageData = stream.ToArray();
+                            using (MemoryStream stream = new MemoryStream())
+                            {
+                                selectedImage.Save(stream, ImageFormat.Png);
+                                imageData = stream.ToArray();
+                            }
+                            command.Parameters.AddWithValue("@Image", imageData);
                         }
-                        command.Parameters.AddWithValue("@Image", imageData);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Erro ao salvar a imagem: " + ex.Message);
-                        return;
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Erro ao salvar a imagem: " + ex.Message);
+                            return;
+                        }
                     }
                 }
-                else
-                {
-                    command.Parameters.AddWithValue("@Image", DBNull.Value);
-                }
+                command.Parameters.AddWithValue("@Id", ingId);
                 connection.Open();
                 command.ExecuteNonQuery();
             }
         }
+
         private void ClearForm()
         {
             IngNameBox.Text = "";
             IngDescriptionBox.Text = "";
             IngUnitBox.Text = "";
             IngQuantityBox.Text = "";
+            IngPriceBox.Text = "";
             IngImageBox.Image = Properties.Resources.Captura_de_ecrã_2024_05_21_144614;
             selectedImage = null;
+            currentImageHash = null;
+        }
+
+        private string GetImageHash(Image image)
+        {
+            using (MemoryStream stream = new MemoryStream())
+            {
+                image.Save(stream, ImageFormat.Png);
+                using (SHA256 sha256 = SHA256.Create())
+                {
+                    byte[] hashBytes = sha256.ComputeHash(stream.ToArray());
+                    StringBuilder sb = new StringBuilder();
+                    foreach (byte b in hashBytes)
+                    {
+                        sb.Append(b.ToString("X2"));
+                    }
+                    return sb.ToString();
+                }
+            }
+        }
+
+        // Drinks Menu Code -------------------------------------------------------------------------------------------------------------------------
+
+        private void btnDrinks_Click(object sender, EventArgs e)
+        {
+            Menu.SelectedIndex = 2;
+        }
+
+        private void btnIngredients_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

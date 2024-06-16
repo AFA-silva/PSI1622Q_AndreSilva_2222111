@@ -32,9 +32,9 @@ namespace Dionisios {
         
         private UserAccountDataTable tableUserAccount;
         
-        private global::System.Data.DataRelation relationFK__DrinksIng__Drink__6A30C649;
+        private global::System.Data.DataRelation relationFK__DrinksIng__ID_Dr__2B3F6F97;
         
-        private global::System.Data.DataRelation relationFK__DrinksIng__Ingre__6B24EA82;
+        private global::System.Data.DataRelation relationFK__DrinksIng__ID_In__2A4B4B5E;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -270,8 +270,8 @@ namespace Dionisios {
                     this.tableUserAccount.InitVars();
                 }
             }
-            this.relationFK__DrinksIng__Drink__6A30C649 = this.Relations["FK__DrinksIng__Drink__6A30C649"];
-            this.relationFK__DrinksIng__Ingre__6B24EA82 = this.Relations["FK__DrinksIng__Ingre__6B24EA82"];
+            this.relationFK__DrinksIng__ID_Dr__2B3F6F97 = this.Relations["FK__DrinksIng__ID_Dr__2B3F6F97"];
+            this.relationFK__DrinksIng__ID_In__2A4B4B5E = this.Relations["FK__DrinksIng__ID_In__2A4B4B5E"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -290,14 +290,14 @@ namespace Dionisios {
             base.Tables.Add(this.tableIngredientsInfo);
             this.tableUserAccount = new UserAccountDataTable();
             base.Tables.Add(this.tableUserAccount);
-            this.relationFK__DrinksIng__Drink__6A30C649 = new global::System.Data.DataRelation("FK__DrinksIng__Drink__6A30C649", new global::System.Data.DataColumn[] {
+            this.relationFK__DrinksIng__ID_Dr__2B3F6F97 = new global::System.Data.DataRelation("FK__DrinksIng__ID_Dr__2B3F6F97", new global::System.Data.DataColumn[] {
                         this.tableDrinksInfo.IDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableDrinksIngredients.DrinkIDColumn}, false);
-            this.Relations.Add(this.relationFK__DrinksIng__Drink__6A30C649);
-            this.relationFK__DrinksIng__Ingre__6B24EA82 = new global::System.Data.DataRelation("FK__DrinksIng__Ingre__6B24EA82", new global::System.Data.DataColumn[] {
+                        this.tableDrinksIngredients.ID_DrinksColumn}, false);
+            this.Relations.Add(this.relationFK__DrinksIng__ID_Dr__2B3F6F97);
+            this.relationFK__DrinksIng__ID_In__2A4B4B5E = new global::System.Data.DataRelation("FK__DrinksIng__ID_In__2A4B4B5E", new global::System.Data.DataColumn[] {
                         this.tableIngredientsInfo.IDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableDrinksIngredients.IngredientIDColumn}, false);
-            this.Relations.Add(this.relationFK__DrinksIng__Ingre__6B24EA82);
+                        this.tableDrinksIngredients.ID_IngredientsColumn}, false);
+            this.Relations.Add(this.relationFK__DrinksIng__ID_In__2A4B4B5E);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -508,7 +508,7 @@ namespace Dionisios {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public DrinksInfoRow AddDrinksInfoRow(string Name, byte[] Image, decimal Price) {
+            public DrinksInfoRow AddDrinksInfoRow(string Name, byte[] Image, double Price) {
                 DrinksInfoRow rowDrinksInfoRow = ((DrinksInfoRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -559,7 +559,7 @@ namespace Dionisios {
                 base.Columns.Add(this.columnName);
                 this.columnImage = new global::System.Data.DataColumn("Image", typeof(byte[]), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnImage);
-                this.columnPrice = new global::System.Data.DataColumn("Price", typeof(decimal), null, global::System.Data.MappingType.Element);
+                this.columnPrice = new global::System.Data.DataColumn("Price", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPrice);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
@@ -570,7 +570,7 @@ namespace Dionisios {
                 this.columnID.ReadOnly = true;
                 this.columnID.Unique = true;
                 this.columnName.AllowDBNull = false;
-                this.columnName.MaxLength = 100;
+                this.columnName.MaxLength = 2147483647;
                 this.columnPrice.AllowDBNull = false;
             }
             
@@ -705,9 +705,11 @@ namespace Dionisios {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class DrinksIngredientsDataTable : global::System.Data.TypedTableBase<DrinksIngredientsRow> {
             
-            private global::System.Data.DataColumn columnDrinkID;
+            private global::System.Data.DataColumn columnID_Ingredients;
             
-            private global::System.Data.DataColumn columnIngredientID;
+            private global::System.Data.DataColumn columnID_Drinks;
+            
+            private global::System.Data.DataColumn columnQuantity;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
@@ -744,17 +746,25 @@ namespace Dionisios {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn DrinkIDColumn {
+            public global::System.Data.DataColumn ID_IngredientsColumn {
                 get {
-                    return this.columnDrinkID;
+                    return this.columnID_Ingredients;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn IngredientIDColumn {
+            public global::System.Data.DataColumn ID_DrinksColumn {
                 get {
-                    return this.columnIngredientID;
+                    return this.columnID_Drinks;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn QuantityColumn {
+                get {
+                    return this.columnQuantity;
                 }
             }
             
@@ -795,16 +805,17 @@ namespace Dionisios {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public DrinksIngredientsRow AddDrinksIngredientsRow(DrinksInfoRow parentDrinksInfoRowByFK__DrinksIng__Drink__6A30C649, IngredientsInfoRow parentIngredientsInfoRowByFK__DrinksIng__Ingre__6B24EA82) {
+            public DrinksIngredientsRow AddDrinksIngredientsRow(IngredientsInfoRow parentIngredientsInfoRowByFK__DrinksIng__ID_In__2A4B4B5E, DrinksInfoRow parentDrinksInfoRowByFK__DrinksIng__ID_Dr__2B3F6F97, int Quantity) {
                 DrinksIngredientsRow rowDrinksIngredientsRow = ((DrinksIngredientsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
-                        null};
-                if ((parentDrinksInfoRowByFK__DrinksIng__Drink__6A30C649 != null)) {
-                    columnValuesArray[0] = parentDrinksInfoRowByFK__DrinksIng__Drink__6A30C649[0];
+                        null,
+                        Quantity};
+                if ((parentIngredientsInfoRowByFK__DrinksIng__ID_In__2A4B4B5E != null)) {
+                    columnValuesArray[0] = parentIngredientsInfoRowByFK__DrinksIng__ID_In__2A4B4B5E[0];
                 }
-                if ((parentIngredientsInfoRowByFK__DrinksIng__Ingre__6B24EA82 != null)) {
-                    columnValuesArray[1] = parentIngredientsInfoRowByFK__DrinksIng__Ingre__6B24EA82[0];
+                if ((parentDrinksInfoRowByFK__DrinksIng__ID_Dr__2B3F6F97 != null)) {
+                    columnValuesArray[1] = parentDrinksInfoRowByFK__DrinksIng__ID_Dr__2B3F6F97[0];
                 }
                 rowDrinksIngredientsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowDrinksIngredientsRow);
@@ -813,10 +824,10 @@ namespace Dionisios {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public DrinksIngredientsRow FindByDrinkIDIngredientID(int DrinkID, int IngredientID) {
+            public DrinksIngredientsRow FindByID_IngredientsID_Drinks(int ID_Ingredients, int ID_Drinks) {
                 return ((DrinksIngredientsRow)(this.Rows.Find(new object[] {
-                            DrinkID,
-                            IngredientID})));
+                            ID_Ingredients,
+                            ID_Drinks})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -836,22 +847,26 @@ namespace Dionisios {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             internal void InitVars() {
-                this.columnDrinkID = base.Columns["DrinkID"];
-                this.columnIngredientID = base.Columns["IngredientID"];
+                this.columnID_Ingredients = base.Columns["ID_Ingredients"];
+                this.columnID_Drinks = base.Columns["ID_Drinks"];
+                this.columnQuantity = base.Columns["Quantity"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             private void InitClass() {
-                this.columnDrinkID = new global::System.Data.DataColumn("DrinkID", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDrinkID);
-                this.columnIngredientID = new global::System.Data.DataColumn("IngredientID", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnIngredientID);
+                this.columnID_Ingredients = new global::System.Data.DataColumn("ID_Ingredients", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnID_Ingredients);
+                this.columnID_Drinks = new global::System.Data.DataColumn("ID_Drinks", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnID_Drinks);
+                this.columnQuantity = new global::System.Data.DataColumn("Quantity", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnQuantity);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnDrinkID,
-                                this.columnIngredientID}, true));
-                this.columnDrinkID.AllowDBNull = false;
-                this.columnIngredientID.AllowDBNull = false;
+                                this.columnID_Ingredients,
+                                this.columnID_Drinks}, true));
+                this.columnID_Ingredients.AllowDBNull = false;
+                this.columnID_Drinks.AllowDBNull = false;
+                this.columnQuantity.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -989,6 +1004,8 @@ namespace Dionisios {
             
             private global::System.Data.DataColumn columnName;
             
+            private global::System.Data.DataColumn columnPrice;
+            
             private global::System.Data.DataColumn columnImage;
             
             private global::System.Data.DataColumn columnQuantityStock;
@@ -1043,6 +1060,14 @@ namespace Dionisios {
             public global::System.Data.DataColumn NameColumn {
                 get {
                     return this.columnName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn PriceColumn {
+                get {
+                    return this.columnPrice;
                 }
             }
             
@@ -1115,11 +1140,12 @@ namespace Dionisios {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public IngredientsInfoRow AddIngredientsInfoRow(string Name, byte[] Image, int QuantityStock, string Unit, string Description) {
+            public IngredientsInfoRow AddIngredientsInfoRow(string Name, double Price, byte[] Image, int QuantityStock, string Unit, string Description) {
                 IngredientsInfoRow rowIngredientsInfoRow = ((IngredientsInfoRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         Name,
+                        Price,
                         Image,
                         QuantityStock,
                         Unit,
@@ -1155,6 +1181,7 @@ namespace Dionisios {
             internal void InitVars() {
                 this.columnID = base.Columns["ID"];
                 this.columnName = base.Columns["Name"];
+                this.columnPrice = base.Columns["Price"];
                 this.columnImage = base.Columns["Image"];
                 this.columnQuantityStock = base.Columns["QuantityStock"];
                 this.columnUnit = base.Columns["Unit"];
@@ -1168,6 +1195,8 @@ namespace Dionisios {
                 base.Columns.Add(this.columnID);
                 this.columnName = new global::System.Data.DataColumn("Name", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnName);
+                this.columnPrice = new global::System.Data.DataColumn("Price", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPrice);
                 this.columnImage = new global::System.Data.DataColumn("Image", typeof(byte[]), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnImage);
                 this.columnQuantityStock = new global::System.Data.DataColumn("QuantityStock", typeof(int), null, global::System.Data.MappingType.Element);
@@ -1185,8 +1214,11 @@ namespace Dionisios {
                 this.columnID.ReadOnly = true;
                 this.columnID.Unique = true;
                 this.columnName.AllowDBNull = false;
-                this.columnName.MaxLength = 255;
-                this.columnUnit.MaxLength = 50;
+                this.columnName.MaxLength = 2147483647;
+                this.columnPrice.AllowDBNull = false;
+                this.columnQuantityStock.AllowDBNull = false;
+                this.columnUnit.AllowDBNull = false;
+                this.columnUnit.MaxLength = 2147483647;
                 this.columnDescription.MaxLength = 2147483647;
             }
             
@@ -1709,9 +1741,9 @@ namespace Dionisios {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public decimal Price {
+            public double Price {
                 get {
-                    return ((decimal)(this[this.tableDrinksInfo.PriceColumn]));
+                    return ((double)(this[this.tableDrinksInfo.PriceColumn]));
                 }
                 set {
                     this[this.tableDrinksInfo.PriceColumn] = value;
@@ -1733,11 +1765,11 @@ namespace Dionisios {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public DrinksIngredientsRow[] GetDrinksIngredientsRows() {
-                if ((this.Table.ChildRelations["FK__DrinksIng__Drink__6A30C649"] == null)) {
+                if ((this.Table.ChildRelations["FK__DrinksIng__ID_Dr__2B3F6F97"] == null)) {
                     return new DrinksIngredientsRow[0];
                 }
                 else {
-                    return ((DrinksIngredientsRow[])(base.GetChildRows(this.Table.ChildRelations["FK__DrinksIng__Drink__6A30C649"])));
+                    return ((DrinksIngredientsRow[])(base.GetChildRows(this.Table.ChildRelations["FK__DrinksIng__ID_Dr__2B3F6F97"])));
                 }
             }
         }
@@ -1758,23 +1790,34 @@ namespace Dionisios {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int DrinkID {
+            public int ID_Ingredients {
                 get {
-                    return ((int)(this[this.tableDrinksIngredients.DrinkIDColumn]));
+                    return ((int)(this[this.tableDrinksIngredients.ID_IngredientsColumn]));
                 }
                 set {
-                    this[this.tableDrinksIngredients.DrinkIDColumn] = value;
+                    this[this.tableDrinksIngredients.ID_IngredientsColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int IngredientID {
+            public int ID_Drinks {
                 get {
-                    return ((int)(this[this.tableDrinksIngredients.IngredientIDColumn]));
+                    return ((int)(this[this.tableDrinksIngredients.ID_DrinksColumn]));
                 }
                 set {
-                    this[this.tableDrinksIngredients.IngredientIDColumn] = value;
+                    this[this.tableDrinksIngredients.ID_DrinksColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public int Quantity {
+                get {
+                    return ((int)(this[this.tableDrinksIngredients.QuantityColumn]));
+                }
+                set {
+                    this[this.tableDrinksIngredients.QuantityColumn] = value;
                 }
             }
             
@@ -1782,10 +1825,10 @@ namespace Dionisios {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public DrinksInfoRow DrinksInfoRow {
                 get {
-                    return ((DrinksInfoRow)(this.GetParentRow(this.Table.ParentRelations["FK__DrinksIng__Drink__6A30C649"])));
+                    return ((DrinksInfoRow)(this.GetParentRow(this.Table.ParentRelations["FK__DrinksIng__ID_Dr__2B3F6F97"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK__DrinksIng__Drink__6A30C649"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["FK__DrinksIng__ID_Dr__2B3F6F97"]);
                 }
             }
             
@@ -1793,10 +1836,10 @@ namespace Dionisios {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public IngredientsInfoRow IngredientsInfoRow {
                 get {
-                    return ((IngredientsInfoRow)(this.GetParentRow(this.Table.ParentRelations["FK__DrinksIng__Ingre__6B24EA82"])));
+                    return ((IngredientsInfoRow)(this.GetParentRow(this.Table.ParentRelations["FK__DrinksIng__ID_In__2A4B4B5E"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK__DrinksIng__Ingre__6B24EA82"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["FK__DrinksIng__ID_In__2A4B4B5E"]);
                 }
             }
         }
@@ -1839,6 +1882,17 @@ namespace Dionisios {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public double Price {
+                get {
+                    return ((double)(this[this.tableIngredientsInfo.PriceColumn]));
+                }
+                set {
+                    this[this.tableIngredientsInfo.PriceColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public byte[] Image {
                 get {
                     try {
@@ -1857,12 +1911,7 @@ namespace Dionisios {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public int QuantityStock {
                 get {
-                    try {
-                        return ((int)(this[this.tableIngredientsInfo.QuantityStockColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("O valor da coluna \'QuantityStock\' na tabela \'IngredientsInfo\' é DBNull.", e);
-                    }
+                    return ((int)(this[this.tableIngredientsInfo.QuantityStockColumn]));
                 }
                 set {
                     this[this.tableIngredientsInfo.QuantityStockColumn] = value;
@@ -1873,12 +1922,7 @@ namespace Dionisios {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public string Unit {
                 get {
-                    try {
-                        return ((string)(this[this.tableIngredientsInfo.UnitColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("O valor da coluna \'Unit\' na tabela \'IngredientsInfo\' é DBNull.", e);
-                    }
+                    return ((string)(this[this.tableIngredientsInfo.UnitColumn]));
                 }
                 set {
                     this[this.tableIngredientsInfo.UnitColumn] = value;
@@ -1915,30 +1959,6 @@ namespace Dionisios {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsQuantityStockNull() {
-                return this.IsNull(this.tableIngredientsInfo.QuantityStockColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetQuantityStockNull() {
-                this[this.tableIngredientsInfo.QuantityStockColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsUnitNull() {
-                return this.IsNull(this.tableIngredientsInfo.UnitColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetUnitNull() {
-                this[this.tableIngredientsInfo.UnitColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsDescriptionNull() {
                 return this.IsNull(this.tableIngredientsInfo.DescriptionColumn);
             }
@@ -1952,11 +1972,11 @@ namespace Dionisios {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public DrinksIngredientsRow[] GetDrinksIngredientsRows() {
-                if ((this.Table.ChildRelations["FK__DrinksIng__Ingre__6B24EA82"] == null)) {
+                if ((this.Table.ChildRelations["FK__DrinksIng__ID_In__2A4B4B5E"] == null)) {
                     return new DrinksIngredientsRow[0];
                 }
                 else {
-                    return ((DrinksIngredientsRow[])(base.GetChildRows(this.Table.ChildRelations["FK__DrinksIng__Ingre__6B24EA82"])));
+                    return ((DrinksIngredientsRow[])(base.GetChildRows(this.Table.ChildRelations["FK__DrinksIng__ID_In__2A4B4B5E"])));
                 }
             }
         }
@@ -2310,12 +2330,11 @@ namespace Dionisios.DionisiosDBDataSetTableAdapters {
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[DrinksInfo] WHERE (([ID] = @Original_ID) AND ([Name] = @Origin" +
-                "al_Name) AND ([Price] = @Original_Price))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[DrinksInfo] WHERE (([ID] = @Original_ID) AND ([Price] = @Origi" +
+                "nal_Price))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Name", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Price", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 10, 2, "Price", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Price", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Price", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[DrinksInfo] ([Name], [Image], [Price]) VALUES (@Name, @Image, " +
@@ -2324,19 +2343,18 @@ namespace Dionisios.DionisiosDBDataSetTableAdapters {
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Image", global::System.Data.SqlDbType.VarBinary, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Image", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Price", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 10, 2, "Price", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Price", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Price", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
             this._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[DrinksInfo] SET [Name] = @Name, [Image] = @Image, [Price] = @Price " +
-                "WHERE (([ID] = @Original_ID) AND ([Name] = @Original_Name) AND ([Price] = @Origi" +
-                "nal_Price));\r\nSELECT ID, Name, Image, Price FROM DrinksInfo WHERE (ID = @ID)";
+                "WHERE (([ID] = @Original_ID) AND ([Price] = @Original_Price));\r\nSELECT ID, Name," +
+                " Image, Price FROM DrinksInfo WHERE (ID = @ID)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Image", global::System.Data.SqlDbType.VarBinary, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Image", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Price", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 10, 2, "Price", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Price", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Price", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Name", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Price", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 10, 2, "Price", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Price", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Price", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
@@ -2414,15 +2432,9 @@ namespace Dionisios.DionisiosDBDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_ID, string Original_Name, decimal Original_Price) {
+        public virtual int Delete(int Original_ID, double Original_Price) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_ID));
-            if ((Original_Name == null)) {
-                throw new global::System.ArgumentNullException("Original_Name");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Original_Name));
-            }
-            this.Adapter.DeleteCommand.Parameters[2].Value = ((decimal)(Original_Price));
+            this.Adapter.DeleteCommand.Parameters[1].Value = ((double)(Original_Price));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -2443,7 +2455,7 @@ namespace Dionisios.DionisiosDBDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string Name, byte[] Image, decimal Price) {
+        public virtual int Insert(string Name, byte[] Image, double Price) {
             if ((Name == null)) {
                 throw new global::System.ArgumentNullException("Name");
             }
@@ -2456,7 +2468,7 @@ namespace Dionisios.DionisiosDBDataSetTableAdapters {
             else {
                 this.Adapter.InsertCommand.Parameters[1].Value = ((byte[])(Image));
             }
-            this.Adapter.InsertCommand.Parameters[2].Value = ((decimal)(Price));
+            this.Adapter.InsertCommand.Parameters[2].Value = ((double)(Price));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -2477,7 +2489,7 @@ namespace Dionisios.DionisiosDBDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string Name, byte[] Image, decimal Price, int Original_ID, string Original_Name, decimal Original_Price, int ID) {
+        public virtual int Update(string Name, byte[] Image, double Price, int Original_ID, double Original_Price, int ID) {
             if ((Name == null)) {
                 throw new global::System.ArgumentNullException("Name");
             }
@@ -2490,16 +2502,10 @@ namespace Dionisios.DionisiosDBDataSetTableAdapters {
             else {
                 this.Adapter.UpdateCommand.Parameters[1].Value = ((byte[])(Image));
             }
-            this.Adapter.UpdateCommand.Parameters[2].Value = ((decimal)(Price));
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((double)(Price));
             this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Original_ID));
-            if ((Original_Name == null)) {
-                throw new global::System.ArgumentNullException("Original_Name");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(Original_Name));
-            }
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((decimal)(Original_Price));
-            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(ID));
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((double)(Original_Price));
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(ID));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -2520,8 +2526,8 @@ namespace Dionisios.DionisiosDBDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string Name, byte[] Image, decimal Price, int Original_ID, string Original_Name, decimal Original_Price) {
-            return this.Update(Name, Image, Price, Original_ID, Original_Name, Original_Price, Original_ID);
+        public virtual int Update(string Name, byte[] Image, double Price, int Original_ID, double Original_Price) {
+            return this.Update(Name, Image, Price, Original_ID, Original_Price, Original_ID);
         }
     }
     
@@ -2646,33 +2652,38 @@ namespace Dionisios.DionisiosDBDataSetTableAdapters {
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "DrinksIngredients";
-            tableMapping.ColumnMappings.Add("DrinkID", "DrinkID");
-            tableMapping.ColumnMappings.Add("IngredientID", "IngredientID");
+            tableMapping.ColumnMappings.Add("ID_Ingredients", "ID_Ingredients");
+            tableMapping.ColumnMappings.Add("ID_Drinks", "ID_Drinks");
+            tableMapping.ColumnMappings.Add("Quantity", "Quantity");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[DrinksIngredients] WHERE (([DrinkID] = @Original_DrinkID) AND " +
-                "([IngredientID] = @Original_IngredientID))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[DrinksIngredients] WHERE (([ID_Ingredients] = @Original_ID_Ing" +
+                "redients) AND ([ID_Drinks] = @Original_ID_Drinks) AND ([Quantity] = @Original_Qu" +
+                "antity))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DrinkID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DrinkID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_IngredientID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IngredientID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID_Ingredients", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID_Ingredients", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID_Drinks", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID_Drinks", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Quantity", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Quantity", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[DrinksIngredients] ([DrinkID], [IngredientID]) VALUES (@DrinkI" +
-                "D, @IngredientID);\r\nSELECT DrinkID, IngredientID FROM DrinksIngredients WHERE (D" +
-                "rinkID = @DrinkID) AND (IngredientID = @IngredientID)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[DrinksIngredients] ([ID_Ingredients], [ID_Drinks], [Quantity]) VALUES (@ID_Ingredients, @ID_Drinks, @Quantity);
+SELECT ID_Ingredients, ID_Drinks, Quantity FROM DrinksIngredients WHERE (ID_Drinks = @ID_Drinks) AND (ID_Ingredients = @ID_Ingredients)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DrinkID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DrinkID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IngredientID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IngredientID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID_Ingredients", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID_Ingredients", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID_Drinks", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID_Drinks", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Quantity", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Quantity", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[DrinksIngredients] SET [DrinkID] = @DrinkID, [IngredientID] = @IngredientID WHERE (([DrinkID] = @Original_DrinkID) AND ([IngredientID] = @Original_IngredientID));
-SELECT DrinkID, IngredientID FROM DrinksIngredients WHERE (DrinkID = @DrinkID) AND (IngredientID = @IngredientID)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[DrinksIngredients] SET [ID_Ingredients] = @ID_Ingredients, [ID_Drinks] = @ID_Drinks, [Quantity] = @Quantity WHERE (([ID_Ingredients] = @Original_ID_Ingredients) AND ([ID_Drinks] = @Original_ID_Drinks) AND ([Quantity] = @Original_Quantity));
+SELECT ID_Ingredients, ID_Drinks, Quantity FROM DrinksIngredients WHERE (ID_Drinks = @ID_Drinks) AND (ID_Ingredients = @ID_Ingredients)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DrinkID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DrinkID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IngredientID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IngredientID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DrinkID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DrinkID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_IngredientID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IngredientID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID_Ingredients", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID_Ingredients", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID_Drinks", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID_Drinks", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Quantity", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Quantity", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID_Ingredients", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID_Ingredients", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID_Drinks", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID_Drinks", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Quantity", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Quantity", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2688,7 +2699,7 @@ SELECT DrinkID, IngredientID FROM DrinksIngredients WHERE (DrinkID = @DrinkID) A
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT DrinkID, IngredientID FROM dbo.DrinksIngredients";
+            this._commandCollection[0].CommandText = "SELECT ID_Ingredients, ID_Drinks, Quantity FROM dbo.DrinksIngredients";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -2749,9 +2760,10 @@ SELECT DrinkID, IngredientID FROM DrinksIngredients WHERE (DrinkID = @DrinkID) A
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_DrinkID, int Original_IngredientID) {
-            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_DrinkID));
-            this.Adapter.DeleteCommand.Parameters[1].Value = ((int)(Original_IngredientID));
+        public virtual int Delete(int Original_ID_Ingredients, int Original_ID_Drinks, int Original_Quantity) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_ID_Ingredients));
+            this.Adapter.DeleteCommand.Parameters[1].Value = ((int)(Original_ID_Drinks));
+            this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(Original_Quantity));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -2772,9 +2784,10 @@ SELECT DrinkID, IngredientID FROM DrinksIngredients WHERE (DrinkID = @DrinkID) A
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int DrinkID, int IngredientID) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(DrinkID));
-            this.Adapter.InsertCommand.Parameters[1].Value = ((int)(IngredientID));
+        public virtual int Insert(int ID_Ingredients, int ID_Drinks, int Quantity) {
+            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(ID_Ingredients));
+            this.Adapter.InsertCommand.Parameters[1].Value = ((int)(ID_Drinks));
+            this.Adapter.InsertCommand.Parameters[2].Value = ((int)(Quantity));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -2795,11 +2808,13 @@ SELECT DrinkID, IngredientID FROM DrinksIngredients WHERE (DrinkID = @DrinkID) A
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int DrinkID, int IngredientID, int Original_DrinkID, int Original_IngredientID) {
-            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(DrinkID));
-            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(IngredientID));
-            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(Original_DrinkID));
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Original_IngredientID));
+        public virtual int Update(int ID_Ingredients, int ID_Drinks, int Quantity, int Original_ID_Ingredients, int Original_ID_Drinks, int Original_Quantity) {
+            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(ID_Ingredients));
+            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(ID_Drinks));
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(Quantity));
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Original_ID_Ingredients));
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_ID_Drinks));
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Original_Quantity));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -2820,8 +2835,8 @@ SELECT DrinkID, IngredientID FROM DrinksIngredients WHERE (DrinkID = @DrinkID) A
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int Original_DrinkID, int Original_IngredientID) {
-            return this.Update(Original_DrinkID, Original_IngredientID, Original_DrinkID, Original_IngredientID);
+        public virtual int Update(int Quantity, int Original_ID_Ingredients, int Original_ID_Drinks, int Original_Quantity) {
+            return this.Update(Original_ID_Ingredients, Original_ID_Drinks, Quantity, Original_ID_Ingredients, Original_ID_Drinks, Original_Quantity);
         }
     }
     
@@ -2948,6 +2963,7 @@ SELECT DrinkID, IngredientID FROM DrinksIngredients WHERE (DrinkID = @DrinkID) A
             tableMapping.DataSetTable = "IngredientsInfo";
             tableMapping.ColumnMappings.Add("ID", "ID");
             tableMapping.ColumnMappings.Add("Name", "Name");
+            tableMapping.ColumnMappings.Add("Price", "Price");
             tableMapping.ColumnMappings.Add("Image", "Image");
             tableMapping.ColumnMappings.Add("QuantityStock", "QuantityStock");
             tableMapping.ColumnMappings.Add("Unit", "Unit");
@@ -2955,40 +2971,37 @@ SELECT DrinkID, IngredientID FROM DrinksIngredients WHERE (DrinkID = @DrinkID) A
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[IngredientsInfo] WHERE (([ID] = @Original_ID) AND ([Name] = @Original_Name) AND ((@IsNull_QuantityStock = 1 AND [QuantityStock] IS NULL) OR ([QuantityStock] = @Original_QuantityStock)) AND ((@IsNull_Unit = 1 AND [Unit] IS NULL) OR ([Unit] = @Original_Unit)))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[IngredientsInfo] WHERE (([ID] = @Original_ID) AND ([Price] = @" +
+                "Original_Price) AND ([QuantityStock] = @Original_QuantityStock))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_QuantityStock", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "QuantityStock", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Price", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Price", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_QuantityStock", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "QuantityStock", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Unit", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Unit", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Unit", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Unit", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[IngredientsInfo] ([Name], [Image], [QuantityStock], [Unit], [Description]) VALUES (@Name, @Image, @QuantityStock, @Unit, @Description);
-SELECT ID, Name, Image, QuantityStock, Unit, Description FROM IngredientsInfo WHERE (ID = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[IngredientsInfo] ([Name], [Price], [Image], [QuantityStock], [Unit], [Description]) VALUES (@Name, @Price, @Image, @QuantityStock, @Unit, @Description);
+SELECT ID, Name, Price, Image, QuantityStock, Unit, Description FROM IngredientsInfo WHERE (ID = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Price", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Price", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Image", global::System.Data.SqlDbType.VarBinary, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Image", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@QuantityStock", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "QuantityStock", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Unit", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Unit", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Description", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Description", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Unit", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Unit", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Description", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Description", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[IngredientsInfo] SET [Name] = @Name, [Image] = @Image, [QuantityStock] = @QuantityStock, [Unit] = @Unit, [Description] = @Description WHERE (([ID] = @Original_ID) AND ([Name] = @Original_Name) AND ((@IsNull_QuantityStock = 1 AND [QuantityStock] IS NULL) OR ([QuantityStock] = @Original_QuantityStock)) AND ((@IsNull_Unit = 1 AND [Unit] IS NULL) OR ([Unit] = @Original_Unit)));
-SELECT ID, Name, Image, QuantityStock, Unit, Description FROM IngredientsInfo WHERE (ID = @ID)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[IngredientsInfo] SET [Name] = @Name, [Price] = @Price, [Image] = @Image, [QuantityStock] = @QuantityStock, [Unit] = @Unit, [Description] = @Description WHERE (([ID] = @Original_ID) AND ([Price] = @Original_Price) AND ([QuantityStock] = @Original_QuantityStock));
+SELECT ID, Name, Price, Image, QuantityStock, Unit, Description FROM IngredientsInfo WHERE (ID = @ID)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Price", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Price", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Image", global::System.Data.SqlDbType.VarBinary, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Image", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@QuantityStock", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "QuantityStock", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Unit", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Unit", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Description", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Description", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Unit", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Unit", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Description", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Description", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_QuantityStock", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "QuantityStock", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Price", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Price", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_QuantityStock", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "QuantityStock", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Unit", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Unit", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Unit", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Unit", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
@@ -3005,8 +3018,8 @@ SELECT ID, Name, Image, QuantityStock, Unit, Description FROM IngredientsInfo WH
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT ID, Name, Image, QuantityStock, Unit, Description FROM dbo.IngredientsInfo" +
-                "";
+            this._commandCollection[0].CommandText = "SELECT ID, Name, Price, Image, QuantityStock, Unit, Description FROM dbo.Ingredie" +
+                "ntsInfo";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -3067,30 +3080,10 @@ SELECT ID, Name, Image, QuantityStock, Unit, Description FROM IngredientsInfo WH
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_ID, string Original_Name, global::System.Nullable<int> Original_QuantityStock, string Original_Unit) {
+        public virtual int Delete(int Original_ID, double Original_Price, int Original_QuantityStock) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_ID));
-            if ((Original_Name == null)) {
-                throw new global::System.ArgumentNullException("Original_Name");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Original_Name));
-            }
-            if ((Original_QuantityStock.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[2].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[3].Value = ((int)(Original_QuantityStock.Value));
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[2].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[3].Value = global::System.DBNull.Value;
-            }
-            if ((Original_Unit == null)) {
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[5].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[5].Value = ((string)(Original_Unit));
-            }
+            this.Adapter.DeleteCommand.Parameters[1].Value = ((double)(Original_Price));
+            this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(Original_QuantityStock));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -3111,36 +3104,32 @@ SELECT ID, Name, Image, QuantityStock, Unit, Description FROM IngredientsInfo WH
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string Name, byte[] Image, global::System.Nullable<int> QuantityStock, string Unit, string Description) {
+        public virtual int Insert(string Name, double Price, byte[] Image, int QuantityStock, string Unit, string Description) {
             if ((Name == null)) {
                 throw new global::System.ArgumentNullException("Name");
             }
             else {
                 this.Adapter.InsertCommand.Parameters[0].Value = ((string)(Name));
             }
+            this.Adapter.InsertCommand.Parameters[1].Value = ((double)(Price));
             if ((Image == null)) {
-                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((byte[])(Image));
-            }
-            if ((QuantityStock.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((int)(QuantityStock.Value));
-            }
-            else {
                 this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
+            else {
+                this.Adapter.InsertCommand.Parameters[2].Value = ((byte[])(Image));
+            }
+            this.Adapter.InsertCommand.Parameters[3].Value = ((int)(QuantityStock));
             if ((Unit == null)) {
-                this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
+                throw new global::System.ArgumentNullException("Unit");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(Unit));
+                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(Unit));
             }
             if ((Description == null)) {
-                this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
+                this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(Description));
+                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(Description));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -3162,61 +3151,37 @@ SELECT ID, Name, Image, QuantityStock, Unit, Description FROM IngredientsInfo WH
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string Name, byte[] Image, global::System.Nullable<int> QuantityStock, string Unit, string Description, int Original_ID, string Original_Name, global::System.Nullable<int> Original_QuantityStock, string Original_Unit, int ID) {
+        public virtual int Update(string Name, double Price, byte[] Image, int QuantityStock, string Unit, string Description, int Original_ID, double Original_Price, int Original_QuantityStock, int ID) {
             if ((Name == null)) {
                 throw new global::System.ArgumentNullException("Name");
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(Name));
             }
+            this.Adapter.UpdateCommand.Parameters[1].Value = ((double)(Price));
             if ((Image == null)) {
-                this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((byte[])(Image));
-            }
-            if ((QuantityStock.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(QuantityStock.Value));
-            }
-            else {
                 this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
+            else {
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((byte[])(Image));
+            }
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(QuantityStock));
             if ((Unit == null)) {
-                this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
+                throw new global::System.ArgumentNullException("Unit");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Unit));
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(Unit));
             }
             if ((Description == null)) {
-                this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(Description));
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(Description));
             }
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Original_ID));
-            if ((Original_Name == null)) {
-                throw new global::System.ArgumentNullException("Original_Name");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Original_Name));
-            }
-            if ((Original_QuantityStock.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(Original_QuantityStock.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
-            }
-            if ((Original_Unit == null)) {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(Original_Unit));
-            }
-            this.Adapter.UpdateCommand.Parameters[11].Value = ((int)(ID));
+            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Original_ID));
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((double)(Original_Price));
+            this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(Original_QuantityStock));
+            this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(ID));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -3237,8 +3202,8 @@ SELECT ID, Name, Image, QuantityStock, Unit, Description FROM IngredientsInfo WH
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string Name, byte[] Image, global::System.Nullable<int> QuantityStock, string Unit, string Description, int Original_ID, string Original_Name, global::System.Nullable<int> Original_QuantityStock, string Original_Unit) {
-            return this.Update(Name, Image, QuantityStock, Unit, Description, Original_ID, Original_Name, Original_QuantityStock, Original_Unit, Original_ID);
+        public virtual int Update(string Name, double Price, byte[] Image, int QuantityStock, string Unit, string Description, int Original_ID, double Original_Price, int Original_QuantityStock) {
+            return this.Update(Name, Price, Image, QuantityStock, Unit, Description, Original_ID, Original_Price, Original_QuantityStock, Original_ID);
         }
     }
     

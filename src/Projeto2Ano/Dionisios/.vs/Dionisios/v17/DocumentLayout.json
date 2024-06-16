@@ -1,0 +1,40 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Andr\u00E9\\source\\repos\\AFA-silva\\PSI1622Q_AndreSilva_2222111\\src\\Projeto2Ano\\Dionisios\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{64E2A4AC-317C-47B1-91DC-EF012B6C0FB9}|Dionisios\\Dionisios.csproj|c:\\users\\andr\u00E9\\source\\repos\\afa-silva\\psi1622q_andresilva_2222111\\src\\projeto2ano\\dionisios\\dionisios\\managerpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{64E2A4AC-317C-47B1-91DC-EF012B6C0FB9}|Dionisios\\Dionisios.csproj|solutionrelative:dionisios\\managerpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ManagerPage.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Andr\u00E9\\source\\repos\\AFA-silva\\PSI1622Q_AndreSilva_2222111\\src\\Projeto2Ano\\Dionisios\\Dionisios\\ManagerPage.cs",
+              "RelativeDocumentMoniker": "Dionisios\\ManagerPage.cs",
+              "ToolTip": "C:\\Users\\Andr\u00E9\\source\\repos\\AFA-silva\\PSI1622Q_AndreSilva_2222111\\src\\Projeto2Ano\\Dionisios\\Dionisios\\ManagerPage.cs [Design]",
+              "RelativeToolTip": "Dionisios\\ManagerPage.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-16T22:59:34.286Z",
+              "EditorCaption": " [Design]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
