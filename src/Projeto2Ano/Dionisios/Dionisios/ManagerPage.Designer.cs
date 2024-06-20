@@ -60,12 +60,12 @@
             this.TabDrinks = new System.Windows.Forms.TabPage();
             this.btnIngredients = new System.Windows.Forms.Button();
             this.BtnNewDrink = new System.Windows.Forms.Button();
-            this.DrinkName = new System.Windows.Forms.TextBox();
+            this.DrinkNameBox = new System.Windows.Forms.TextBox();
             this.BtnUpdateDrink = new System.Windows.Forms.Button();
-            this.DrinkImage = new System.Windows.Forms.PictureBox();
-            this.DrinkPrice = new System.Windows.Forms.TextBox();
+            this.DrinkImageBox = new System.Windows.Forms.PictureBox();
+            this.DrinkPriceBox = new System.Windows.Forms.TextBox();
             this.BtnDeleteDrink = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.DrinkGridView = new System.Windows.Forms.DataGridView();
             this.ColID2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColName2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColImage2 = new System.Windows.Forms.DataGridViewImageColumn();
@@ -99,8 +99,8 @@
             this.Menu.SuspendLayout();
             this.TabStock.SuspendLayout();
             this.TabDrinks.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DrinkImage)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DrinkImageBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DrinkGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.drinksInfoBindingSource)).BeginInit();
             this.TabEmployees.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.UsersGridView)).BeginInit();
@@ -140,9 +140,9 @@
             // 
             // IngredientAddBtn
             // 
-            this.IngredientAddBtn.Location = new System.Drawing.Point(331, 329);
+            this.IngredientAddBtn.Location = new System.Drawing.Point(217, 377);
             this.IngredientAddBtn.Name = "IngredientAddBtn";
-            this.IngredientAddBtn.Size = new System.Drawing.Size(100, 23);
+            this.IngredientAddBtn.Size = new System.Drawing.Size(100, 24);
             this.IngredientAddBtn.TabIndex = 15;
             this.IngredientAddBtn.Text = "New Ingrediente";
             this.IngredientAddBtn.UseVisualStyleBackColor = true;
@@ -150,9 +150,9 @@
             // 
             // UpdateIngBtn
             // 
-            this.UpdateIngBtn.Location = new System.Drawing.Point(331, 355);
+            this.UpdateIngBtn.Location = new System.Drawing.Point(341, 377);
             this.UpdateIngBtn.Name = "UpdateIngBtn";
-            this.UpdateIngBtn.Size = new System.Drawing.Size(100, 23);
+            this.UpdateIngBtn.Size = new System.Drawing.Size(100, 24);
             this.UpdateIngBtn.TabIndex = 20;
             this.UpdateIngBtn.Text = "Update Ingredient";
             this.UpdateIngBtn.UseVisualStyleBackColor = true;
@@ -171,38 +171,38 @@
             // 
             // IngDescriptionBox
             // 
-            this.IngDescriptionBox.Location = new System.Drawing.Point(199, 244);
+            this.IngDescriptionBox.Location = new System.Drawing.Point(217, 244);
             this.IngDescriptionBox.Name = "IngDescriptionBox";
-            this.IngDescriptionBox.Size = new System.Drawing.Size(232, 79);
+            this.IngDescriptionBox.Size = new System.Drawing.Size(232, 98);
             this.IngDescriptionBox.TabIndex = 22;
             this.IngDescriptionBox.Text = "";
             // 
             // IngNameBox
             // 
-            this.IngNameBox.Location = new System.Drawing.Point(199, 329);
+            this.IngNameBox.Location = new System.Drawing.Point(465, 244);
             this.IngNameBox.Name = "IngNameBox";
             this.IngNameBox.Size = new System.Drawing.Size(100, 20);
             this.IngNameBox.TabIndex = 23;
             // 
             // IngUnitBox
             // 
-            this.IngUnitBox.Location = new System.Drawing.Point(199, 355);
+            this.IngUnitBox.Location = new System.Drawing.Point(465, 270);
             this.IngUnitBox.Name = "IngUnitBox";
             this.IngUnitBox.Size = new System.Drawing.Size(100, 20);
             this.IngUnitBox.TabIndex = 24;
             // 
             // IngQuantityBox
             // 
-            this.IngQuantityBox.Location = new System.Drawing.Point(199, 381);
+            this.IngQuantityBox.Location = new System.Drawing.Point(465, 322);
             this.IngQuantityBox.Name = "IngQuantityBox";
             this.IngQuantityBox.Size = new System.Drawing.Size(100, 20);
             this.IngQuantityBox.TabIndex = 25;
             // 
             // BtnDeleteIng
             // 
-            this.BtnDeleteIng.Location = new System.Drawing.Point(331, 381);
+            this.BtnDeleteIng.Location = new System.Drawing.Point(465, 377);
             this.BtnDeleteIng.Name = "BtnDeleteIng";
-            this.BtnDeleteIng.Size = new System.Drawing.Size(100, 23);
+            this.BtnDeleteIng.Size = new System.Drawing.Size(100, 24);
             this.BtnDeleteIng.TabIndex = 27;
             this.BtnDeleteIng.Text = "Delete Ingredient";
             this.BtnDeleteIng.UseVisualStyleBackColor = true;
@@ -224,7 +224,7 @@
             this.ColUnit,
             this.ColDescription});
             this.IngredientGridView.DataSource = this.ingredientsInfoBindingSource;
-            this.IngredientGridView.Location = new System.Drawing.Point(13, 62);
+            this.IngredientGridView.Location = new System.Drawing.Point(107, 61);
             this.IngredientGridView.Name = "IngredientGridView";
             this.IngredientGridView.ReadOnly = true;
             this.IngredientGridView.RowHeadersVisible = false;
@@ -397,7 +397,7 @@
             // 
             // IngPriceBox
             // 
-            this.IngPriceBox.Location = new System.Drawing.Point(488, 331);
+            this.IngPriceBox.Location = new System.Drawing.Point(465, 296);
             this.IngPriceBox.Name = "IngPriceBox";
             this.IngPriceBox.Size = new System.Drawing.Size(100, 20);
             this.IngPriceBox.TabIndex = 28;
@@ -407,12 +407,12 @@
             this.TabDrinks.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(63)))), ((int)(((byte)(77)))));
             this.TabDrinks.Controls.Add(this.btnIngredients);
             this.TabDrinks.Controls.Add(this.BtnNewDrink);
-            this.TabDrinks.Controls.Add(this.DrinkName);
+            this.TabDrinks.Controls.Add(this.DrinkNameBox);
             this.TabDrinks.Controls.Add(this.BtnUpdateDrink);
-            this.TabDrinks.Controls.Add(this.DrinkImage);
-            this.TabDrinks.Controls.Add(this.DrinkPrice);
+            this.TabDrinks.Controls.Add(this.DrinkImageBox);
+            this.TabDrinks.Controls.Add(this.DrinkPriceBox);
             this.TabDrinks.Controls.Add(this.BtnDeleteDrink);
-            this.TabDrinks.Controls.Add(this.dataGridView1);
+            this.TabDrinks.Controls.Add(this.DrinkGridView);
             this.TabDrinks.Location = new System.Drawing.Point(4, 4);
             this.TabDrinks.Name = "TabDrinks";
             this.TabDrinks.Padding = new System.Windows.Forms.Padding(3);
@@ -422,7 +422,7 @@
             // 
             // btnIngredients
             // 
-            this.btnIngredients.Location = new System.Drawing.Point(411, 300);
+            this.btnIngredients.Location = new System.Drawing.Point(199, 303);
             this.btnIngredients.Name = "btnIngredients";
             this.btnIngredients.Size = new System.Drawing.Size(100, 23);
             this.btnIngredients.TabIndex = 37;
@@ -432,70 +432,77 @@
             // 
             // BtnNewDrink
             // 
-            this.BtnNewDrink.Location = new System.Drawing.Point(557, 242);
+            this.BtnNewDrink.Location = new System.Drawing.Point(341, 245);
             this.BtnNewDrink.Name = "BtnNewDrink";
             this.BtnNewDrink.Size = new System.Drawing.Size(100, 23);
             this.BtnNewDrink.TabIndex = 29;
             this.BtnNewDrink.Text = "New Drink";
             this.BtnNewDrink.UseVisualStyleBackColor = true;
+            this.BtnNewDrink.Click += new System.EventHandler(this.AddDrinkBtn_Click);
             // 
-            // DrinkName
+            // DrinkNameBox
             // 
-            this.DrinkName.Location = new System.Drawing.Point(411, 245);
-            this.DrinkName.Name = "DrinkName";
-            this.DrinkName.Size = new System.Drawing.Size(100, 20);
-            this.DrinkName.TabIndex = 33;
+            this.DrinkNameBox.Location = new System.Drawing.Point(199, 245);
+            this.DrinkNameBox.Name = "DrinkNameBox";
+            this.DrinkNameBox.Size = new System.Drawing.Size(100, 20);
+            this.DrinkNameBox.TabIndex = 33;
             // 
             // BtnUpdateDrink
             // 
-            this.BtnUpdateDrink.Location = new System.Drawing.Point(557, 271);
+            this.BtnUpdateDrink.Location = new System.Drawing.Point(341, 274);
             this.BtnUpdateDrink.Name = "BtnUpdateDrink";
             this.BtnUpdateDrink.Size = new System.Drawing.Size(100, 23);
             this.BtnUpdateDrink.TabIndex = 30;
             this.BtnUpdateDrink.Text = "Update Drink";
             this.BtnUpdateDrink.UseVisualStyleBackColor = true;
+            this.BtnUpdateDrink.Click += new System.EventHandler(this.UpdateDrinkBtn_Click);
             // 
-            // DrinkImage
+            // DrinkImageBox
             // 
-            this.DrinkImage.Image = global::Dionisios.Properties.Resources.Captura_de_ecrã_2024_05_21_144614;
-            this.DrinkImage.Location = new System.Drawing.Point(477, 54);
-            this.DrinkImage.Name = "DrinkImage";
-            this.DrinkImage.Size = new System.Drawing.Size(180, 157);
-            this.DrinkImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.DrinkImage.TabIndex = 31;
-            this.DrinkImage.TabStop = false;
+            this.DrinkImageBox.Image = global::Dionisios.Properties.Resources.Captura_de_ecrã_2024_05_21_144614;
+            this.DrinkImageBox.Location = new System.Drawing.Point(13, 245);
+            this.DrinkImageBox.Name = "DrinkImageBox";
+            this.DrinkImageBox.Size = new System.Drawing.Size(180, 157);
+            this.DrinkImageBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.DrinkImageBox.TabIndex = 31;
+            this.DrinkImageBox.TabStop = false;
+            this.DrinkImageBox.Click += new System.EventHandler(this.DrinkImageBox_Click);
             // 
-            // DrinkPrice
+            // DrinkPriceBox
             // 
-            this.DrinkPrice.Location = new System.Drawing.Point(411, 271);
-            this.DrinkPrice.Name = "DrinkPrice";
-            this.DrinkPrice.Size = new System.Drawing.Size(100, 20);
-            this.DrinkPrice.TabIndex = 34;
+            this.DrinkPriceBox.Location = new System.Drawing.Point(199, 271);
+            this.DrinkPriceBox.Name = "DrinkPriceBox";
+            this.DrinkPriceBox.Size = new System.Drawing.Size(100, 20);
+            this.DrinkPriceBox.TabIndex = 34;
             // 
             // BtnDeleteDrink
             // 
-            this.BtnDeleteDrink.Location = new System.Drawing.Point(557, 300);
+            this.BtnDeleteDrink.Location = new System.Drawing.Point(341, 303);
             this.BtnDeleteDrink.Name = "BtnDeleteDrink";
             this.BtnDeleteDrink.Size = new System.Drawing.Size(100, 23);
             this.BtnDeleteDrink.TabIndex = 36;
             this.BtnDeleteDrink.Text = "Delete Drink";
             this.BtnDeleteDrink.UseVisualStyleBackColor = true;
+            this.BtnDeleteDrink.Click += new System.EventHandler(this.DeleteDrinkBtn_Click);
             // 
-            // dataGridView1
+            // DrinkGridView
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.DrinkGridView.AllowUserToAddRows = false;
+            this.DrinkGridView.AutoGenerateColumns = false;
+            this.DrinkGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DrinkGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColID2,
             this.ColName2,
             this.ColImage2,
             this.ColPrice2});
-            this.dataGridView1.DataSource = this.drinksInfoBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(13, 54);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(343, 175);
-            this.dataGridView1.TabIndex = 0;
+            this.DrinkGridView.DataSource = this.drinksInfoBindingSource;
+            this.DrinkGridView.Location = new System.Drawing.Point(13, 54);
+            this.DrinkGridView.Name = "DrinkGridView";
+            this.DrinkGridView.ReadOnly = true;
+            this.DrinkGridView.RowHeadersVisible = false;
+            this.DrinkGridView.Size = new System.Drawing.Size(304, 175);
+            this.DrinkGridView.TabIndex = 0;
+            this.DrinkGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DrinkGridView_CellClick);
             // 
             // ColID2
             // 
@@ -771,8 +778,8 @@
             this.TabStock.PerformLayout();
             this.TabDrinks.ResumeLayout(false);
             this.TabDrinks.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DrinkImage)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DrinkImageBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DrinkGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.drinksInfoBindingSource)).EndInit();
             this.TabEmployees.ResumeLayout(false);
             this.TabEmployees.PerformLayout();
@@ -814,7 +821,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn QuantityStockCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn UnitCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn DescriptionCol;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView DrinkGridView;
         private DionisiosDBDataSet dionisiosDBDataSet;
         private System.Windows.Forms.BindingSource ingredientsInfoBindingSource;
         private DionisiosDBDataSetTableAdapters.IngredientsInfoTableAdapter ingredientsInfoTableAdapter;
@@ -832,10 +839,9 @@
         private System.Windows.Forms.DataGridViewImageColumn ColImage2;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColPrice2;
         private System.Windows.Forms.Button BtnNewDrink;
-        private System.Windows.Forms.TextBox DrinkName;
+        private System.Windows.Forms.TextBox DrinkNameBox;
         private System.Windows.Forms.Button BtnUpdateDrink;
-        private System.Windows.Forms.PictureBox DrinkImage;
-        private System.Windows.Forms.TextBox DrinkPrice;
+        private System.Windows.Forms.PictureBox DrinkImageBox;
         private System.Windows.Forms.Button BtnDeleteDrink;
         private System.Windows.Forms.Button btnIngredients;
         private System.Windows.Forms.Button btnAdd;
@@ -854,5 +860,6 @@
         private System.Windows.Forms.ComboBox RoleCombo;
         private System.Windows.Forms.PictureBox BackgroundSquare1;
         private System.Windows.Forms.PictureBox BackgroundSquare2;
+        private System.Windows.Forms.TextBox DrinkPriceBox;
     }
 }

@@ -15,6 +15,7 @@ namespace Dionisios
         string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=DionisiosDB;Integrated Security=True";
         private Image selectedImage;
         private int ingId;
+        private int drinkId;
         private int retorno;
         public int Managerclose { get; set; }
         private string currentImageHash;
@@ -31,11 +32,13 @@ namespace Dionisios
         {
             this.drinksInfoTableAdapter.Fill(this.dionisiosDBDataSet.DrinksInfo);
             this.ingredientsInfoTableAdapter.Fill(this.dionisiosDBDataSet.IngredientsInfo);
+            if (selectedImage != null)
+            {
+                DrinkImageBox.Image = selectedImage;
+            }
         }
 
         // Stock Menu Code -----------------------------------------------------------------------------------------------------------------------
-
-
 
         private void IngredientAddBtn_Click(object sender, EventArgs e)
         {
@@ -73,12 +76,8 @@ namespace Dionisios
                     MessageBox.Show("Please enter a valid floating point number for the quantity/price.");
                     return;
                 }
-                byte[] imageData;
-                using (MemoryStream stream = new MemoryStream())
-                {
-                    selectedImage.Save(stream, ImageFormat.Jpeg);
-                    imageData = stream.ToArray();
-                }
+
+                byte[] imageData = ImageToByteArray(selectedImage, ImageFormat.Png); // Save as PNG
                 command.Parameters.AddWithValue("@Image", imageData);
 
                 connection.Open();
@@ -91,7 +90,7 @@ namespace Dionisios
             IngredientGridView.DataSource = null;
             this.ingredientsInfoTableAdapter.Fill(this.dionisiosDBDataSet.IngredientsInfo);
             IngredientGridView.DataSource = this.dionisiosDBDataSet.IngredientsInfo;
-        }        
+        }
 
         private void NewIngImage_Click(object sender, EventArgs e)
         {
@@ -220,28 +219,18 @@ namespace Dionisios
                 command.Parameters.AddWithValue("@Quantity", int.Parse(IngQuantityBox.Text));
                 command.Parameters.AddWithValue("@Description", IngDescriptionBox.Text);
                 command.Parameters.AddWithValue("@Price", float.Parse(IngPriceBox.Text)); // Ensure that price is updated
+
+                // Only add the image parameter if the image was changed
                 if (selectedImage != null)
                 {
                     string newImageHash = GetImageHash(selectedImage);
                     if (newImageHash != currentImageHash)
                     {
-                        byte[] imageData;
-                        try
-                        {
-                            using (MemoryStream stream = new MemoryStream())
-                            {
-                                selectedImage.Save(stream, ImageFormat.Png);
-                                imageData = stream.ToArray();
-                            }
-                            command.Parameters.AddWithValue("@Image", imageData);
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show("Erro ao salvar a imagem: " + ex.Message);
-                            return;
-                        }
+                        byte[] imageData = ImageToByteArray(selectedImage, ImageFormat.Png); // Save as PNG
+                        command.Parameters.AddWithValue("@Image", imageData);
                     }
                 }
+
                 command.Parameters.AddWithValue("@Id", ingId);
                 connection.Open();
                 command.ExecuteNonQuery();
@@ -278,6 +267,15 @@ namespace Dionisios
             }
         }
 
+        private byte[] ImageToByteArray(Image image, ImageFormat format)
+        {
+            using (MemoryStream ms = new MemoryStream())
+            {
+                image.Save(ms, format);
+                return ms.ToArray();
+            }
+        }
+
         // Drinks Menu Code -------------------------------------------------------------------------------------------------------------------------
 
         private void btnDrinks_Click(object sender, EventArgs e)
@@ -287,7 +285,179 @@ namespace Dionisios
 
         private void btnIngredients_Click(object sender, EventArgs e)
         {
-
+            Ingredients ingredients = new Ingredients();
+            ingredients.ShowDialog();
         }
+        private void AddDrinkBtn_Click(object sender, EventArgs e)
+        {
+            if (DrinkNameBox.Text != "" && DrinkPriceBox.Text != "" && selectedImage != null)
+            {
+                AddDrink();
+                RefreshDrinkGridView();
+                ClearDrinkForm();
+                MessageBox.Show("Drink added successfully!");
+            }
+            else
+            {
+                MessageBox.Show("Please fill in all required fields.");
+            }
+        }
+
+        private void AddDrink()
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string query = "INSERT INTO DrinksInfo (Name, Price, Image) VALUES (@Name, @Price, @Image)";
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@Name", DrinkNameBox.Text);
+                float price;
+                if (float.TryParse(DrinkPriceBox.Text, out price))
+                {
+                    command.Parameters.AddWithValue("@Price", price);
+                }
+                else
+                {
+                    MessageBox.Show("Please enter a valid floating point number for the price.");
+                    return;
+                }
+
+                byte[] imageData = ImageToByteArray(selectedImage, ImageFormat.Png); // Save as PNG
+                command.Parameters.AddWithValue("@Image", imageData);
+
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
+        }
+
+        private void RefreshDrinkGridView()
+        {
+            DrinkGridView.DataSource = null;
+            this.drinksInfoTableAdapter.Fill(this.dionisiosDBDataSet.DrinksInfo);
+            DrinkGridView.DataSource = this.dionisiosDBDataSet.DrinksInfo;
+        }
+        private void UpdateDrinkBtn_Click(object sender, EventArgs e)
+        {
+            if (DrinkNameBox.Text != "" && DrinkPriceBox.Text != "")
+            {
+                UpdateDrink();
+                RefreshDrinkGridView();
+                ClearDrinkForm();
+                MessageBox.Show("Drink updated successfully!");
+            }
+            else
+            {
+                MessageBox.Show("Please fill in all required fields.");
+            }
+        }
+
+        private void UpdateDrink()
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                // Base query without the image
+                string query = "UPDATE DrinksInfo SET Name = @Name, Price = @Price";
+                // Check if the image was changed
+                if (selectedImage != null)
+                {
+                    query += ", Image = @Image";
+                }
+                query += " WHERE Id = @Id";
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@Name", DrinkNameBox.Text);
+                command.Parameters.AddWithValue("@Price", float.Parse(DrinkPriceBox.Text)); // Ensure that price is updated
+
+                // Only add the image parameter if the image was changed
+                if (selectedImage != null)
+                {
+                    byte[] imageData = ImageToByteArray(selectedImage, ImageFormat.Png); // Save as PNG
+                    command.Parameters.AddWithValue("@Image", imageData);
+                }
+
+                command.Parameters.AddWithValue("@Id", drinkId);
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
+        }
+        private void DeleteDrinkBtn_Click(object sender, EventArgs e)
+        {
+            var confirmResult = MessageBox.Show("Are you sure to delete this item?", "Delete Drink", MessageBoxButtons.YesNo);
+            if (confirmResult == DialogResult.Yes)
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    string query = "DELETE FROM DrinksInfo WHERE Id = @Id";
+                    SqlCommand command = new SqlCommand(query, connection);
+                    command.Parameters.AddWithValue("@Id", drinkId);
+
+                    try
+                    {
+                        connection.Open();
+                        command.ExecuteNonQuery();
+                        MessageBox.Show("Drink deleted successfully!");
+                    }
+                    catch (SqlException ex)
+                    {
+                        MessageBox.Show("Error deleting drink: " + ex.Message);
+                    }
+                    finally
+                    {
+                        connection. Close();
+                    }
+                }
+                RefreshDrinkGridView();
+                ClearDrinkForm();
+            }
+        }
+        private void ClearDrinkForm()
+        {
+            DrinkNameBox.Text = "";
+            DrinkPriceBox.Text = "";
+            DrinkImageBox.Image = Properties.Resources.Captura_de_ecrã_2024_05_21_144614;
+            selectedImage = null;
+        }
+        private void DrinkImageBox_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Arquivos de Imagem|*.jpg;*.jpeg;*.png;*.bmp";
+            openFileDialog.Title = "Selecione uma imagem";
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    selectedImage = new Bitmap(openFileDialog.FileName);
+                    DrinkImageBox.Image = selectedImage;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ocorreu um erro ao carregar a imagem: " + ex.Message);
+                }
+            }
+        }
+        private void DrinkGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = DrinkGridView.Rows[e.RowIndex];
+                drinkId = Convert.ToInt32(row.Cells["ColID2"].Value);
+                DrinkNameBox.Text = row.Cells["ColName2"].Value.ToString();
+                DrinkPriceBox.Text = row.Cells["ColPrice2"].Value.ToString();
+
+                if (row.Cells["ColImage2"].Value != DBNull.Value)
+                {
+                    byte[] imageData = (byte[])row.Cells["ColImage2"].Value;
+                    using (MemoryStream stream = new MemoryStream(imageData))
+                    {
+                        selectedImage = Image.FromStream(stream);
+                        DrinkImageBox.Image = selectedImage;
+                    }
+                }
+                else
+                {
+                    DrinkImageBox.Image = Properties.Resources.Captura_de_ecrã_2024_05_21_144614; // Imagem padrão, se necessário
+                    selectedImage = null;
+                }
+            }
+        }
+
     }
 }

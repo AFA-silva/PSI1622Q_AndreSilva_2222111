@@ -37,3 +37,21 @@ C:\Users\André\Source\Repos\AFA-silva\PSI1622Q_AndreSilva_2222111\src\Projeto2A
 C:\Users\André\Source\Repos\AFA-silva\PSI1622Q_AndreSilva_2222111\src\Projeto2Ano\Dionisios\Dionisios\obj\Debug\Dionisios.csproj.CoreCompileInputs.cache
 C:\Users\André\Source\Repos\AFA-silva\PSI1622Q_AndreSilva_2222111\src\Projeto2Ano\Dionisios\Dionisios\obj\Debug\Dionisios.exe
 C:\Users\André\Source\Repos\AFA-silva\PSI1622Q_AndreSilva_2222111\src\Projeto2Ano\Dionisios\Dionisios\obj\Debug\Dionisios.pdb
+C:\Users\2222111\Desktop\PSI1622Q_AndreSilva_2222111-main\PSI1622Q_AndreSilva_2222111-main\src\Projeto2Ano\Dionisios\Dionisios\obj\Debug\Dionisios.AdminPage.resources
+C:\Users\2222111\Desktop\PSI1622Q_AndreSilva_2222111-main\PSI1622Q_AndreSilva_2222111-main\src\Projeto2Ano\Dionisios\Dionisios\obj\Debug\Dionisios.ManagerPage.resources
+C:\Users\2222111\Desktop\PSI1622Q_AndreSilva_2222111-main\PSI1622Q_AndreSilva_2222111-main\src\Projeto2Ano\Dionisios\Dionisios\obj\Debug\Dionisios.Ingredients.resources
+C:\Users\2222111\Desktop\PSI1622Q_AndreSilva_2222111-main (2)\PSI1622Q_AndreSilva_2222111-main\PSI1622Q_AndreSilva_2222111-main\src\Projeto2Ano\Dionisios\Dionisios\obj\Debug\Dionisios.csproj.AssemblyReference.cache
+C:\Users\2222111\Desktop\PSI1622Q_AndreSilva_2222111-main (2)\PSI1622Q_AndreSilva_2222111-main\PSI1622Q_AndreSilva_2222111-main\src\Projeto2Ano\Dionisios\Dionisios\obj\Debug\Dionisios.csproj.SuggestedBindingRedirects.cache
+C:\Users\2222111\Desktop\PSI1622Q_AndreSilva_2222111-main (2)\PSI1622Q_AndreSilva_2222111-main\PSI1622Q_AndreSilva_2222111-main\src\Projeto2Ano\Dionisios\Dionisios\obj\Debug\Dionisios.exe
+C:\Users\2222111\Desktop\PSI1622Q_AndreSilva_2222111-main (2)\PSI1622Q_AndreSilva_2222111-main\PSI1622Q_AndreSilva_2222111-main\src\Projeto2Ano\Dionisios\Dionisios\obj\Debug\Dionisios.pdb
+C:\Users\2222111\Desktop\PSI1622Q_AndreSilva_2222111-main (2)\PSI1622Q_AndreSilva_2222111-main\PSI1622Q_AndreSilva_2222111-main\src\Projeto2Ano\Dionisios\Dionisios\obj\Debug\Dionisios.AdminPage.resources
+C:\Users\2222111\Desktop\PSI1622Q_AndreSilva_2222111-main (2)\PSI1622Q_AndreSilva_2222111-main\PSI1622Q_AndreSilva_2222111-main\src\Projeto2Ano\Dionisios\Dionisios\obj\Debug\Dionisios.Form1.resources
+C:\Users\2222111\Desktop\PSI1622Q_AndreSilva_2222111-main (2)\PSI1622Q_AndreSilva_2222111-main\PSI1622Q_AndreSilva_2222111-main\src\Projeto2Ano\Dionisios\Dionisios\obj\Debug\Dionisios.Ingredients.resources
+C:\Users\2222111\Desktop\PSI1622Q_AndreSilva_2222111-main (2)\PSI1622Q_AndreSilva_2222111-main\PSI1622Q_AndreSilva_2222111-main\src\Projeto2Ano\Dionisios\Dionisios\obj\Debug\Dionisios.ManagerPage.resources
+C:\Users\2222111\Desktop\PSI1622Q_AndreSilva_2222111-main (2)\PSI1622Q_AndreSilva_2222111-main\PSI1622Q_AndreSilva_2222111-main\src\Projeto2Ano\Dionisios\Dionisios\obj\Debug\Dionisios.Register.resources
+C:\Users\2222111\Desktop\PSI1622Q_AndreSilva_2222111-main (2)\PSI1622Q_AndreSilva_2222111-main\PSI1622Q_AndreSilva_2222111-main\src\Projeto2Ano\Dionisios\Dionisios\obj\Debug\Dionisios.csproj.GenerateResource.cache
+C:\Users\2222111\Desktop\PSI1622Q_AndreSilva_2222111-main (2)\PSI1622Q_AndreSilva_2222111-main\PSI1622Q_AndreSilva_2222111-main\src\Projeto2Ano\Dionisios\Dionisios\bin\Debug\Dionisios.exe.config
+C:\Users\2222111\Desktop\PSI1622Q_AndreSilva_2222111-main (2)\PSI1622Q_AndreSilva_2222111-main\PSI1622Q_AndreSilva_2222111-main\src\Projeto2Ano\Dionisios\Dionisios\bin\Debug\Dionisios.exe
+C:\Users\2222111\Desktop\PSI1622Q_AndreSilva_2222111-main (2)\PSI1622Q_AndreSilva_2222111-main\PSI1622Q_AndreSilva_2222111-main\src\Projeto2Ano\Dionisios\Dionisios\bin\Debug\Dionisios.pdb
+C:\Users\2222111\Desktop\PSI1622Q_AndreSilva_2222111-main (2)\PSI1622Q_AndreSilva_2222111-main\PSI1622Q_AndreSilva_2222111-main\src\Projeto2Ano\Dionisios\Dionisios\obj\Debug\Dionisios.Properties.Resources.resources
+C:\Users\2222111\Desktop\PSI1622Q_AndreSilva_2222111-main (2)\PSI1622Q_AndreSilva_2222111-main\PSI1622Q_AndreSilva_2222111-main\src\Projeto2Ano\Dionisios\Dionisios\obj\Debug\Dionisios.csproj.CoreCompileInputs.cache
