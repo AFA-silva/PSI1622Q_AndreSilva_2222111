@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
 using System.Security.Cryptography;
@@ -11,23 +12,27 @@ namespace Dionisios
 {
     public partial class Ingredients : Form
     {
-        private List<(string Name, string Quantity)> ingredientList; // Lista de tuplas para armazenar nome e quantidade
+        private List<(int Id, string Name, string Quantity)> ingredientList; // Lista de tuplas para armazenar ID, nome e quantidade
         private int ingId;
         private Image selectedImage;
         private string currentImageHash;
         private string selectedIngredientName;
+        private int drinkId;
 
-        public Ingredients()
+        public Ingredients(int drinkId)
         {
             InitializeComponent();
             this.MinimumSize = new System.Drawing.Size(436, 398);
             this.MaximumSize = new System.Drawing.Size(436, 398);
-            ingredientList = new List<(string, string)>();
+            ingredientList = new List<(int, string, string)>();
+            this.drinkId = drinkId;
         }
 
         private void Ingredients_Load(object sender, EventArgs e)
         {
             this.ingredientsInfoTableAdapter.Fill(this.dionisiosDBDataSet.IngredientsInfo);
+            LoadExistingIngredients();
+            UpdateIngredientListRichTextBox();
         }
 
         private void IngredientGridView_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -61,7 +66,7 @@ namespace Dionisios
             if (!string.IsNullOrEmpty(selectedIngredientName))
             {
                 string quantity = QuantidadeUsada.Text.Trim(); // Obtém a quantidade da TextBox
-                AddIngredientToList(selectedIngredientName, quantity);
+                AddIngredientToList(ingId, selectedIngredientName, quantity);
             }
         }
 
@@ -69,28 +74,77 @@ namespace Dionisios
         {
             if (!string.IsNullOrEmpty(selectedIngredientName))
             {
-                RemoveIngredientFromList(selectedIngredientName);
+                RemoveIngredientFromList(ingId);
             }
         }
 
         private void btnFinish_Click(object sender, EventArgs e)
         {
+            if (ingredientList.Count == 0)
+            {
+                MessageBox.Show("A bebida deve ter pelo menos um ingrediente.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            SaveDrinkIngredients();
             MessageBox.Show("Ingredientes concluídos!");
             this.Close();
         }
 
-        private void AddIngredientToList(string ingredientName, string quantity)
+        private void LoadExistingIngredients()
         {
-            if (!ingredientList.Exists(x => x.Name == ingredientName))
+            using (SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=DionisiosDB;Integrated Security=True"))
             {
-                ingredientList.Add((ingredientName, quantity));
+                connection.Open();
+                string query = "SELECT I.ID_Ingredients, I.Name, DI.Quantity FROM DrinksIngredients DI JOIN Ingredients I ON DI.ID_Ingredients = I.ID_Ingredients WHERE DI.ID_Drinks = @DrinkId";
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@DrinkId", drinkId);
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            int id = reader.GetInt32(0);
+                            string name = reader.GetString(1);
+                            string quantity = reader.GetString(2);
+                            ingredientList.Add((id, name, quantity));
+                        }
+                    }
+                }
+            }
+        }
+
+        private void SaveDrinkIngredients()
+        {
+            using (SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=DionisiosDB;Integrated Security=True"))
+            {
+                connection.Open();
+                foreach (var ingredient in ingredientList)
+                {
+                    string query = "INSERT INTO DrinksIngredients (ID_Drinks, ID_Ingredients, Quantity) VALUES (@DrinkId, @IngredientId, @Quantity)";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@DrinkId", drinkId);
+                        command.Parameters.AddWithValue("@IngredientId", ingredient.Id);
+                        command.Parameters.AddWithValue("@Quantity", ingredient.Quantity);
+                        command.ExecuteNonQuery();
+                    }
+                }
+            }
+        }
+
+        private void AddIngredientToList(int id, string name, string quantity)
+        {
+            if (!ingredientList.Exists(x => x.Name == name))
+            {
+                ingredientList.Add((id, name, quantity));
                 UpdateIngredientListRichTextBox();
             }
         }
 
-        private void RemoveIngredientFromList(string ingredientName)
+        private void RemoveIngredientFromList(int id)
         {
-            var ingredient = ingredientList.Find(x => x.Name == ingredientName);
+            var ingredient = ingredientList.Find(x => x.Id == id);
             if (ingredient.Name != null)
             {
                 ingredientList.Remove(ingredient);

@@ -282,11 +282,17 @@ namespace Dionisios
         {
             Menu.SelectedIndex = 2;
         }
-
         private void btnIngredients_Click(object sender, EventArgs e)
         {
-            Ingredients ingredients = new Ingredients();
-            ingredients.ShowDialog();
+            if (drinkId > 0)
+            {
+                Ingredients ingredients = new Ingredients(drinkId);
+                ingredients.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Please select a drink first.");
+            }
         }
         private void AddDrinkBtn_Click(object sender, EventArgs e)
         {
