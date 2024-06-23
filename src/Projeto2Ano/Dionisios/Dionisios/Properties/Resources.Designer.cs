@@ -313,39 +313,6 @@ namespace Dionisios.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap kisspng_computer_icons_email_internet_bounce_address_icon_emailsymbol_5b4e0d876276b5_1879250015318419274033 {
-            get {
-                object obj = ResourceManager.GetObject("kisspng-computer-icons-email-internet-bounce-address-icon-emailsymbol-5b4e0d87627" +
-                        "6b5.1879250015318419274033", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap kisspng_computer_icons_email_internet_bounce_address_icon_emailsymbol_5b4e0d876276b51 {
-            get {
-                object obj = ResourceManager.GetObject("kisspng-computer-icons-email-internet-bounce-address-icon-emailsymbol-5b4e0d87627" +
-                        "6b51", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap kisspng_computer_icons_stock_photography_email_clip_art_simblo_5b4faed2d78991_2976490215319487548829_removebg_preview {
-            get {
-                object obj = ResourceManager.GetObject("kisspng-computer-icons-stock-photography-email-clip-art-simblo-5b4faed2d78991.297" +
-                        "6490215319487548829-removebg-preview", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap olhoA {
             get {
                 object obj = ResourceManager.GetObject("olhoA", resourceCulture);
