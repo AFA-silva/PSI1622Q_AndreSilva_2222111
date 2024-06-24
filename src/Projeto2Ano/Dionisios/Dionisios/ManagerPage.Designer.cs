@@ -489,6 +489,7 @@
             // 
             this.DrinkGridView.AllowUserToAddRows = false;
             this.DrinkGridView.AutoGenerateColumns = false;
+            this.DrinkGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(34)))), ((int)(((byte)(41)))));
             this.DrinkGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DrinkGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColID2,
@@ -516,12 +517,14 @@
             this.ColName2.DataPropertyName = "Name";
             this.ColName2.HeaderText = "Name";
             this.ColName2.Name = "ColName2";
+            this.ColName2.ReadOnly = true;
             // 
             // ColImage2
             // 
             this.ColImage2.DataPropertyName = "Image";
             this.ColImage2.HeaderText = "Image";
             this.ColImage2.Name = "ColImage2";
+            this.ColImage2.ReadOnly = true;
             this.ColImage2.Visible = false;
             // 
             // ColPrice2
@@ -529,6 +532,7 @@
             this.ColPrice2.DataPropertyName = "Price";
             this.ColPrice2.HeaderText = "Price";
             this.ColPrice2.Name = "ColPrice2";
+            this.ColPrice2.ReadOnly = true;
             // 
             // drinksInfoBindingSource
             // 

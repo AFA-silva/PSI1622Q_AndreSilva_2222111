@@ -30,6 +30,13 @@
         {
             this.components = new System.ComponentModel.Container();
             this.IngredientGridView = new System.Windows.Forms.DataGridView();
+            this.ColID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColImage = new System.Windows.Forms.DataGridViewImageColumn();
+            this.quantityStockDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ingredientsInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dionisiosDBDataSet = new Dionisios.DionisiosDBDataSet();
             this.ingredientsInfoTableAdapter = new Dionisios.DionisiosDBDataSetTableAdapters.IngredientsInfoTableAdapter();
@@ -38,13 +45,6 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnFinish = new System.Windows.Forms.Button();
             this.btnRemove = new System.Windows.Forms.Button();
-            this.ColID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColImage = new System.Windows.Forms.DataGridViewImageColumn();
-            this.quantityStockDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.QuantidadeUsada = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.IngredientGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ingredientsInfoBindingSource)).BeginInit();
@@ -56,6 +56,7 @@
             // 
             this.IngredientGridView.AllowUserToAddRows = false;
             this.IngredientGridView.AutoGenerateColumns = false;
+            this.IngredientGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(34)))), ((int)(((byte)(41)))));
             this.IngredientGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.IngredientGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColID,
@@ -74,6 +75,60 @@
             this.IngredientGridView.Size = new System.Drawing.Size(204, 345);
             this.IngredientGridView.TabIndex = 0;
             this.IngredientGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.IngredientGridView_CellClick);
+            // 
+            // ColID
+            // 
+            this.ColID.DataPropertyName = "ID";
+            this.ColID.HeaderText = "ID";
+            this.ColID.Name = "ColID";
+            this.ColID.ReadOnly = true;
+            this.ColID.Visible = false;
+            // 
+            // ColName
+            // 
+            this.ColName.DataPropertyName = "Name";
+            this.ColName.HeaderText = "Name";
+            this.ColName.Name = "ColName";
+            this.ColName.ReadOnly = true;
+            // 
+            // priceDataGridViewTextBoxColumn
+            // 
+            this.priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
+            this.priceDataGridViewTextBoxColumn.HeaderText = "Price";
+            this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
+            this.priceDataGridViewTextBoxColumn.ReadOnly = true;
+            this.priceDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // ColImage
+            // 
+            this.ColImage.DataPropertyName = "Image";
+            this.ColImage.HeaderText = "Image";
+            this.ColImage.Name = "ColImage";
+            this.ColImage.ReadOnly = true;
+            this.ColImage.Visible = false;
+            // 
+            // quantityStockDataGridViewTextBoxColumn
+            // 
+            this.quantityStockDataGridViewTextBoxColumn.DataPropertyName = "QuantityStock";
+            this.quantityStockDataGridViewTextBoxColumn.HeaderText = "QuantityStock";
+            this.quantityStockDataGridViewTextBoxColumn.Name = "quantityStockDataGridViewTextBoxColumn";
+            this.quantityStockDataGridViewTextBoxColumn.ReadOnly = true;
+            this.quantityStockDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // ColUnit
+            // 
+            this.ColUnit.DataPropertyName = "Unit";
+            this.ColUnit.HeaderText = "Unit";
+            this.ColUnit.Name = "ColUnit";
+            this.ColUnit.ReadOnly = true;
+            // 
+            // descriptionDataGridViewTextBoxColumn
+            // 
+            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
+            this.descriptionDataGridViewTextBoxColumn.HeaderText = "Description";
+            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
+            this.descriptionDataGridViewTextBoxColumn.ReadOnly = true;
+            this.descriptionDataGridViewTextBoxColumn.Visible = false;
             // 
             // ingredientsInfoBindingSource
             // 
@@ -136,66 +191,13 @@
             this.btnRemove.UseVisualStyleBackColor = true;
             this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
-            // ColID
-            // 
-            this.ColID.DataPropertyName = "ID";
-            this.ColID.HeaderText = "ID";
-            this.ColID.Name = "ColID";
-            this.ColID.ReadOnly = true;
-            this.ColID.Visible = false;
-            // 
-            // ColName
-            // 
-            this.ColName.DataPropertyName = "Name";
-            this.ColName.HeaderText = "Name";
-            this.ColName.Name = "ColName";
-            this.ColName.ReadOnly = true;
-            // 
-            // priceDataGridViewTextBoxColumn
-            // 
-            this.priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
-            this.priceDataGridViewTextBoxColumn.HeaderText = "Price";
-            this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
-            this.priceDataGridViewTextBoxColumn.ReadOnly = true;
-            this.priceDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // ColImage
-            // 
-            this.ColImage.DataPropertyName = "Image";
-            this.ColImage.HeaderText = "Image";
-            this.ColImage.Name = "ColImage";
-            this.ColImage.ReadOnly = true;
-            this.ColImage.Visible = false;
-            // 
-            // quantityStockDataGridViewTextBoxColumn
-            // 
-            this.quantityStockDataGridViewTextBoxColumn.DataPropertyName = "QuantityStock";
-            this.quantityStockDataGridViewTextBoxColumn.HeaderText = "QuantityStock";
-            this.quantityStockDataGridViewTextBoxColumn.Name = "quantityStockDataGridViewTextBoxColumn";
-            this.quantityStockDataGridViewTextBoxColumn.ReadOnly = true;
-            this.quantityStockDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // ColUnit
-            // 
-            this.ColUnit.DataPropertyName = "Unit";
-            this.ColUnit.HeaderText = "Unit";
-            this.ColUnit.Name = "ColUnit";
-            this.ColUnit.ReadOnly = true;
-            // 
-            // descriptionDataGridViewTextBoxColumn
-            // 
-            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
-            this.descriptionDataGridViewTextBoxColumn.HeaderText = "Description";
-            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
-            this.descriptionDataGridViewTextBoxColumn.ReadOnly = true;
-            this.descriptionDataGridViewTextBoxColumn.Visible = false;
-            // 
             // QuantidadeUsada
             // 
             this.QuantidadeUsada.Location = new System.Drawing.Point(347, 279);
             this.QuantidadeUsada.Name = "QuantidadeUsada";
             this.QuantidadeUsada.Size = new System.Drawing.Size(57, 20);
             this.QuantidadeUsada.TabIndex = 9;
+            this.QuantidadeUsada.Text = "Qtd";
             // 
             // Ingredients
             // 
