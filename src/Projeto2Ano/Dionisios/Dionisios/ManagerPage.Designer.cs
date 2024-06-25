@@ -58,7 +58,18 @@
             this.TabStock = new System.Windows.Forms.TabPage();
             this.IngPriceBox = new System.Windows.Forms.TextBox();
             this.TabDrinks = new System.Windows.Forms.TabPage();
-            this.btnIngredients = new System.Windows.Forms.Button();
+            this.DrinkMaker = new System.Windows.Forms.Button();
+            this.QtdBox = new System.Windows.Forms.TextBox();
+            this.DIrichbox = new System.Windows.Forms.RichTextBox();
+            this.DIpicture = new System.Windows.Forms.PictureBox();
+            this.AddBtn = new System.Windows.Forms.Button();
+            this.RemoverBtn = new System.Windows.Forms.Button();
+            this.FinishBtn = new System.Windows.Forms.Button();
+            this.DrinksIngredientsGrid = new System.Windows.Forms.DataGridView();
+            this.DIname = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IDing2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DIimage = new System.Windows.Forms.DataGridViewImageColumn();
+            this.DIunit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BtnNewDrink = new System.Windows.Forms.Button();
             this.DrinkNameBox = new System.Windows.Forms.TextBox();
             this.BtnUpdateDrink = new System.Windows.Forms.Button();
@@ -87,11 +98,19 @@
             this.LabelRole = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.UsersGridView = new System.Windows.Forms.DataGridView();
+            this.userAccountBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.RoleCombo = new System.Windows.Forms.ComboBox();
             this.BackgroundSquare1 = new System.Windows.Forms.PictureBox();
             this.BackgroundSquare2 = new System.Windows.Forms.PictureBox();
             this.ingredientsInfoTableAdapter = new Dionisios.DionisiosDBDataSetTableAdapters.IngredientsInfoTableAdapter();
             this.drinksInfoTableAdapter = new Dionisios.DionisiosDBDataSetTableAdapters.DrinksInfoTableAdapter();
+            this.userAccountTableAdapter = new Dionisios.DionisiosDBDataSetTableAdapters.UserAccountTableAdapter();
+            this.IDColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UsernameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PasswordColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EmailColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RoleColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BIColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.IngImageBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.IngredientGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ingredientsInfoBindingSource)).BeginInit();
@@ -99,11 +118,14 @@
             this.Menu.SuspendLayout();
             this.TabStock.SuspendLayout();
             this.TabDrinks.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DIpicture)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DrinksIngredientsGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DrinkImageBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DrinkGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.drinksInfoBindingSource)).BeginInit();
             this.TabEmployees.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.UsersGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.userAccountBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BackgroundSquare1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BackgroundSquare2)).BeginInit();
             this.SuspendLayout();
@@ -119,7 +141,7 @@
             this.btnHome.Name = "btnHome";
             this.btnHome.Size = new System.Drawing.Size(120, 41);
             this.btnHome.TabIndex = 8;
-            this.btnHome.Text = "Home";
+            this.btnHome.Text = "Logout";
             this.btnHome.UseVisualStyleBackColor = false;
             this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
             // 
@@ -140,7 +162,7 @@
             // 
             // IngredientAddBtn
             // 
-            this.IngredientAddBtn.Location = new System.Drawing.Point(217, 377);
+            this.IngredientAddBtn.Location = new System.Drawing.Point(441, 244);
             this.IngredientAddBtn.Name = "IngredientAddBtn";
             this.IngredientAddBtn.Size = new System.Drawing.Size(100, 24);
             this.IngredientAddBtn.TabIndex = 15;
@@ -150,7 +172,7 @@
             // 
             // UpdateIngBtn
             // 
-            this.UpdateIngBtn.Location = new System.Drawing.Point(341, 377);
+            this.UpdateIngBtn.Location = new System.Drawing.Point(441, 274);
             this.UpdateIngBtn.Name = "UpdateIngBtn";
             this.UpdateIngBtn.Size = new System.Drawing.Size(100, 24);
             this.UpdateIngBtn.TabIndex = 20;
@@ -161,9 +183,9 @@
             // IngImageBox
             // 
             this.IngImageBox.Image = global::Dionisios.Properties.Resources.Captura_de_ecrã_2024_05_21_144614;
-            this.IngImageBox.Location = new System.Drawing.Point(13, 244);
+            this.IngImageBox.Location = new System.Drawing.Point(252, 244);
             this.IngImageBox.Name = "IngImageBox";
-            this.IngImageBox.Size = new System.Drawing.Size(180, 157);
+            this.IngImageBox.Size = new System.Drawing.Size(173, 154);
             this.IngImageBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.IngImageBox.TabIndex = 21;
             this.IngImageBox.TabStop = false;
@@ -171,36 +193,36 @@
             // 
             // IngDescriptionBox
             // 
-            this.IngDescriptionBox.Location = new System.Drawing.Point(217, 244);
+            this.IngDescriptionBox.Location = new System.Drawing.Point(13, 244);
             this.IngDescriptionBox.Name = "IngDescriptionBox";
-            this.IngDescriptionBox.Size = new System.Drawing.Size(232, 98);
+            this.IngDescriptionBox.Size = new System.Drawing.Size(222, 98);
             this.IngDescriptionBox.TabIndex = 22;
             this.IngDescriptionBox.Text = "";
             // 
             // IngNameBox
             // 
-            this.IngNameBox.Location = new System.Drawing.Point(465, 244);
+            this.IngNameBox.Location = new System.Drawing.Point(16, 352);
             this.IngNameBox.Name = "IngNameBox";
             this.IngNameBox.Size = new System.Drawing.Size(100, 20);
             this.IngNameBox.TabIndex = 23;
             // 
             // IngUnitBox
             // 
-            this.IngUnitBox.Location = new System.Drawing.Point(465, 270);
+            this.IngUnitBox.Location = new System.Drawing.Point(16, 378);
             this.IngUnitBox.Name = "IngUnitBox";
             this.IngUnitBox.Size = new System.Drawing.Size(100, 20);
             this.IngUnitBox.TabIndex = 24;
             // 
             // IngQuantityBox
             // 
-            this.IngQuantityBox.Location = new System.Drawing.Point(465, 322);
+            this.IngQuantityBox.Location = new System.Drawing.Point(135, 378);
             this.IngQuantityBox.Name = "IngQuantityBox";
             this.IngQuantityBox.Size = new System.Drawing.Size(100, 20);
             this.IngQuantityBox.TabIndex = 25;
             // 
             // BtnDeleteIng
             // 
-            this.BtnDeleteIng.Location = new System.Drawing.Point(465, 377);
+            this.BtnDeleteIng.Location = new System.Drawing.Point(441, 304);
             this.BtnDeleteIng.Name = "BtnDeleteIng";
             this.BtnDeleteIng.Size = new System.Drawing.Size(100, 24);
             this.BtnDeleteIng.TabIndex = 27;
@@ -224,7 +246,7 @@
             this.ColUnit,
             this.ColDescription});
             this.IngredientGridView.DataSource = this.ingredientsInfoBindingSource;
-            this.IngredientGridView.Location = new System.Drawing.Point(107, 61);
+            this.IngredientGridView.Location = new System.Drawing.Point(13, 63);
             this.IngredientGridView.Name = "IngredientGridView";
             this.IngredientGridView.ReadOnly = true;
             this.IngredientGridView.RowHeadersVisible = false;
@@ -335,6 +357,7 @@
             this.button3.TabIndex = 34;
             this.button3.Text = "Employees";
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button4
             // 
@@ -397,7 +420,7 @@
             // 
             // IngPriceBox
             // 
-            this.IngPriceBox.Location = new System.Drawing.Point(465, 296);
+            this.IngPriceBox.Location = new System.Drawing.Point(135, 352);
             this.IngPriceBox.Name = "IngPriceBox";
             this.IngPriceBox.Size = new System.Drawing.Size(100, 20);
             this.IngPriceBox.TabIndex = 28;
@@ -405,7 +428,14 @@
             // TabDrinks
             // 
             this.TabDrinks.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(63)))), ((int)(((byte)(77)))));
-            this.TabDrinks.Controls.Add(this.btnIngredients);
+            this.TabDrinks.Controls.Add(this.DrinkMaker);
+            this.TabDrinks.Controls.Add(this.QtdBox);
+            this.TabDrinks.Controls.Add(this.DIrichbox);
+            this.TabDrinks.Controls.Add(this.DIpicture);
+            this.TabDrinks.Controls.Add(this.AddBtn);
+            this.TabDrinks.Controls.Add(this.RemoverBtn);
+            this.TabDrinks.Controls.Add(this.FinishBtn);
+            this.TabDrinks.Controls.Add(this.DrinksIngredientsGrid);
             this.TabDrinks.Controls.Add(this.BtnNewDrink);
             this.TabDrinks.Controls.Add(this.DrinkNameBox);
             this.TabDrinks.Controls.Add(this.BtnUpdateDrink);
@@ -420,19 +450,125 @@
             this.TabDrinks.TabIndex = 2;
             this.TabDrinks.Text = "Drinks";
             // 
-            // btnIngredients
+            // DrinkMaker
             // 
-            this.btnIngredients.Location = new System.Drawing.Point(199, 303);
-            this.btnIngredients.Name = "btnIngredients";
-            this.btnIngredients.Size = new System.Drawing.Size(100, 23);
-            this.btnIngredients.TabIndex = 37;
-            this.btnIngredients.Text = "Ingredients";
-            this.btnIngredients.UseVisualStyleBackColor = true;
-            this.btnIngredients.Click += new System.EventHandler(this.btnIngredients_Click);
+            this.DrinkMaker.Location = new System.Drawing.Point(216, 405);
+            this.DrinkMaker.Name = "DrinkMaker";
+            this.DrinkMaker.Size = new System.Drawing.Size(100, 23);
+            this.DrinkMaker.TabIndex = 44;
+            this.DrinkMaker.Text = "Fazer Bebida";
+            this.DrinkMaker.UseVisualStyleBackColor = true;
+            // 
+            // QtdBox
+            // 
+            this.QtdBox.Location = new System.Drawing.Point(488, 316);
+            this.QtdBox.Name = "QtdBox";
+            this.QtdBox.Size = new System.Drawing.Size(71, 20);
+            this.QtdBox.TabIndex = 43;
+            // 
+            // DIrichbox
+            // 
+            this.DIrichbox.Location = new System.Drawing.Point(488, 346);
+            this.DIrichbox.Name = "DIrichbox";
+            this.DIrichbox.ReadOnly = true;
+            this.DIrichbox.Size = new System.Drawing.Size(199, 85);
+            this.DIrichbox.TabIndex = 42;
+            this.DIrichbox.Text = "";
+            // 
+            // DIpicture
+            // 
+            this.DIpicture.Image = global::Dionisios.Properties.Resources.Captura_de_ecrã_2024_05_21_144614;
+            this.DIpicture.Location = new System.Drawing.Point(565, 235);
+            this.DIpicture.Name = "DIpicture";
+            this.DIpicture.Size = new System.Drawing.Size(122, 105);
+            this.DIpicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.DIpicture.TabIndex = 41;
+            this.DIpicture.TabStop = false;
+            // 
+            // AddBtn
+            // 
+            this.AddBtn.Location = new System.Drawing.Point(484, 235);
+            this.AddBtn.Name = "AddBtn";
+            this.AddBtn.Size = new System.Drawing.Size(75, 21);
+            this.AddBtn.TabIndex = 40;
+            this.AddBtn.Text = "Adicionar";
+            this.AddBtn.UseVisualStyleBackColor = true;
+            this.AddBtn.Click += new System.EventHandler(this.AddBtn_Click);
+            // 
+            // RemoverBtn
+            // 
+            this.RemoverBtn.Location = new System.Drawing.Point(484, 262);
+            this.RemoverBtn.Name = "RemoverBtn";
+            this.RemoverBtn.Size = new System.Drawing.Size(75, 21);
+            this.RemoverBtn.TabIndex = 39;
+            this.RemoverBtn.Text = "Remover";
+            this.RemoverBtn.UseVisualStyleBackColor = true;
+            this.RemoverBtn.Click += new System.EventHandler(this.RemoverBtn_Click);
+            // 
+            // FinishBtn
+            // 
+            this.FinishBtn.Location = new System.Drawing.Point(484, 289);
+            this.FinishBtn.Name = "FinishBtn";
+            this.FinishBtn.Size = new System.Drawing.Size(75, 21);
+            this.FinishBtn.TabIndex = 38;
+            this.FinishBtn.Text = "Finalizar";
+            this.FinishBtn.UseVisualStyleBackColor = true;
+            this.FinishBtn.Click += new System.EventHandler(this.FinishBtn_Click);
+            // 
+            // DrinksIngredientsGrid
+            // 
+            this.DrinksIngredientsGrid.AllowUserToAddRows = false;
+            this.DrinksIngredientsGrid.AllowUserToOrderColumns = true;
+            this.DrinksIngredientsGrid.AutoGenerateColumns = false;
+            this.DrinksIngredientsGrid.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(34)))), ((int)(((byte)(41)))));
+            this.DrinksIngredientsGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DrinksIngredientsGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.DIname,
+            this.IDing2,
+            this.DIimage,
+            this.DIunit});
+            this.DrinksIngredientsGrid.DataSource = this.ingredientsInfoBindingSource;
+            this.DrinksIngredientsGrid.Location = new System.Drawing.Point(484, 54);
+            this.DrinksIngredientsGrid.Name = "DrinksIngredientsGrid";
+            this.DrinksIngredientsGrid.ReadOnly = true;
+            this.DrinksIngredientsGrid.RowHeadersVisible = false;
+            this.DrinksIngredientsGrid.Size = new System.Drawing.Size(203, 175);
+            this.DrinksIngredientsGrid.TabIndex = 37;
+            this.DrinksIngredientsGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DrinksIngredientsGrid_CellClick);
+            // 
+            // DIname
+            // 
+            this.DIname.DataPropertyName = "Name";
+            this.DIname.HeaderText = "Name";
+            this.DIname.Name = "DIname";
+            this.DIname.ReadOnly = true;
+            // 
+            // IDing2
+            // 
+            this.IDing2.DataPropertyName = "ID";
+            this.IDing2.HeaderText = "ID";
+            this.IDing2.Name = "IDing2";
+            this.IDing2.ReadOnly = true;
+            this.IDing2.Visible = false;
+            // 
+            // DIimage
+            // 
+            this.DIimage.DataPropertyName = "Image";
+            this.DIimage.HeaderText = "Image";
+            this.DIimage.Name = "DIimage";
+            this.DIimage.ReadOnly = true;
+            this.DIimage.Visible = false;
+            // 
+            // DIunit
+            // 
+            this.DIunit.DataPropertyName = "Unit";
+            this.DIunit.HeaderText = "Unit";
+            this.DIunit.Name = "DIunit";
+            this.DIunit.ReadOnly = true;
             // 
             // BtnNewDrink
             // 
-            this.BtnNewDrink.Location = new System.Drawing.Point(341, 245);
+            this.BtnNewDrink.Location = new System.Drawing.Point(216, 318);
             this.BtnNewDrink.Name = "BtnNewDrink";
             this.BtnNewDrink.Size = new System.Drawing.Size(100, 23);
             this.BtnNewDrink.TabIndex = 29;
@@ -442,14 +578,14 @@
             // 
             // DrinkNameBox
             // 
-            this.DrinkNameBox.Location = new System.Drawing.Point(199, 245);
+            this.DrinkNameBox.Location = new System.Drawing.Point(216, 247);
             this.DrinkNameBox.Name = "DrinkNameBox";
             this.DrinkNameBox.Size = new System.Drawing.Size(100, 20);
             this.DrinkNameBox.TabIndex = 33;
             // 
             // BtnUpdateDrink
             // 
-            this.BtnUpdateDrink.Location = new System.Drawing.Point(341, 274);
+            this.BtnUpdateDrink.Location = new System.Drawing.Point(216, 347);
             this.BtnUpdateDrink.Name = "BtnUpdateDrink";
             this.BtnUpdateDrink.Size = new System.Drawing.Size(100, 23);
             this.BtnUpdateDrink.TabIndex = 30;
@@ -462,7 +598,7 @@
             this.DrinkImageBox.Image = global::Dionisios.Properties.Resources.Captura_de_ecrã_2024_05_21_144614;
             this.DrinkImageBox.Location = new System.Drawing.Point(13, 245);
             this.DrinkImageBox.Name = "DrinkImageBox";
-            this.DrinkImageBox.Size = new System.Drawing.Size(180, 157);
+            this.DrinkImageBox.Size = new System.Drawing.Size(197, 186);
             this.DrinkImageBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.DrinkImageBox.TabIndex = 31;
             this.DrinkImageBox.TabStop = false;
@@ -470,14 +606,14 @@
             // 
             // DrinkPriceBox
             // 
-            this.DrinkPriceBox.Location = new System.Drawing.Point(199, 271);
+            this.DrinkPriceBox.Location = new System.Drawing.Point(216, 273);
             this.DrinkPriceBox.Name = "DrinkPriceBox";
             this.DrinkPriceBox.Size = new System.Drawing.Size(100, 20);
             this.DrinkPriceBox.TabIndex = 34;
             // 
             // BtnDeleteDrink
             // 
-            this.BtnDeleteDrink.Location = new System.Drawing.Point(341, 303);
+            this.BtnDeleteDrink.Location = new System.Drawing.Point(216, 376);
             this.BtnDeleteDrink.Name = "BtnDeleteDrink";
             this.BtnDeleteDrink.Size = new System.Drawing.Size(100, 23);
             this.BtnDeleteDrink.TabIndex = 36;
@@ -501,7 +637,7 @@
             this.DrinkGridView.Name = "DrinkGridView";
             this.DrinkGridView.ReadOnly = true;
             this.DrinkGridView.RowHeadersVisible = false;
-            this.DrinkGridView.Size = new System.Drawing.Size(304, 175);
+            this.DrinkGridView.Size = new System.Drawing.Size(303, 175);
             this.DrinkGridView.TabIndex = 0;
             this.DrinkGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DrinkGridView_CellClick);
             // 
@@ -531,6 +667,7 @@
             // 
             this.ColPrice2.DataPropertyName = "Price";
             this.ColPrice2.HeaderText = "Price";
+            this.ColPrice2.MaxInputLength = 4;
             this.ColPrice2.Name = "ColPrice2";
             this.ColPrice2.ReadOnly = true;
             // 
@@ -594,6 +731,7 @@
             this.btnAdd.TabIndex = 41;
             this.btnAdd.Text = "Add User";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnDelete
             // 
@@ -604,31 +742,32 @@
             this.btnDelete.TabIndex = 40;
             this.btnDelete.Text = "Delete User";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // BIbox
             // 
-            this.BIbox.Location = new System.Drawing.Point(499, 272);
+            this.BIbox.Location = new System.Drawing.Point(499, 286);
             this.BIbox.Name = "BIbox";
             this.BIbox.Size = new System.Drawing.Size(182, 20);
             this.BIbox.TabIndex = 38;
             // 
             // PasswordBox
             // 
-            this.PasswordBox.Location = new System.Drawing.Point(499, 211);
+            this.PasswordBox.Location = new System.Drawing.Point(499, 146);
             this.PasswordBox.Name = "PasswordBox";
             this.PasswordBox.Size = new System.Drawing.Size(182, 20);
             this.PasswordBox.TabIndex = 37;
             // 
             // UsernameBox
             // 
-            this.UsernameBox.Location = new System.Drawing.Point(499, 142);
+            this.UsernameBox.Location = new System.Drawing.Point(499, 76);
             this.UsernameBox.Name = "UsernameBox";
             this.UsernameBox.Size = new System.Drawing.Size(182, 20);
             this.UsernameBox.TabIndex = 36;
             // 
             // EmailBox
             // 
-            this.EmailBox.Location = new System.Drawing.Point(499, 83);
+            this.EmailBox.Location = new System.Drawing.Point(499, 216);
             this.EmailBox.Name = "EmailBox";
             this.EmailBox.Size = new System.Drawing.Size(182, 20);
             this.EmailBox.TabIndex = 35;
@@ -639,7 +778,7 @@
             this.LabelBI.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(34)))), ((int)(((byte)(41)))));
             this.LabelBI.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LabelBI.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(157)))), ((int)(((byte)(71)))));
-            this.LabelBI.Location = new System.Drawing.Point(580, 245);
+            this.LabelBI.Location = new System.Drawing.Point(580, 256);
             this.LabelBI.Name = "LabelBI";
             this.LabelBI.Size = new System.Drawing.Size(26, 24);
             this.LabelBI.TabIndex = 34;
@@ -651,7 +790,7 @@
             this.LabelPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(34)))), ((int)(((byte)(41)))));
             this.LabelPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LabelPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(157)))), ((int)(((byte)(71)))));
-            this.LabelPassword.Location = new System.Drawing.Point(544, 184);
+            this.LabelPassword.Location = new System.Drawing.Point(543, 119);
             this.LabelPassword.Name = "LabelPassword";
             this.LabelPassword.Size = new System.Drawing.Size(92, 24);
             this.LabelPassword.TabIndex = 32;
@@ -663,7 +802,7 @@
             this.LabelEmail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(34)))), ((int)(((byte)(41)))));
             this.LabelEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LabelEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(157)))), ((int)(((byte)(71)))));
-            this.LabelEmail.Location = new System.Drawing.Point(565, 56);
+            this.LabelEmail.Location = new System.Drawing.Point(563, 189);
             this.LabelEmail.Name = "LabelEmail";
             this.LabelEmail.Size = new System.Drawing.Size(57, 24);
             this.LabelEmail.TabIndex = 31;
@@ -675,7 +814,7 @@
             this.LabelUsername.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(34)))), ((int)(((byte)(41)))));
             this.LabelUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LabelUsername.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(157)))), ((int)(((byte)(71)))));
-            this.LabelUsername.Location = new System.Drawing.Point(544, 115);
+            this.LabelUsername.Location = new System.Drawing.Point(543, 49);
             this.LabelUsername.Name = "LabelUsername";
             this.LabelUsername.Size = new System.Drawing.Size(97, 24);
             this.LabelUsername.TabIndex = 30;
@@ -687,7 +826,7 @@
             this.LabelRole.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(34)))), ((int)(((byte)(41)))));
             this.LabelRole.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LabelRole.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(157)))), ((int)(((byte)(71)))));
-            this.LabelRole.Location = new System.Drawing.Point(565, 315);
+            this.LabelRole.Location = new System.Drawing.Point(571, 329);
             this.LabelRole.Name = "LabelRole";
             this.LabelRole.Size = new System.Drawing.Size(49, 24);
             this.LabelRole.TabIndex = 29;
@@ -702,19 +841,35 @@
             this.btnSave.TabIndex = 28;
             this.btnSave.Text = "Save Changes";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSaveChanges_Click);
             // 
             // UsersGridView
             // 
             this.UsersGridView.AllowUserToAddRows = false;
             this.UsersGridView.AllowUserToOrderColumns = true;
+            this.UsersGridView.AutoGenerateColumns = false;
             this.UsersGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(34)))), ((int)(((byte)(41)))));
             this.UsersGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.UsersGridView.Location = new System.Drawing.Point(14, 43);
+            this.UsersGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.IDColumn,
+            this.UsernameColumn,
+            this.PasswordColumn,
+            this.EmailColumn,
+            this.RoleColumn,
+            this.BIColumn});
+            this.UsersGridView.DataSource = this.userAccountBindingSource;
+            this.UsersGridView.Location = new System.Drawing.Point(13, 45);
             this.UsersGridView.Name = "UsersGridView";
             this.UsersGridView.ReadOnly = true;
             this.UsersGridView.RowHeadersVisible = false;
-            this.UsersGridView.Size = new System.Drawing.Size(448, 154);
+            this.UsersGridView.Size = new System.Drawing.Size(468, 154);
             this.UsersGridView.TabIndex = 27;
+            this.UsersGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.UsersGridView_CellClick);
+            // 
+            // userAccountBindingSource
+            // 
+            this.userAccountBindingSource.DataMember = "UserAccount";
+            this.userAccountBindingSource.DataSource = this.dionisiosDBDataSet;
             // 
             // RoleCombo
             // 
@@ -724,7 +879,7 @@
             "ADMIN",
             "MANAGER",
             "EMPLOYEE"});
-            this.RoleCombo.Location = new System.Drawing.Point(499, 342);
+            this.RoleCombo.Location = new System.Drawing.Point(499, 356);
             this.RoleCombo.Name = "RoleCombo";
             this.RoleCombo.Size = new System.Drawing.Size(182, 21);
             this.RoleCombo.TabIndex = 26;
@@ -732,9 +887,9 @@
             // BackgroundSquare1
             // 
             this.BackgroundSquare1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(34)))), ((int)(((byte)(41)))));
-            this.BackgroundSquare1.Location = new System.Drawing.Point(484, 45);
+            this.BackgroundSquare1.Location = new System.Drawing.Point(487, 45);
             this.BackgroundSquare1.Name = "BackgroundSquare1";
-            this.BackgroundSquare1.Size = new System.Drawing.Size(214, 346);
+            this.BackgroundSquare1.Size = new System.Drawing.Size(211, 350);
             this.BackgroundSquare1.TabIndex = 33;
             this.BackgroundSquare1.TabStop = false;
             // 
@@ -754,6 +909,56 @@
             // drinksInfoTableAdapter
             // 
             this.drinksInfoTableAdapter.ClearBeforeFill = true;
+            // 
+            // userAccountTableAdapter
+            // 
+            this.userAccountTableAdapter.ClearBeforeFill = true;
+            // 
+            // IDColumn
+            // 
+            this.IDColumn.DataPropertyName = "ID";
+            this.IDColumn.HeaderText = "ID";
+            this.IDColumn.Name = "IDColumn";
+            this.IDColumn.ReadOnly = true;
+            this.IDColumn.Width = 40;
+            // 
+            // UsernameColumn
+            // 
+            this.UsernameColumn.DataPropertyName = "Username";
+            this.UsernameColumn.HeaderText = "Username";
+            this.UsernameColumn.Name = "UsernameColumn";
+            this.UsernameColumn.ReadOnly = true;
+            // 
+            // PasswordColumn
+            // 
+            this.PasswordColumn.DataPropertyName = "Password";
+            this.PasswordColumn.HeaderText = "Password";
+            this.PasswordColumn.Name = "PasswordColumn";
+            this.PasswordColumn.ReadOnly = true;
+            // 
+            // EmailColumn
+            // 
+            this.EmailColumn.DataPropertyName = "Email";
+            this.EmailColumn.HeaderText = "Email";
+            this.EmailColumn.Name = "EmailColumn";
+            this.EmailColumn.ReadOnly = true;
+            this.EmailColumn.Width = 85;
+            // 
+            // RoleColumn
+            // 
+            this.RoleColumn.DataPropertyName = "Role";
+            this.RoleColumn.HeaderText = "Role";
+            this.RoleColumn.Name = "RoleColumn";
+            this.RoleColumn.ReadOnly = true;
+            this.RoleColumn.Width = 70;
+            // 
+            // BIColumn
+            // 
+            this.BIColumn.DataPropertyName = "BI";
+            this.BIColumn.HeaderText = "BI";
+            this.BIColumn.Name = "BIColumn";
+            this.BIColumn.ReadOnly = true;
+            this.BIColumn.Width = 70;
             // 
             // ManagerPage
             // 
@@ -782,12 +987,15 @@
             this.TabStock.PerformLayout();
             this.TabDrinks.ResumeLayout(false);
             this.TabDrinks.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DIpicture)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DrinksIngredientsGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DrinkImageBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DrinkGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.drinksInfoBindingSource)).EndInit();
             this.TabEmployees.ResumeLayout(false);
             this.TabEmployees.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.UsersGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.userAccountBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BackgroundSquare1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BackgroundSquare2)).EndInit();
             this.ResumeLayout(false);
@@ -838,16 +1046,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColDescription;
         private System.Windows.Forms.BindingSource drinksInfoBindingSource;
         private DionisiosDBDataSetTableAdapters.DrinksInfoTableAdapter drinksInfoTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColID2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColName2;
-        private System.Windows.Forms.DataGridViewImageColumn ColImage2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColPrice2;
         private System.Windows.Forms.Button BtnNewDrink;
         private System.Windows.Forms.TextBox DrinkNameBox;
         private System.Windows.Forms.Button BtnUpdateDrink;
         private System.Windows.Forms.PictureBox DrinkImageBox;
         private System.Windows.Forms.Button BtnDeleteDrink;
-        private System.Windows.Forms.Button btnIngredients;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.TextBox BIbox;
@@ -865,5 +1068,29 @@
         private System.Windows.Forms.PictureBox BackgroundSquare1;
         private System.Windows.Forms.PictureBox BackgroundSquare2;
         private System.Windows.Forms.TextBox DrinkPriceBox;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColID2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColName2;
+        private System.Windows.Forms.DataGridViewImageColumn ColImage2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColPrice2;
+        private System.Windows.Forms.RichTextBox DIrichbox;
+        private System.Windows.Forms.PictureBox DIpicture;
+        private System.Windows.Forms.Button AddBtn;
+        private System.Windows.Forms.Button RemoverBtn;
+        private System.Windows.Forms.Button FinishBtn;
+        private System.Windows.Forms.DataGridView DrinksIngredientsGrid;
+        private System.Windows.Forms.TextBox QtdBox;
+        private System.Windows.Forms.Button DrinkMaker;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DIname;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDing2;
+        private System.Windows.Forms.DataGridViewImageColumn DIimage;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DIunit;
+        private System.Windows.Forms.BindingSource userAccountBindingSource;
+        private DionisiosDBDataSetTableAdapters.UserAccountTableAdapter userAccountTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UsernameColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PasswordColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EmailColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RoleColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BIColumn;
     }
 }

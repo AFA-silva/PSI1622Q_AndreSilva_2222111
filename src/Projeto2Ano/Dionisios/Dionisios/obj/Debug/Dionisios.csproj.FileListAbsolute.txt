@@ -60,9 +60,7 @@ C:\Users\2222111\source\repos\AFA-silva\PSI1622Q_AndreSilva_2222111\src\Projeto2
 C:\Users\2222111\source\repos\AFA-silva\PSI1622Q_AndreSilva_2222111\src\Projeto2Ano\Dionisios\Dionisios\bin\Debug\Dionisios.pdb
 C:\Users\2222111\source\repos\AFA-silva\PSI1622Q_AndreSilva_2222111\src\Projeto2Ano\Dionisios\Dionisios\obj\Debug\Dionisios.csproj.AssemblyReference.cache
 C:\Users\2222111\source\repos\AFA-silva\PSI1622Q_AndreSilva_2222111\src\Projeto2Ano\Dionisios\Dionisios\obj\Debug\Dionisios.csproj.SuggestedBindingRedirects.cache
-C:\Users\2222111\source\repos\AFA-silva\PSI1622Q_AndreSilva_2222111\src\Projeto2Ano\Dionisios\Dionisios\obj\Debug\Dionisios.AdminPage.resources
 C:\Users\2222111\source\repos\AFA-silva\PSI1622Q_AndreSilva_2222111\src\Projeto2Ano\Dionisios\Dionisios\obj\Debug\Dionisios.Form1.resources
-C:\Users\2222111\source\repos\AFA-silva\PSI1622Q_AndreSilva_2222111\src\Projeto2Ano\Dionisios\Dionisios\obj\Debug\Dionisios.Ingredients.resources
 C:\Users\2222111\source\repos\AFA-silva\PSI1622Q_AndreSilva_2222111\src\Projeto2Ano\Dionisios\Dionisios\obj\Debug\Dionisios.ManagerPage.resources
 C:\Users\2222111\source\repos\AFA-silva\PSI1622Q_AndreSilva_2222111\src\Projeto2Ano\Dionisios\Dionisios\obj\Debug\Dionisios.Properties.Resources.resources
 C:\Users\2222111\source\repos\AFA-silva\PSI1622Q_AndreSilva_2222111\src\Projeto2Ano\Dionisios\Dionisios\obj\Debug\Dionisios.Register.resources
