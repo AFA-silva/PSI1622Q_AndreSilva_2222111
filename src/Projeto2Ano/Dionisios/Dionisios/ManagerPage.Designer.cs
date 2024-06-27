@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
@@ -64,6 +64,7 @@
             this.btnPopular = new System.Windows.Forms.Button();
             this.Menu = new System.Windows.Forms.TabControl();
             this.TabHome = new System.Windows.Forms.TabPage();
+            this.label1 = new System.Windows.Forms.Label();
             this.TabStock = new System.Windows.Forms.TabPage();
             this.IngPriceBox = new System.Windows.Forms.TextBox();
             this.TabDrinks = new System.Windows.Forms.TabPage();
@@ -92,7 +93,12 @@
             this.ColPrice2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.drinksInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.TabPopular = new System.Windows.Forms.TabPage();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.ChartBebidas = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.TabIncome = new System.Windows.Forms.TabPage();
+            this.chart3 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.TabEmployees = new System.Windows.Forms.TabPage();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
@@ -120,12 +126,6 @@
             this.ingredientsInfoTableAdapter = new Dionisios.DionisiosDBDataSetTableAdapters.IngredientsInfoTableAdapter();
             this.drinksInfoTableAdapter = new Dionisios.DionisiosDBDataSetTableAdapters.DrinksInfoTableAdapter();
             this.userAccountTableAdapter = new Dionisios.DionisiosDBDataSetTableAdapters.UserAccountTableAdapter();
-            this.ChartBebidas = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.chart3 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             ((System.ComponentModel.ISupportInitialize)(this.IngImageBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.IngredientGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ingredientsInfoBindingSource)).BeginInit();
@@ -140,15 +140,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.DrinkGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.drinksInfoBindingSource)).BeginInit();
             this.TabPopular.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ChartBebidas)).BeginInit();
             this.TabIncome.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart3)).BeginInit();
             this.TabEmployees.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.UsersGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.userAccountBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BackgroundSquare1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BackgroundSquare2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ChartBebidas)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart3)).BeginInit();
             this.SuspendLayout();
             // 
             // btnHome
@@ -423,6 +423,16 @@
             this.TabHome.Size = new System.Drawing.Size(710, 437);
             this.TabHome.TabIndex = 0;
             this.TabHome.Text = "Home";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(37, 191);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(593, 37);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Seleciona a opção que deseja utilizar!";
             // 
             // TabStock
             // 
@@ -717,6 +727,58 @@
             this.TabPopular.TabIndex = 3;
             this.TabPopular.Text = "Popular";
             // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(53, 328);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 3;
+            this.button3.Text = "button3";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(53, 284);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 2;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // chart2
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.chart2.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart2.Legends.Add(legend1);
+            this.chart2.Location = new System.Drawing.Point(-52, 85);
+            this.chart2.Name = "chart2";
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chart2.Series.Add(series1);
+            this.chart2.Size = new System.Drawing.Size(500, 329);
+            this.chart2.TabIndex = 1;
+            this.chart2.Text = "chart2";
+            // 
+            // ChartBebidas
+            // 
+            this.ChartBebidas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(63)))), ((int)(((byte)(77)))));
+            this.ChartBebidas.BackImageAlignment = System.Windows.Forms.DataVisualization.Charting.ChartImageAlignmentStyle.TopRight;
+            this.ChartBebidas.BorderlineColor = System.Drawing.SystemColors.InactiveCaption;
+            chartArea2.Name = "ChartArea1";
+            this.ChartBebidas.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.ChartBebidas.Legends.Add(legend2);
+            this.ChartBebidas.Location = new System.Drawing.Point(380, 108);
+            this.ChartBebidas.Name = "ChartBebidas";
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.ChartBebidas.Series.Add(series2);
+            this.ChartBebidas.Size = new System.Drawing.Size(503, 332);
+            this.ChartBebidas.TabIndex = 0;
+            // 
             // TabIncome
             // 
             this.TabIncome.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(63)))), ((int)(((byte)(77)))));
@@ -727,6 +789,22 @@
             this.TabIncome.Size = new System.Drawing.Size(710, 437);
             this.TabIncome.TabIndex = 4;
             this.TabIncome.Text = "Income";
+            // 
+            // chart3
+            // 
+            chartArea3.Name = "ChartArea1";
+            this.chart3.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.chart3.Legends.Add(legend3);
+            this.chart3.Location = new System.Drawing.Point(173, 82);
+            this.chart3.Name = "chart3";
+            series3.ChartArea = "ChartArea1";
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            this.chart3.Series.Add(series3);
+            this.chart3.Size = new System.Drawing.Size(371, 291);
+            this.chart3.TabIndex = 0;
+            this.chart3.Text = "chart3";
             // 
             // TabEmployees
             // 
@@ -992,84 +1070,6 @@
             // 
             this.userAccountTableAdapter.ClearBeforeFill = true;
             // 
-            // ChartBebidas
-            // 
-            this.ChartBebidas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(63)))), ((int)(((byte)(77)))));
-            this.ChartBebidas.BackImageAlignment = System.Windows.Forms.DataVisualization.Charting.ChartImageAlignmentStyle.TopRight;
-            this.ChartBebidas.BorderlineColor = System.Drawing.SystemColors.InactiveCaption;
-            chartArea2.Name = "ChartArea1";
-            this.ChartBebidas.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.ChartBebidas.Legends.Add(legend2);
-            this.ChartBebidas.Location = new System.Drawing.Point(380, 108);
-            this.ChartBebidas.Name = "ChartBebidas";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.ChartBebidas.Series.Add(series2);
-            this.ChartBebidas.Size = new System.Drawing.Size(503, 332);
-            this.ChartBebidas.TabIndex = 0;
-            // 
-            // chart2
-            // 
-            chartArea1.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart2.Legends.Add(legend1);
-            this.chart2.Location = new System.Drawing.Point(-52, 85);
-            this.chart2.Name = "chart2";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chart2.Series.Add(series1);
-            this.chart2.Size = new System.Drawing.Size(500, 329);
-            this.chart2.TabIndex = 1;
-            this.chart2.Text = "chart2";
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(53, 284);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(53, 328);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(49, 192);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(593, 37);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Seleciona a opção que deseja utilizar!";
-            // 
-            // chart3
-            // 
-            chartArea3.Name = "ChartArea1";
-            this.chart3.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.chart3.Legends.Add(legend3);
-            this.chart3.Location = new System.Drawing.Point(173, 82);
-            this.chart3.Name = "chart3";
-            series3.ChartArea = "ChartArea1";
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            this.chart3.Series.Add(series3);
-            this.chart3.Size = new System.Drawing.Size(371, 291);
-            this.chart3.TabIndex = 0;
-            this.chart3.Text = "chart3";
-            // 
             // ManagerPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1105,16 +1105,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.DrinkGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.drinksInfoBindingSource)).EndInit();
             this.TabPopular.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chart2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ChartBebidas)).EndInit();
             this.TabIncome.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chart3)).EndInit();
             this.TabEmployees.ResumeLayout(false);
             this.TabEmployees.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.UsersGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.userAccountBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BackgroundSquare1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BackgroundSquare2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ChartBebidas)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart3)).EndInit();
             this.ResumeLayout(false);
 
         }
