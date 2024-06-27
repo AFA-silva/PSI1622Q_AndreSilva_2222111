@@ -487,11 +487,13 @@ namespace Dionisios
                 }
                 else
                 {
-                    DrinkImageBox.Image = Properties.Resources.Captura_de_ecrã_2024_05_21_144614; // Imagem padrão, se necessário
+                    DrinkImageBox.Image = Properties.Resources.Captura_de_ecrã_2024_05_21_144614;
                     selectedImage = null;
                 }
+                LoadDrinkIngredients(drinkId);
             }
         }
+
 
         private void DrinksIngredientsGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -569,25 +571,49 @@ namespace Dionisios
         {
             if (DIrichbox.SelectionLength > 0)
             {
-                string selectedText = DIrichbox.SelectedText;
-                string[] lines = DIrichbox.Lines;
-                List<string> updatedLines = new List<string>();
-
-                foreach (string line in lines)
+                string selectedText = DIrichbox.SelectedText.Trim();
+                string[] parts = selectedText.Split('-');
+                if (parts.Length == 2)
                 {
-                    if (!line.Trim().Equals(selectedText.Trim(), StringComparison.OrdinalIgnoreCase))
+                    string ingredientName = parts[0].Trim();
+                    int quantity;
+                    if (int.TryParse(parts[1].Trim(), out quantity))
                     {
-                        updatedLines.Add(line);
+                        using (SqlConnection connection = new SqlConnection(connectionString))
+                        {
+                            connection.Open();
+
+                            int ingId = GetIngredientIdByName(connection, ingredientName);
+                            if (ingId != -1)
+                            {
+                                string query = "DELETE FROM DrinksIngredients WHERE ID_Drinks = @drinkId AND ID_Ingredients = @ingId AND Quantity = @quantity";
+                                SqlCommand command = new SqlCommand(query, connection);
+                                command.Parameters.AddWithValue("@drinkId", drinkId);
+                                command.Parameters.AddWithValue("@ingId", ingId);
+                                command.Parameters.AddWithValue("@quantity", quantity);
+                                command.ExecuteNonQuery();
+                            }
+                        }
+                        string[] lines = DIrichbox.Lines;
+                        List<string> updatedLines = new List<string>();
+                        foreach (string line in lines)
+                        {
+                            if (!line.Trim().Equals(selectedText, StringComparison.OrdinalIgnoreCase))
+                            {
+                                updatedLines.Add(line);
+                            }
+                        }
+
+                        DIrichbox.Lines = updatedLines.ToArray();
                     }
                 }
-
-                DIrichbox.Lines = updatedLines.ToArray();
             }
             else
             {
                 MessageBox.Show("Please select an entry to remove.");
             }
         }
+
         private void FinishBtn_Click(object sender, EventArgs e)
         {
             AddIngredientsToDatabase();
@@ -630,9 +656,9 @@ namespace Dionisios
 
         private int GetIngredientIdByName(SqlConnection connection, string ingredientName)
         {
-            string query = "SELECT ID FROM IngredientsInfo WHERE IngredientName = @IngredientName";
+            string query = "SELECT ID FROM IngredientsInfo WHERE Name = @Name";
             SqlCommand command = new SqlCommand(query, connection);
-            command.Parameters.AddWithValue("@IngredientName", ingredientName);
+            command.Parameters.AddWithValue("@Name", ingredientName);
             object result = command.ExecuteScalar();
             if (result != null && result != DBNull.Value)
             {
@@ -640,9 +666,53 @@ namespace Dionisios
             }
             return -1;
         }
+        private void LoadDrinkIngredients(int drinkId)
+        {
+            DIrichbox.Clear();
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                string query = @"
+            SELECT i.Name, di.Quantity
+            FROM DrinksIngredients di
+            JOIN IngredientsInfo i ON di.ID_Ingredients = i.ID
+            WHERE di.ID_Drinks = @drinkId";
+
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@drinkId", drinkId);
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        string ingredientName = reader["Name"].ToString();  
+                        int quantity = Convert.ToInt32(reader["Quantity"]);
+                        DIrichbox.AppendText($"{ingredientName} - {quantity}" + Environment.NewLine);
+                    }
+                }
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         //
-        private void button3_Click(object sender, EventArgs e)
+        private void Employees_Click(object sender, EventArgs e)
         {
             Menu.SelectedIndex = 5;
         }
@@ -984,6 +1054,108 @@ namespace Dionisios
                 MessageBox.Show("BI must contain 8 digits.");
                 ValidationV = false;
             }
+        }
+
+        private void DrinkMaker_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Tem certeza que deseja fazer esta bebida?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    string query = @"
+                SELECT di.ID_Ingredients, di.Quantity, i.QuantityStock
+                FROM DrinksIngredients di
+                JOIN IngredientsInfo i ON di.ID_Ingredients = i.ID
+                WHERE di.ID_Drinks = @drinkId";
+
+                    SqlCommand command = new SqlCommand(query, connection);
+                    command.Parameters.AddWithValue("@drinkId", drinkId);
+
+                    List<(int ingredientId, int requiredQuantity, int quantityStock)> ingredientsToUpdate = new List<(int ingredientId, int requiredQuantity, int quantityStock)>();
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            int ingredientId = Convert.ToInt32(reader["ID_Ingredients"]);
+                            int requiredQuantity = Convert.ToInt32(reader["Quantity"]);
+                            int quantityStock = Convert.ToInt32(reader["QuantityStock"]);
+
+                            ingredientsToUpdate.Add((ingredientId, requiredQuantity, quantityStock));
+                        }
+                    }
+
+                    bool stockAvailable = true;
+
+                    foreach (var item in ingredientsToUpdate)
+                    {
+                        if (item.quantityStock < item.requiredQuantity)
+                        {
+                            stockAvailable = false;
+                            break;
+                        }
+                    }
+
+                    if (stockAvailable)
+                    {
+                        foreach (var item in ingredientsToUpdate)
+                        {
+                            string updateQuery = "UPDATE IngredientsInfo SET QuantityStock = QuantityStock - @quantity WHERE ID = @ingredientId";
+                            SqlCommand updateCommand = new SqlCommand(updateQuery, connection);
+                            updateCommand.Parameters.AddWithValue("@quantity", item.requiredQuantity);
+                            updateCommand.Parameters.AddWithValue("@ingredientId", item.ingredientId);
+                            updateCommand.ExecuteNonQuery();
+
+                            string usageQuery = @"
+                        MERGE IngredientUsage AS target
+                        USING (SELECT @ingredientId AS ID_Ingredient) AS source
+                        ON (target.ID_Ingredient = source.ID_Ingredient)
+                        WHEN MATCHED THEN
+                            UPDATE SET UsageCount = UsageCount + @quantity
+                        WHEN NOT MATCHED THEN
+                            INSERT (ID_Ingredient, UsageCount)
+                            VALUES (source.ID_Ingredient, @quantity);";
+                            SqlCommand usageCommand = new SqlCommand(usageQuery, connection);
+                            usageCommand.Parameters.AddWithValue("@ingredientId", item.ingredientId);
+                            usageCommand.Parameters.AddWithValue("@quantity", item.requiredQuantity);
+                            usageCommand.ExecuteNonQuery();
+                        }
+
+                        string drinkUsageQuery = @"
+                    MERGE DrinkUsage AS target
+                    USING (SELECT @drinkId AS ID_Drink) AS source
+                    ON (target.ID_Drink = source.ID_Drink)
+                    WHEN MATCHED THEN
+                        UPDATE SET UsageCount = UsageCount + 1
+                    WHEN NOT MATCHED THEN
+                        INSERT (ID_Drink, UsageCount)
+                        VALUES (source.ID_Drink, 1);";
+                        SqlCommand drinkUsageCommand = new SqlCommand(drinkUsageQuery, connection);
+                        drinkUsageCommand.Parameters.AddWithValue("@drinkId", drinkId);
+                        drinkUsageCommand.ExecuteNonQuery();
+                        RefreshGridView();
+                        MessageBox.Show("Bebida feita com sucesso!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Estoque insuficiente para fazer a bebida.");
+                    }
+                }
+            }
+        }
+
+        private void btnPopular_Click(object sender, EventArgs e)
+        {
+            Menu.SelectedIndex = 3;
+        }
+
+        private void btnIncome_Click(object sender, EventArgs e)
+        {
+            Menu.SelectedIndex = 4;
         }
 
         private bool ValidateEmail(string email)
