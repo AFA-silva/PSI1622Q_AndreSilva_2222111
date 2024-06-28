@@ -8,10 +8,8 @@ namespace Dionisios
     public partial class Form1 : Form
     {
         private string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=DionisiosDB;Integrated Security=True";
-
         public static string UserRole;
         public static int LoggedInUserId { get; private set; }
-
         public Form1()
         {
             InitializeComponent();
@@ -24,6 +22,7 @@ namespace Dionisios
             Passwordbox.TabStop = false;
             Emailbox.TabStop = false;
         }
+
         private void RegisterLabel_Click(object sender, EventArgs e)
         {
             Hide();
@@ -34,8 +33,10 @@ namespace Dionisios
             else
                 Close();
         }
+
         private void BtnLogin_Click(object sender, EventArgs e)
         {
+            // Verifica se todos os campos estão preenchidos
             if (string.IsNullOrWhiteSpace(BIbox.Text) || BIbox.Text == "BI" ||
                 string.IsNullOrWhiteSpace(Passwordbox.Text) || Passwordbox.Text == "Password" ||
                 string.IsNullOrWhiteSpace(Emailbox.Text) || Emailbox.Text == "Email")
@@ -44,6 +45,7 @@ namespace Dionisios
                 return;
             }
 
+            // Tenta realizar o login
             if (ConfirmLogin())
             {
                 Hide();
@@ -55,6 +57,8 @@ namespace Dionisios
                     Close();
             }
         }
+
+        // Método para confirmar o login
         private bool ConfirmLogin()
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -89,6 +93,7 @@ namespace Dionisios
             }
             return false;
         }
+
         private void BIBox_Click(object sender, EventArgs e)
         {
             if (BIbox.Text == "BI")
@@ -97,6 +102,7 @@ namespace Dionisios
             }
             BIbox.ForeColor = Color.Black;
         }
+
         private void BIBox_Leave(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(BIbox.Text))
@@ -105,6 +111,8 @@ namespace Dionisios
                 BIbox.Text = "BI";
             }
         }
+
+        // Eventos de interação com o campo de texto Password
         private void Passwordbox_Click(object sender, EventArgs e)
         {
             if (Passwordbox.Text == "Password")
@@ -113,6 +121,7 @@ namespace Dionisios
             }
             Passwordbox.ForeColor = Color.Black;
         }
+
         private void Passwordbox_Leave(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(Passwordbox.Text))
@@ -121,6 +130,8 @@ namespace Dionisios
                 Passwordbox.Text = "Password";
             }
         }
+
+        // Eventos de interação com o campo de texto Email
         private void Emailbox_Click(object sender, EventArgs e)
         {
             if (Emailbox.Text == "Email")
@@ -129,6 +140,7 @@ namespace Dionisios
             }
             Emailbox.ForeColor = Color.Black;
         }
+
         private void Emailbox_Leave(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(Emailbox.Text))
@@ -137,6 +149,7 @@ namespace Dionisios
                 Emailbox.Text = "Email";
             }
         }
+
         private void Passwordbox_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == ' ')
@@ -144,6 +157,8 @@ namespace Dionisios
                 e.Handled = true;
             }
         }
+
+        // Evento para exibir/ocultar a senha
         private void PasscheckIcon_Click(object sender, EventArgs e)
         {
             if (Passwordbox.PasswordChar != '\0')

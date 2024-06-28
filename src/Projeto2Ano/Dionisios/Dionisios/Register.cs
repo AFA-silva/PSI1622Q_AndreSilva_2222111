@@ -70,6 +70,7 @@ namespace Dionisios
             Emailbox.ForeColor = Color.Black;
         }
 
+        // Eventos de saída dos campos de texto para restaurar o texto padrão se estiver vazio
         private void Passwordbox_Leave(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(Passwordbox.Text))
@@ -105,11 +106,10 @@ namespace Dionisios
                 BIbox.Text = "BI";
             }
         }
-
         private void BtnRegister_Click(object sender, EventArgs e)
         {
             Validations();
-            if(validationV == true) { return; }
+            if (validationV == true) { return; }
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 string query = "INSERT INTO UserAccount (Username, Password, Role, Email, BI) VALUES (@Username, @Password, @Role, @Email, @BI)";
@@ -121,7 +121,7 @@ namespace Dionisios
                     command.Parameters.AddWithValue("@Email", Emailbox.Text);
                     command.Parameters.AddWithValue("@BI", BIbox.Text);
                     try
-                    {                      
+                    {
                         connection.Open();
                         int rowsAffected = command.ExecuteNonQuery();
                         MessageBox.Show("Registro inserido com sucesso!");
@@ -135,7 +135,6 @@ namespace Dionisios
                 }
             }
         }
-
         private void Passwordbox_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == ' ')
@@ -144,19 +143,22 @@ namespace Dionisios
             }
         }
 
+        // Evento para exibir/ocultar a senha
         private void PasscheckIcon_Click(object sender, EventArgs e)
         {
             if (Passwordbox.PasswordChar != '\0')
             {
-                Passwordbox.PasswordChar = '\0'; 
-                PasscheckIcon.Image = Properties.Resources.olhoF; 
+                Passwordbox.PasswordChar = '\0';
+                PasscheckIcon.Image = Properties.Resources.olhoF;
             }
             else
             {
-                Passwordbox.PasswordChar = '*'; 
+                Passwordbox.PasswordChar = '*';
                 PasscheckIcon.Image = Properties.Resources.olhoA;
             }
         }
+
+        // Método para validar o formato do email
         private bool IsValidEmail(string email)
         {
             try
@@ -167,11 +169,14 @@ namespace Dionisios
             catch
             {
                 return false;
-            }   
+            }
         }
+
+        // Método para validar os dados de entrada
         private void Validations()
         {
             validationV = false;
+            // Verifica se todos os campos estão preenchidos corretamente
             if (string.IsNullOrWhiteSpace(UsernameBox.Text) || string.IsNullOrWhiteSpace(Passwordbox.Text)
                 || string.IsNullOrWhiteSpace(Emailbox.Text) || string.IsNullOrWhiteSpace(BIbox.Text) ||
                 UsernameBox.Text == "Username" || Passwordbox.Text == "Password" || Emailbox.Text == "Email" || BIbox.Text == "BI")
@@ -180,29 +185,32 @@ namespace Dionisios
                 validationV = true;
                 return;
             }
+            // Verifica se o BI tem 8 dígitos
             if (BIbox.TextLength != 8)
             {
-                MessageBox.Show("Your BI must contain 8 numbers!\nVerify your BI");
+                MessageBox.Show("Seu BI deve conter 8 números!\nVerifique seu BI");
                 validationV = true;
                 return;
             }
-
+            // Verifica se o BI contém apenas números
             foreach (char c in BIbox.Text)
             {
                 if (!char.IsDigit(c))
                 {
-                    MessageBox.Show("Your BI must contain only Numbers!\nVerify your BI");
+                    MessageBox.Show("Seu BI deve conter apenas números!\nVerifique seu BI");
                     validationV = true;
                     return;
                 }
             }
+            // Verifica se o email é válido
             if (!IsValidEmail(Emailbox.Text))
             {
-                MessageBox.Show("Inválid Email!\nPlease check your email");
+                MessageBox.Show("Email inválido!\nPor favor, verifique seu email");
                 validationV = true;
                 return;
             }
 
+            // Verifica se o BI já está registrado no banco de dados
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 string query = "SELECT COUNT(*) FROM UserAccount WHERE BI = @BI";
@@ -213,12 +221,13 @@ namespace Dionisios
                     int count = (int)command.ExecuteScalar();
                     if (count > 0)
                     {
-                        MessageBox.Show("This BI is already registred!\n");
+                        MessageBox.Show("Este BI já está registrado!\n");
                         validationV = true;
                         return;
                     }
                 }
             }
+            // Verifica se o email já está registrado no banco de dados
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 string query = "SELECT COUNT(*) FROM UserAccount WHERE EMAIL = @EMAIL";
@@ -229,7 +238,7 @@ namespace Dionisios
                     int count = (int)command.ExecuteScalar();
                     if (count > 0)
                     {
-                        MessageBox.Show("This Email is already Registred!\nTry another one.");
+                        MessageBox.Show("Este email já está registrado!\nTente outro.");
                         validationV = true;
                         return;
                     }
