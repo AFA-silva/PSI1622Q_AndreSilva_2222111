@@ -29,20 +29,16 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.btnHome = new System.Windows.Forms.Button();
             this.StockBtn = new System.Windows.Forms.Button();
             this.IngredientAddBtn = new System.Windows.Forms.Button();
             this.UpdateIngBtn = new System.Windows.Forms.Button();
-            this.IngImageBox = new System.Windows.Forms.PictureBox();
             this.IngDescriptionBox = new System.Windows.Forms.RichTextBox();
             this.IngNameBox = new System.Windows.Forms.TextBox();
             this.IngUnitBox = new System.Windows.Forms.TextBox();
@@ -67,11 +63,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.TabStock = new System.Windows.Forms.TabPage();
             this.IngPriceBox = new System.Windows.Forms.TextBox();
+            this.IngImageBox = new System.Windows.Forms.PictureBox();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.TabDrinks = new System.Windows.Forms.TabPage();
             this.DrinkMaker = new System.Windows.Forms.Button();
             this.QtdBox = new System.Windows.Forms.TextBox();
             this.DIrichbox = new System.Windows.Forms.RichTextBox();
-            this.DIpicture = new System.Windows.Forms.PictureBox();
             this.AddBtn = new System.Windows.Forms.Button();
             this.RemoverBtn = new System.Windows.Forms.Button();
             this.FinishBtn = new System.Windows.Forms.Button();
@@ -83,7 +80,6 @@
             this.BtnNewDrink = new System.Windows.Forms.Button();
             this.DrinkNameBox = new System.Windows.Forms.TextBox();
             this.BtnUpdateDrink = new System.Windows.Forms.Button();
-            this.DrinkImageBox = new System.Windows.Forms.PictureBox();
             this.DrinkPriceBox = new System.Windows.Forms.TextBox();
             this.BtnDeleteDrink = new System.Windows.Forms.Button();
             this.DrinkGridView = new System.Windows.Forms.DataGridView();
@@ -92,13 +88,21 @@
             this.ColImage2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.ColPrice2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.drinksInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.DIpicture = new System.Windows.Forms.PictureBox();
+            this.DrinkImageBox = new System.Windows.Forms.PictureBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.TabPopular = new System.Windows.Forms.TabPage();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.ChartBebidas = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.DrinksGrid = new System.Windows.Forms.Button();
+            this.IngredientsGrid = new System.Windows.Forms.Button();
+            this.Chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.TabIncome = new System.Windows.Forms.TabPage();
-            this.chart3 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.btnDespesas = new System.Windows.Forms.Button();
+            this.btnReceita = new System.Windows.Forms.Button();
+            this.ChartIncome = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.TabEmployees = new System.Windows.Forms.TabPage();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
@@ -126,24 +130,29 @@
             this.ingredientsInfoTableAdapter = new Dionisios.DionisiosDBDataSetTableAdapters.IngredientsInfoTableAdapter();
             this.drinksInfoTableAdapter = new Dionisios.DionisiosDBDataSetTableAdapters.DrinksInfoTableAdapter();
             this.userAccountTableAdapter = new Dionisios.DionisiosDBDataSetTableAdapters.UserAccountTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.IngImageBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.IngredientGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ingredientsInfoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dionisiosDBDataSet)).BeginInit();
             this.Menu.SuspendLayout();
             this.TabHome.SuspendLayout();
             this.TabStock.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.IngImageBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.TabDrinks.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DIpicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DrinksIngredientsGrid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DrinkImageBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DrinkGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.drinksInfoBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DIpicture)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DrinkImageBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.TabPopular.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ChartBebidas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Chart)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.TabIncome.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chart3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ChartIncome)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.TabEmployees.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.UsersGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.userAccountBindingSource)).BeginInit();
@@ -201,24 +210,13 @@
             this.UpdateIngBtn.UseVisualStyleBackColor = true;
             this.UpdateIngBtn.Click += new System.EventHandler(this.UpdateIngBtn_Click);
             // 
-            // IngImageBox
-            // 
-            this.IngImageBox.Image = global::Dionisios.Properties.Resources.Captura_de_ecrã_2024_05_21_144614;
-            this.IngImageBox.Location = new System.Drawing.Point(252, 244);
-            this.IngImageBox.Name = "IngImageBox";
-            this.IngImageBox.Size = new System.Drawing.Size(173, 154);
-            this.IngImageBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.IngImageBox.TabIndex = 21;
-            this.IngImageBox.TabStop = false;
-            this.IngImageBox.Click += new System.EventHandler(this.NewIngImage_Click);
-            // 
             // IngDescriptionBox
             // 
             this.IngDescriptionBox.Location = new System.Drawing.Point(13, 244);
             this.IngDescriptionBox.Name = "IngDescriptionBox";
             this.IngDescriptionBox.Size = new System.Drawing.Size(222, 98);
             this.IngDescriptionBox.TabIndex = 22;
-            this.IngDescriptionBox.Text = "";
+            this.IngDescriptionBox.Text = "Description";
             // 
             // IngNameBox
             // 
@@ -226,6 +224,7 @@
             this.IngNameBox.Name = "IngNameBox";
             this.IngNameBox.Size = new System.Drawing.Size(100, 20);
             this.IngNameBox.TabIndex = 23;
+            this.IngNameBox.Text = "Name";
             // 
             // IngUnitBox
             // 
@@ -233,6 +232,7 @@
             this.IngUnitBox.Name = "IngUnitBox";
             this.IngUnitBox.Size = new System.Drawing.Size(100, 20);
             this.IngUnitBox.TabIndex = 24;
+            this.IngUnitBox.Text = "Unit";
             // 
             // IngQuantityBox
             // 
@@ -240,6 +240,7 @@
             this.IngQuantityBox.Name = "IngQuantityBox";
             this.IngQuantityBox.Size = new System.Drawing.Size(100, 20);
             this.IngQuantityBox.TabIndex = 25;
+            this.IngQuantityBox.Text = "Quantity";
             // 
             // BtnDeleteIng
             // 
@@ -447,6 +448,7 @@
             this.TabStock.Controls.Add(this.IngUnitBox);
             this.TabStock.Controls.Add(this.IngQuantityBox);
             this.TabStock.Controls.Add(this.BtnDeleteIng);
+            this.TabStock.Controls.Add(this.pictureBox6);
             this.TabStock.Location = new System.Drawing.Point(4, 4);
             this.TabStock.Name = "TabStock";
             this.TabStock.Padding = new System.Windows.Forms.Padding(3);
@@ -460,6 +462,27 @@
             this.IngPriceBox.Name = "IngPriceBox";
             this.IngPriceBox.Size = new System.Drawing.Size(100, 20);
             this.IngPriceBox.TabIndex = 28;
+            this.IngPriceBox.Text = "Price";
+            // 
+            // IngImageBox
+            // 
+            this.IngImageBox.Image = global::Dionisios.Properties.Resources.ImageHere;
+            this.IngImageBox.Location = new System.Drawing.Point(252, 244);
+            this.IngImageBox.Name = "IngImageBox";
+            this.IngImageBox.Size = new System.Drawing.Size(173, 154);
+            this.IngImageBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.IngImageBox.TabIndex = 21;
+            this.IngImageBox.TabStop = false;
+            this.IngImageBox.Click += new System.EventHandler(this.NewIngImage_Click);
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(34)))), ((int)(((byte)(41)))));
+            this.pictureBox6.Location = new System.Drawing.Point(7, 230);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(546, 181);
+            this.pictureBox6.TabIndex = 29;
+            this.pictureBox6.TabStop = false;
             // 
             // TabDrinks
             // 
@@ -467,7 +490,6 @@
             this.TabDrinks.Controls.Add(this.DrinkMaker);
             this.TabDrinks.Controls.Add(this.QtdBox);
             this.TabDrinks.Controls.Add(this.DIrichbox);
-            this.TabDrinks.Controls.Add(this.DIpicture);
             this.TabDrinks.Controls.Add(this.AddBtn);
             this.TabDrinks.Controls.Add(this.RemoverBtn);
             this.TabDrinks.Controls.Add(this.FinishBtn);
@@ -475,10 +497,13 @@
             this.TabDrinks.Controls.Add(this.BtnNewDrink);
             this.TabDrinks.Controls.Add(this.DrinkNameBox);
             this.TabDrinks.Controls.Add(this.BtnUpdateDrink);
-            this.TabDrinks.Controls.Add(this.DrinkImageBox);
             this.TabDrinks.Controls.Add(this.DrinkPriceBox);
             this.TabDrinks.Controls.Add(this.BtnDeleteDrink);
             this.TabDrinks.Controls.Add(this.DrinkGridView);
+            this.TabDrinks.Controls.Add(this.DIpicture);
+            this.TabDrinks.Controls.Add(this.DrinkImageBox);
+            this.TabDrinks.Controls.Add(this.pictureBox4);
+            this.TabDrinks.Controls.Add(this.pictureBox5);
             this.TabDrinks.Location = new System.Drawing.Point(4, 4);
             this.TabDrinks.Name = "TabDrinks";
             this.TabDrinks.Padding = new System.Windows.Forms.Padding(3);
@@ -502,6 +527,7 @@
             this.QtdBox.Name = "QtdBox";
             this.QtdBox.Size = new System.Drawing.Size(71, 20);
             this.QtdBox.TabIndex = 43;
+            this.QtdBox.Text = "Quantity";
             // 
             // DIrichbox
             // 
@@ -512,18 +538,9 @@
             this.DIrichbox.TabIndex = 42;
             this.DIrichbox.Text = "";
             // 
-            // DIpicture
-            // 
-            this.DIpicture.Image = global::Dionisios.Properties.Resources.Captura_de_ecrã_2024_05_21_144614;
-            this.DIpicture.Location = new System.Drawing.Point(565, 235);
-            this.DIpicture.Name = "DIpicture";
-            this.DIpicture.Size = new System.Drawing.Size(122, 105);
-            this.DIpicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.DIpicture.TabIndex = 41;
-            this.DIpicture.TabStop = false;
-            // 
             // AddBtn
             // 
+            this.AddBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AddBtn.Location = new System.Drawing.Point(484, 235);
             this.AddBtn.Name = "AddBtn";
             this.AddBtn.Size = new System.Drawing.Size(75, 21);
@@ -619,6 +636,7 @@
             this.DrinkNameBox.Name = "DrinkNameBox";
             this.DrinkNameBox.Size = new System.Drawing.Size(100, 20);
             this.DrinkNameBox.TabIndex = 33;
+            this.DrinkNameBox.Text = "Name";
             // 
             // BtnUpdateDrink
             // 
@@ -630,23 +648,13 @@
             this.BtnUpdateDrink.UseVisualStyleBackColor = true;
             this.BtnUpdateDrink.Click += new System.EventHandler(this.UpdateDrinkBtn_Click);
             // 
-            // DrinkImageBox
-            // 
-            this.DrinkImageBox.Image = global::Dionisios.Properties.Resources.Captura_de_ecrã_2024_05_21_144614;
-            this.DrinkImageBox.Location = new System.Drawing.Point(13, 245);
-            this.DrinkImageBox.Name = "DrinkImageBox";
-            this.DrinkImageBox.Size = new System.Drawing.Size(197, 186);
-            this.DrinkImageBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.DrinkImageBox.TabIndex = 31;
-            this.DrinkImageBox.TabStop = false;
-            this.DrinkImageBox.Click += new System.EventHandler(this.DrinkImageBox_Click);
-            // 
             // DrinkPriceBox
             // 
             this.DrinkPriceBox.Location = new System.Drawing.Point(216, 273);
             this.DrinkPriceBox.Name = "DrinkPriceBox";
             this.DrinkPriceBox.Size = new System.Drawing.Size(100, 20);
             this.DrinkPriceBox.TabIndex = 34;
+            this.DrinkPriceBox.Text = "Price";
             // 
             // BtnDeleteDrink
             // 
@@ -713,13 +721,53 @@
             this.drinksInfoBindingSource.DataMember = "DrinksInfo";
             this.drinksInfoBindingSource.DataSource = this.dionisiosDBDataSet;
             // 
+            // DIpicture
+            // 
+            this.DIpicture.Image = global::Dionisios.Properties.Resources.ImageHere;
+            this.DIpicture.Location = new System.Drawing.Point(565, 235);
+            this.DIpicture.Name = "DIpicture";
+            this.DIpicture.Size = new System.Drawing.Size(122, 105);
+            this.DIpicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.DIpicture.TabIndex = 41;
+            this.DIpicture.TabStop = false;
+            // 
+            // DrinkImageBox
+            // 
+            this.DrinkImageBox.Image = global::Dionisios.Properties.Resources.ImageHere;
+            this.DrinkImageBox.Location = new System.Drawing.Point(13, 245);
+            this.DrinkImageBox.Name = "DrinkImageBox";
+            this.DrinkImageBox.Size = new System.Drawing.Size(197, 186);
+            this.DrinkImageBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.DrinkImageBox.TabIndex = 31;
+            this.DrinkImageBox.TabStop = false;
+            this.DrinkImageBox.Click += new System.EventHandler(this.DrinkImageBox_Click);
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(34)))), ((int)(((byte)(41)))));
+            this.pictureBox4.Location = new System.Drawing.Point(480, 231);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(214, 202);
+            this.pictureBox4.TabIndex = 45;
+            this.pictureBox4.TabStop = false;
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(34)))), ((int)(((byte)(41)))));
+            this.pictureBox5.Location = new System.Drawing.Point(6, 235);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(316, 212);
+            this.pictureBox5.TabIndex = 46;
+            this.pictureBox5.TabStop = false;
+            // 
             // TabPopular
             // 
             this.TabPopular.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(63)))), ((int)(((byte)(77)))));
-            this.TabPopular.Controls.Add(this.button3);
-            this.TabPopular.Controls.Add(this.button2);
-            this.TabPopular.Controls.Add(this.chart2);
-            this.TabPopular.Controls.Add(this.ChartBebidas);
+            this.TabPopular.Controls.Add(this.pictureBox1);
+            this.TabPopular.Controls.Add(this.DrinksGrid);
+            this.TabPopular.Controls.Add(this.IngredientsGrid);
+            this.TabPopular.Controls.Add(this.Chart);
+            this.TabPopular.Controls.Add(this.pictureBox2);
             this.TabPopular.Location = new System.Drawing.Point(4, 4);
             this.TabPopular.Name = "TabPopular";
             this.TabPopular.Padding = new System.Windows.Forms.Padding(3);
@@ -727,62 +775,72 @@
             this.TabPopular.TabIndex = 3;
             this.TabPopular.Text = "Popular";
             // 
-            // button3
+            // pictureBox1
             // 
-            this.button3.Location = new System.Drawing.Point(53, 328);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
+            this.pictureBox1.Location = new System.Drawing.Point(-22, -49);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(100, 50);
+            this.pictureBox1.TabIndex = 4;
+            this.pictureBox1.TabStop = false;
             // 
-            // button2
+            // DrinksGrid
             // 
-            this.button2.Location = new System.Drawing.Point(53, 284);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
+            this.DrinksGrid.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.DrinksGrid.Location = new System.Drawing.Point(30, 178);
+            this.DrinksGrid.Name = "DrinksGrid";
+            this.DrinksGrid.Size = new System.Drawing.Size(151, 35);
+            this.DrinksGrid.TabIndex = 3;
+            this.DrinksGrid.Text = "Drinks";
+            this.DrinksGrid.UseVisualStyleBackColor = true;
+            this.DrinksGrid.Click += new System.EventHandler(this.DrinksGrid_Click);
             // 
-            // chart2
+            // IngredientsGrid
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart2.Legends.Add(legend1);
-            this.chart2.Location = new System.Drawing.Point(-52, 85);
-            this.chart2.Name = "chart2";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chart2.Series.Add(series1);
-            this.chart2.Size = new System.Drawing.Size(500, 329);
-            this.chart2.TabIndex = 1;
-            this.chart2.Text = "chart2";
+            this.IngredientsGrid.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.IngredientsGrid.Location = new System.Drawing.Point(30, 228);
+            this.IngredientsGrid.Name = "IngredientsGrid";
+            this.IngredientsGrid.Size = new System.Drawing.Size(151, 35);
+            this.IngredientsGrid.TabIndex = 2;
+            this.IngredientsGrid.Text = "Ingredients";
+            this.IngredientsGrid.UseVisualStyleBackColor = true;
+            this.IngredientsGrid.Click += new System.EventHandler(this.IngredientsGrid_Click);
             // 
-            // ChartBebidas
+            // Chart
             // 
-            this.ChartBebidas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(63)))), ((int)(((byte)(77)))));
-            this.ChartBebidas.BackImageAlignment = System.Windows.Forms.DataVisualization.Charting.ChartImageAlignmentStyle.TopRight;
-            this.ChartBebidas.BorderlineColor = System.Drawing.SystemColors.InactiveCaption;
-            chartArea2.Name = "ChartArea1";
-            this.ChartBebidas.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.ChartBebidas.Legends.Add(legend2);
-            this.ChartBebidas.Location = new System.Drawing.Point(380, 108);
-            this.ChartBebidas.Name = "ChartBebidas";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.ChartBebidas.Series.Add(series2);
-            this.ChartBebidas.Size = new System.Drawing.Size(503, 332);
-            this.ChartBebidas.TabIndex = 0;
+            this.Chart.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(63)))), ((int)(((byte)(77)))));
+            this.Chart.BackImageAlignment = System.Windows.Forms.DataVisualization.Charting.ChartImageAlignmentStyle.TopRight;
+            this.Chart.BorderlineColor = System.Drawing.SystemColors.InactiveCaption;
+            chartArea3.Name = "ChartArea1";
+            this.Chart.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.Chart.Legends.Add(legend3);
+            this.Chart.Location = new System.Drawing.Point(187, 33);
+            this.Chart.Name = "Chart";
+            series3.ChartArea = "ChartArea1";
+            series3.IsVisibleInLegend = false;
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            this.Chart.Series.Add(series3);
+            this.Chart.Size = new System.Drawing.Size(401, 404);
+            this.Chart.TabIndex = 0;
+            this.Chart.Visible = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(34)))), ((int)(((byte)(41)))));
+            this.pictureBox2.Location = new System.Drawing.Point(18, 165);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(174, 111);
+            this.pictureBox2.TabIndex = 5;
+            this.pictureBox2.TabStop = false;
             // 
             // TabIncome
             // 
             this.TabIncome.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(63)))), ((int)(((byte)(77)))));
-            this.TabIncome.Controls.Add(this.chart3);
+            this.TabIncome.Controls.Add(this.btnDespesas);
+            this.TabIncome.Controls.Add(this.btnReceita);
+            this.TabIncome.Controls.Add(this.ChartIncome);
+            this.TabIncome.Controls.Add(this.pictureBox3);
             this.TabIncome.Location = new System.Drawing.Point(4, 4);
             this.TabIncome.Name = "TabIncome";
             this.TabIncome.Padding = new System.Windows.Forms.Padding(3);
@@ -790,21 +848,53 @@
             this.TabIncome.TabIndex = 4;
             this.TabIncome.Text = "Income";
             // 
-            // chart3
+            // btnDespesas
             // 
-            chartArea3.Name = "ChartArea1";
-            this.chart3.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.chart3.Legends.Add(legend3);
-            this.chart3.Location = new System.Drawing.Point(173, 82);
-            this.chart3.Name = "chart3";
-            series3.ChartArea = "ChartArea1";
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            this.chart3.Series.Add(series3);
-            this.chart3.Size = new System.Drawing.Size(371, 291);
-            this.chart3.TabIndex = 0;
-            this.chart3.Text = "chart3";
+            this.btnDespesas.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.btnDespesas.Location = new System.Drawing.Point(36, 207);
+            this.btnDespesas.Name = "btnDespesas";
+            this.btnDespesas.Size = new System.Drawing.Size(151, 35);
+            this.btnDespesas.TabIndex = 2;
+            this.btnDespesas.Text = "Despesas";
+            this.btnDespesas.UseVisualStyleBackColor = true;
+            this.btnDespesas.Click += new System.EventHandler(this.btnDespesas_Click);
+            // 
+            // btnReceita
+            // 
+            this.btnReceita.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.btnReceita.Location = new System.Drawing.Point(36, 155);
+            this.btnReceita.Name = "btnReceita";
+            this.btnReceita.Size = new System.Drawing.Size(151, 35);
+            this.btnReceita.TabIndex = 1;
+            this.btnReceita.Text = "Receita";
+            this.btnReceita.UseVisualStyleBackColor = true;
+            this.btnReceita.Click += new System.EventHandler(this.btnReceita_Click);
+            // 
+            // ChartIncome
+            // 
+            this.ChartIncome.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(63)))), ((int)(((byte)(77)))));
+            chartArea4.Name = "ChartArea1";
+            this.ChartIncome.ChartAreas.Add(chartArea4);
+            legend4.Name = "Legend1";
+            this.ChartIncome.Legends.Add(legend4);
+            this.ChartIncome.Location = new System.Drawing.Point(216, 34);
+            this.ChartIncome.Name = "ChartIncome";
+            series4.ChartArea = "ChartArea1";
+            series4.Legend = "Legend1";
+            series4.Name = "Series1";
+            this.ChartIncome.Series.Add(series4);
+            this.ChartIncome.Size = new System.Drawing.Size(372, 397);
+            this.ChartIncome.TabIndex = 0;
+            this.ChartIncome.Text = "chart3";
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(34)))), ((int)(((byte)(41)))));
+            this.pictureBox3.Location = new System.Drawing.Point(23, 146);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(175, 109);
+            this.pictureBox3.TabIndex = 4;
+            this.pictureBox3.TabStop = false;
             // 
             // TabEmployees
             // 
@@ -1088,7 +1178,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ManagerPage";
             this.Load += new System.EventHandler(this.ManagerPage_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.IngImageBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.IngredientGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ingredientsInfoBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dionisiosDBDataSet)).EndInit();
@@ -1097,18 +1186,24 @@
             this.TabHome.PerformLayout();
             this.TabStock.ResumeLayout(false);
             this.TabStock.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.IngImageBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.TabDrinks.ResumeLayout(false);
             this.TabDrinks.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DIpicture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DrinksIngredientsGrid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DrinkImageBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DrinkGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.drinksInfoBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DIpicture)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DrinkImageBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.TabPopular.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.chart2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ChartBebidas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Chart)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.TabIncome.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.chart3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ChartIncome)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.TabEmployees.ResumeLayout(false);
             this.TabEmployees.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.UsersGridView)).EndInit();
@@ -1209,11 +1304,18 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn EmailColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn RoleColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn BIColumn;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart2;
-        private System.Windows.Forms.DataVisualization.Charting.Chart ChartBebidas;
+        private System.Windows.Forms.Button DrinksGrid;
+        private System.Windows.Forms.Button IngredientsGrid;
+        private System.Windows.Forms.DataVisualization.Charting.Chart Chart;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart3;
+        private System.Windows.Forms.DataVisualization.Charting.Chart ChartIncome;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Button btnDespesas;
+        private System.Windows.Forms.Button btnReceita;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.PictureBox pictureBox5;
+        private System.Windows.Forms.PictureBox pictureBox6;
     }
 }

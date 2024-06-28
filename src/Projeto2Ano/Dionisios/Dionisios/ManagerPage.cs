@@ -8,6 +8,7 @@ using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace Dionisios
 {
@@ -15,7 +16,7 @@ namespace Dionisios
     {
         string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=DionisiosDB;Integrated Security=True";
         private Image selectedImage;
-        public int IDing, IDdrink;
+        public int IDing, IDdrink, Confirm;
         private int ingId;
         private int drinkId;
         public bool ValidationV { get; set; }
@@ -41,6 +42,7 @@ namespace Dionisios
             }
             if (Form1.UserRole == "EMPLOYEE")
             {
+                label1.Location = new Point(-7, 184);
                 AddBtn.Location = new Point(356, 235);
                 RemoverBtn.Location = new Point(356, 262);
                 FinishBtn.Location = new Point(356, 289);
@@ -54,23 +56,58 @@ namespace Dionisios
             }
         }
 
-        // Stock Menu Code -----------------------------------------------------------------------------------------------------------------------
+        // Page Loadres Code -------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+        private void StockBtn_Click(object sender, EventArgs e)
+        {
+            Menu.SelectedIndex = 1;
+        }
+        private void btnHome_Click(object sender, EventArgs e)
+        {
+            Managerclose = 1;
+            this.Close();
+        }
+        private void btnDrinks_Click(object sender, EventArgs e)
+        {
+            Menu.SelectedIndex = 2;
+        }
+        private void btnPopular_Click(object sender, EventArgs e)
+        {
+            Menu.SelectedIndex = 3;
+        }
+        private void btnIncome_Click(object sender, EventArgs e)
+        {
+            Menu.SelectedIndex = 4;
+        }
+        private void Employees_Click(object sender, EventArgs e)
+        {
+            Menu.SelectedIndex = 5;
+        }
+
+        // Stock Menu Code ---------------------------------------------------------------------------------------------------------------------------------------------------------------
 
         private void IngredientAddBtn_Click(object sender, EventArgs e)
         {
             if (IngNameBox.Text != "" && IngUnitBox.Text != "" && selectedImage != null)
             {
+                Confirm = 0;
                 AddIngredient();
-                RefreshGridView();
-                ClearForm();
-                MessageBox.Show("Ingredient added successfully!");
+                if(Confirm == 1)
+                {
+                    
+                }
+                else
+                {
+                    RefreshGridView();
+                    ClearForm();
+                    MessageBox.Show("Ingredient added successfully!");
+                }
             }
             else
             {
                 MessageBox.Show("Please fill in all required fields.");
             }
         }
-
         private void AddIngredient()
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -80,16 +117,18 @@ namespace Dionisios
                 command.Parameters.AddWithValue("@Name", IngNameBox.Text);
                 command.Parameters.AddWithValue("@Unit", IngUnitBox.Text);
                 command.Parameters.AddWithValue("@Description", IngDescriptionBox.Text);
-                float quantity;
+
+                int quantity;
                 float price;
-                if (float.TryParse(IngQuantityBox.Text, out quantity) && float.TryParse(IngPriceBox.Text, out price))
+                if (int.TryParse(IngQuantityBox.Text, out quantity) && float.TryParse(IngPriceBox.Text, out price))
                 {
                     command.Parameters.AddWithValue("@Quantity", quantity);
-                    command.Parameters.AddWithValue("@Price", price);
+                    command.Parameters.AddWithValue("@Price", Math.Round(price, 2));
                 }
                 else
                 {
-                    MessageBox.Show("Please enter a valid floating point number for the quantity/price.");
+                    MessageBox.Show("Please enter a valid integer for the quantity and a valid number for the price.");
+                    Confirm = 1;
                     return;
                 }
 
@@ -100,7 +139,6 @@ namespace Dionisios
                 command.ExecuteNonQuery();
             }
         }
-
         private void RefreshGridView()
         {
             UsersGridView.DataSource = null;
@@ -159,17 +197,6 @@ namespace Dionisios
             }
         }
 
-        private void StockBtn_Click(object sender, EventArgs e)
-        {
-            Menu.SelectedIndex = 1;
-        }
-
-        private void btnHome_Click(object sender, EventArgs e)
-        {
-            Managerclose = 1;
-            this.Close();
-        }
-
         private void UpdateIngBtn_Click(object sender, EventArgs e)
         {
             if (IngNameBox.Text != "" && IngUnitBox.Text != "" && IngQuantityBox.Text != "")
@@ -192,18 +219,38 @@ namespace Dionisios
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    string query = "DELETE FROM IngredientsInfo WHERE Id = @Id";
-                    SqlCommand command = new SqlCommand(query, connection);
-                    command.Parameters.AddWithValue("@Id", ingId);
+                    SqlTransaction transaction = null;
 
                     try
                     {
                         connection.Open();
-                        command.ExecuteNonQuery();
+                        transaction = connection.BeginTransaction();
+
+                        string deleteDrinksIngredientsQuery = "DELETE FROM DrinksIngredients WHERE ID_Ingredients = @Id";
+                        SqlCommand deleteDrinksIngredientsCommand = new SqlCommand(deleteDrinksIngredientsQuery, connection, transaction);
+                        deleteDrinksIngredientsCommand.Parameters.AddWithValue("@Id", ingId);
+                        deleteDrinksIngredientsCommand.ExecuteNonQuery();
+
+                        string deleteIngredientUsageQuery = "DELETE FROM IngredientUsage WHERE ID_Ingredient = @Id";
+                        SqlCommand deleteIngredientUsageCommand = new SqlCommand(deleteIngredientUsageQuery, connection, transaction);
+                        deleteIngredientUsageCommand.Parameters.AddWithValue("@Id", ingId);
+                        deleteIngredientUsageCommand.ExecuteNonQuery();
+
+                        string deleteIngredientQuery = "DELETE FROM IngredientsInfo WHERE Id = @Id";
+                        SqlCommand deleteIngredientCommand = new SqlCommand(deleteIngredientQuery, connection, transaction);
+                        deleteIngredientCommand.Parameters.AddWithValue("@Id", ingId);
+                        deleteIngredientCommand.ExecuteNonQuery();
+
+                        transaction.Commit();
                         MessageBox.Show("Ingredient deleted successfully!");
                     }
                     catch (SqlException ex)
                     {
+                        if (transaction != null)
+                        {
+                            transaction.Rollback();
+                        }
+
                         MessageBox.Show("Error deleting ingredient: " + ex.Message);
                     }
                     finally
@@ -215,7 +262,6 @@ namespace Dionisios
                 ClearForm();
             }
         }
-
         private void UpdateIngredient()
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -258,11 +304,11 @@ namespace Dionisios
 
         private void ClearForm()
         {
-            IngNameBox.Text = "";
-            IngDescriptionBox.Text = "";
-            IngUnitBox.Text = "";
-            IngQuantityBox.Text = "";
-            IngPriceBox.Text = "";
+            IngNameBox.Text = "Nome";
+            IngDescriptionBox.Text = "Descrição";
+            IngUnitBox.Text = "Unidade";
+            IngQuantityBox.Text = "Quantidade";
+            IngPriceBox.Text = "Preço";
             IngImageBox.Image = Properties.Resources.Captura_de_ecrã_2024_05_21_144614;
             selectedImage = null;
             currentImageHash = null;
@@ -285,7 +331,6 @@ namespace Dionisios
                 }
             }
         }
-
         private byte[] ImageToByteArray(Image image, ImageFormat format)
         {
             using (MemoryStream ms = new MemoryStream())
@@ -295,27 +340,8 @@ namespace Dionisios
             }
         }
 
+        // Drinks Menu Code -------------------------------------------------------------------------------------------------------------------------          
 
-
-
-
-
-
-
-        // Drinks Menu Code -------------------------------------------------------------------------------------------------------------------------
-                
-
-
-
-
-
-
-
-
-        private void btnDrinks_Click(object sender, EventArgs e)
-        {
-            Menu.SelectedIndex = 2;
-        }
         private void AddDrinkBtn_Click(object sender, EventArgs e)
         {
             if (DrinkNameBox.Text != "" && DrinkPriceBox.Text != "" && selectedImage != null)
@@ -341,7 +367,7 @@ namespace Dionisios
                 float price;
                 if (float.TryParse(DrinkPriceBox.Text, out price))
                 {
-                    command.Parameters.AddWithValue("@Price", price);
+                    command.Parameters.AddWithValue("@Price", Math.Round(price, 2)); // Formatando o preço com 2 casas decimais
                 }
                 else
                 {
@@ -413,23 +439,41 @@ namespace Dionisios
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
+                    SqlTransaction transaction = null;
+
                     try
                     {
                         connection.Open();
-                        string deleteAssociationsQuery = "DELETE FROM DrinksIngredients WHERE ID_Drinks = @ID_Drinks";
-                        SqlCommand deleteAssociationsCommand = new SqlCommand(deleteAssociationsQuery, connection);
-                        deleteAssociationsCommand.Parameters.AddWithValue("@ID_Drinks", drinkId);
-                        deleteAssociationsCommand.ExecuteNonQuery();
+                        transaction = connection.BeginTransaction();
 
+                        // Primeiro, remover as associações da tabela DrinksIngredients
+                        string deleteDrinksIngredientsQuery = "DELETE FROM DrinksIngredients WHERE ID_Drinks = @ID_Drinks";
+                        SqlCommand deleteDrinksIngredientsCommand = new SqlCommand(deleteDrinksIngredientsQuery, connection, transaction);
+                        deleteDrinksIngredientsCommand.Parameters.AddWithValue("@ID_Drinks", drinkId);
+                        deleteDrinksIngredientsCommand.ExecuteNonQuery();
+
+                        // Em seguida, remover as associações da tabela DrinkUsage
+                        string deleteDrinkUsageQuery = "DELETE FROM DrinkUsage WHERE ID_Drink = @ID_Drinks";
+                        SqlCommand deleteDrinkUsageCommand = new SqlCommand(deleteDrinkUsageQuery, connection, transaction);
+                        deleteDrinkUsageCommand.Parameters.AddWithValue("@ID_Drinks", drinkId);
+                        deleteDrinkUsageCommand.ExecuteNonQuery();
+
+                        // Finalmente, deletar a bebida da tabela DrinksInfo
                         string deleteDrinkQuery = "DELETE FROM DrinksInfo WHERE Id = @Id";
-                        SqlCommand deleteDrinkCommand = new SqlCommand(deleteDrinkQuery, connection);
+                        SqlCommand deleteDrinkCommand = new SqlCommand(deleteDrinkQuery, connection, transaction);
                         deleteDrinkCommand.Parameters.AddWithValue("@Id", drinkId);
                         deleteDrinkCommand.ExecuteNonQuery();
 
+                        transaction.Commit();
                         MessageBox.Show("Drink deleted successfully!");
                     }
                     catch (SqlException ex)
                     {
+                        if (transaction != null)
+                        {
+                            transaction.Rollback();
+                        }
+
                         MessageBox.Show("Error deleting drink: " + ex.Message);
                     }
                     finally
@@ -441,7 +485,6 @@ namespace Dionisios
                 ClearDrinkForm();
             }
         }
-
         private void ClearDrinkForm()
         {
             DrinkNameBox.Text = "";
@@ -536,25 +579,32 @@ namespace Dionisios
 
                 if (!string.IsNullOrEmpty(ingredientName) && !string.IsNullOrEmpty(quantity))
                 {
-                    bool ingredientAlreadyAdded = false;
-
-                    foreach (string line in DIrichbox.Lines)
+                    if (int.TryParse(quantity, out int parsedQuantity))
                     {
-                        if (line.StartsWith(ingredientName + " -"))
+                        bool ingredientAlreadyAdded = false;
+
+                        foreach (string line in DIrichbox.Lines)
                         {
-                            ingredientAlreadyAdded = true;
-                            break;
+                            if (line.StartsWith(ingredientName + " -"))
+                            {
+                                ingredientAlreadyAdded = true;
+                                break;
+                            }
                         }
-                    }
 
-                    if (!ingredientAlreadyAdded)
-                    {
-                        string entry = $"{ingredientName} - {quantity}";
-                        DIrichbox.AppendText(entry + Environment.NewLine);
+                        if (!ingredientAlreadyAdded)
+                        {
+                            string entry = $"{ingredientName} - {parsedQuantity}";
+                            DIrichbox.AppendText(entry + Environment.NewLine);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Ingredient already added.");
+                        }
                     }
                     else
                     {
-                        MessageBox.Show("Ingredient already added.");
+                        MessageBox.Show("Please enter a valid integer for the quantity.");
                     }
                 }
                 else
@@ -567,6 +617,7 @@ namespace Dionisios
                 MessageBox.Show("Please select an ingredient from the list.");
             }
         }
+
         private void RemoverBtn_Click(object sender, EventArgs e)
         {
             if (DIrichbox.SelectionLength > 0)
@@ -628,30 +679,50 @@ namespace Dionisios
                 {
                     if (!string.IsNullOrWhiteSpace(line))
                     {
-                        string ingredientName = line.Trim();
-                        int spaceIndex = ingredientName.IndexOf(' ');
-                        if (spaceIndex >= 0)
+                        // Extrair o nome e a quantidade do ingrediente do 'line'
+                        string[] parts = line.Split(new[] { " - " }, StringSplitOptions.None);
+                        if (parts.Length == 2)
                         {
-                            ingredientName = ingredientName.Substring(0, spaceIndex);
-                        }
-                        int ingId = GetIngredientIdByName(connection, ingredientName);
-                        if (ingId != -1) 
-                        {
-                            string query = "INSERT INTO DrinksIngredients (ID_Drinks, ID_Ingredients, Quantity) VALUES (@drinkId, @ingId, @Qtd)";
-                            SqlCommand command = new SqlCommand(query, connection);
-                            command.Parameters.AddWithValue("@drinkId", drinkId); 
-                            command.Parameters.AddWithValue("@ingId", ingId); 
-                            int Qtd = Convert.ToInt32(QtdBox.Text); 
-                            command.Parameters.AddWithValue("@Qtd", Qtd);
-                            command.ExecuteNonQuery();
-                        }
-                        else
-                        {
-                            MessageBox.Show($"Ingrediente '{ingredientName}' não encontrado no banco de dados.");
+                            string ingredientName = parts[0].Trim();
+                            if (int.TryParse(parts[1].Trim(), out int quantity))
+                            {
+                                int ingId = GetIngredientIdByName(connection, ingredientName);
+                                if (ingId != -1)
+                                {
+                                    if (!IngredientExists(connection, drinkId, ingId))
+                                    {
+                                        string query = "INSERT INTO DrinksIngredients (ID_Drinks, ID_Ingredients, Quantity) VALUES (@drinkId, @ingId, @Qtd)";
+                                        SqlCommand command = new SqlCommand(query, connection);
+                                        command.Parameters.AddWithValue("@drinkId", drinkId);
+                                        command.Parameters.AddWithValue("@ingId", ingId);
+                                        command.Parameters.AddWithValue("@Qtd", quantity);
+                                        command.ExecuteNonQuery();
+                                    }
+                                }
+                                else
+                                {
+                                    MessageBox.Show($"Ingrediente '{ingredientName}' não encontrado no banco de dados.");
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show($"Quantidade inválida para o ingrediente '{ingredientName}'.");
+                            }
                         }
                     }
                 }
             }
+            MessageBox.Show("Ingredientes adicionados com sucesso!!");
+        }
+
+        private bool IngredientExists(SqlConnection connection, int drinkId, int ingId)
+        {
+            string query = "SELECT COUNT(*) FROM DrinksIngredients WHERE ID_Drinks = @drinkId AND ID_Ingredients = @ingId";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@drinkId", drinkId);
+            command.Parameters.AddWithValue("@ingId", ingId);
+            int count = (int)command.ExecuteScalar();
+            return count > 0;
         }
 
         private int GetIngredientIdByName(SqlConnection connection, string ingredientName)
@@ -694,108 +765,7 @@ namespace Dionisios
             }
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        //
-        private void Employees_Click(object sender, EventArgs e)
-        {
-            Menu.SelectedIndex = 5;
-        }
-
-        //
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         // Employee Manager Menu ----------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-
 
         private void UsersGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -1147,17 +1117,6 @@ namespace Dionisios
                 }
             }
         }
-
-        private void btnPopular_Click(object sender, EventArgs e)
-        {
-            Menu.SelectedIndex = 3;
-        }
-
-        private void btnIncome_Click(object sender, EventArgs e)
-        {
-            Menu.SelectedIndex = 4;
-        }
-
         private bool ValidateEmail(string email)
         {
             try
@@ -1173,10 +1132,164 @@ namespace Dionisios
             }
         }
 
+        // Popular Menu Tab Code ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+        private void IngredientsGrid_Click(object sender, EventArgs e)
+        {
+            LoadPopularDrinks();
+            ConfigureChartAppearance();
+            Chart.Visible = true;
+        }
 
+        private void DrinksGrid_Click(object sender, EventArgs e)
+        {
+            LoadPopularIngredients();
+            ConfigureChartAppearance();
+            Chart.Visible = true;
+        }
 
+        private void LoadPopularDrinks()
+        {
+            Chart.Series.Clear();
+            Chart.ChartAreas.Clear();
 
-        // ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+            var series = new Series("Bebidas");
+            series.ChartType = SeriesChartType.Bar;
+            series.IsVisibleInLegend = false;
+            Chart.Series.Add(series);
+            Chart.ChartAreas.Add(new ChartArea("ChartArea"));
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string query = "SELECT d.Name, du.UsageCount FROM DrinkUsage du JOIN DrinksInfo d ON du.ID_Drink = d.ID ORDER BY du.UsageCount DESC";
+                SqlCommand command = new SqlCommand(query, connection);
+                connection.Open();
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        string drinkName = reader["Name"].ToString();
+                        int usageCount = Convert.ToInt32(reader["UsageCount"]);
+                        series.Points.AddXY(drinkName, usageCount);
+                    }
+                }
+            }
+        }
+        private void LoadPopularIngredients()
+        {
+            Chart.Series.Clear();
+            Chart.ChartAreas.Clear();
+
+            var series = new Series("Ingredientes");
+            series.ChartType = SeriesChartType.Bar;
+            series.IsVisibleInLegend = false;
+
+            Chart.Series.Add(series);
+            Chart.ChartAreas.Add(new ChartArea("ChartArea"));
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string query = "SELECT i.Name, iu.UsageCount FROM IngredientUsage iu JOIN IngredientsInfo i ON iu.ID_Ingredient = i.ID ORDER BY iu.UsageCount DESC";
+                SqlCommand command = new SqlCommand(query, connection);
+                connection.Open();
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        string ingredientName = reader["Name"].ToString();
+                        int usageCount = Convert.ToInt32(reader["UsageCount"]);
+                        series.Points.AddXY(ingredientName, usageCount);
+                    }
+                }
+            }
+        }
+
+        private void ConfigureChartAppearance()
+        {
+            Chart.ChartAreas[0].AxisX.LabelStyle.ForeColor = Color.White;
+            Chart.ChartAreas[0].AxisX.LabelStyle.Font = new Font("Arial", 12, FontStyle.Bold);
+            Chart.ChartAreas[0].AxisY.LabelStyle.ForeColor = Color.White;
+            Chart.ChartAreas[0].AxisY.LabelStyle.Font = new Font("Arial", 12, FontStyle.Bold);
+
+            ChartIncome.ChartAreas[0].AxisX.LabelStyle.ForeColor = Color.White;
+            ChartIncome.ChartAreas[0].AxisX.LabelStyle.Font = new Font("Arial", 12, FontStyle.Bold);
+            ChartIncome.ChartAreas[0].AxisY.LabelStyle.ForeColor = Color.White;
+            ChartIncome.ChartAreas[0].AxisY.LabelStyle.Font = new Font("Arial", 12, FontStyle.Bold);
+        }
+        // Income Menu Tab Code ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+        private void btnReceita_Click(object sender, EventArgs e)
+        {
+            LoadReceita();
+            ConfigureChartAppearance();
+            ChartIncome.Visible = true;             
+        }
+
+        private void btnDespesas_Click(object sender, EventArgs e)
+        {
+            LoadDespesas();
+            ConfigureChartAppearance();
+            ChartIncome.Visible = true;
+        }
+        private void LoadDespesas()
+        {
+            ChartIncome.Series.Clear();
+            ChartIncome.ChartAreas.Clear();
+
+            var series = new Series("Despesas");
+            series.ChartType = SeriesChartType.Bar;
+            series.IsVisibleInLegend = false;
+            ChartIncome.Series.Add(series);
+            ChartIncome.ChartAreas.Add(new ChartArea("ChartArea"));
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string query = "SELECT i.Name, SUM(i.Price * di.Quantity) AS TotalSpent FROM DrinksIngredients di JOIN IngredientsInfo i ON di.ID_Ingredients = i.ID GROUP BY i.Name ORDER BY TotalSpent DESC";
+                SqlCommand command = new SqlCommand(query, connection);
+                connection.Open();
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        string ingredientName = reader["Name"].ToString();
+                        double totalSpent = Convert.ToDouble(reader["TotalSpent"]);
+                        series.Points.AddXY(ingredientName, totalSpent);
+                    }
+                }
+            }
+        }
+
+        private void LoadReceita()
+        {
+            ChartIncome.Series.Clear();
+            ChartIncome.ChartAreas.Clear();
+
+            var series = new Series("Receita");
+            series.ChartType = SeriesChartType.Bar;
+            series.IsVisibleInLegend = false;
+            ChartIncome.Series.Add(series);
+            ChartIncome.ChartAreas.Add(new ChartArea("ChartArea"));
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string query = "SELECT d.Name, SUM(d.Price * du.UsageCount) AS TotalEarned FROM DrinkUsage du JOIN DrinksInfo d ON du.ID_Drink = d.ID GROUP BY d.Name ORDER BY TotalEarned DESC";
+                SqlCommand command = new SqlCommand(query, connection);
+                connection.Open();
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        string drinkName = reader["Name"].ToString();
+                        double totalEarned = Convert.ToDouble(reader["TotalEarned"]);
+                        series.Points.AddXY(drinkName, totalEarned);
+                    }
+                }
+            }
+        }
+
     }
 }

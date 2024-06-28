@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\Andr\u00E9\\Desktop\\PSI1622Q_AndreSilva_2222111\\src\\Projeto2Ano\\Dionisios\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{64E2A4AC-317C-47B1-91DC-EF012B6C0FB9}|Dionisios\\Dionisios.csproj|C:\\Users\\Andr\u00E9\\Desktop\\PSI1622Q_AndreSilva_2222111\\src\\Projeto2Ano\\Dionisios\\dionisios\\managerpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{64E2A4AC-317C-47B1-91DC-EF012B6C0FB9}|Dionisios\\Dionisios.csproj|solutionrelative:dionisios\\managerpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{64E2A4AC-317C-47B1-91DC-EF012B6C0FB9}|Dionisios\\Dionisios.csproj|c:\\users\\andr\u00E9\\desktop\\psi1622q_andresilva_2222111\\src\\projeto2ano\\dionisios\\dionisios\\managerpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{64E2A4AC-317C-47B1-91DC-EF012B6C0FB9}|Dionisios\\Dionisios.csproj|solutionrelative:dionisios\\managerpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{64E2A4AC-317C-47B1-91DC-EF012B6C0FB9}|Dionisios\\Dionisios.csproj|C:\\Users\\Andr\u00E9\\Desktop\\PSI1622Q_AndreSilva_2222111\\src\\Projeto2Ano\\Dionisios\\dionisios\\managerpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{64E2A4AC-317C-47B1-91DC-EF012B6C0FB9}|Dionisios\\Dionisios.csproj|solutionrelative:dionisios\\managerpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{64E2A4AC-317C-47B1-91DC-EF012B6C0FB9}|Dionisios\\Dionisios.csproj|C:\\Users\\Andr\u00E9\\Desktop\\PSI1622Q_AndreSilva_2222111\\src\\Projeto2Ano\\Dionisios\\dionisios\\managerpage.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{64E2A4AC-317C-47B1-91DC-EF012B6C0FB9}|Dionisios\\Dionisios.csproj|solutionrelative:dionisios\\managerpage.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -26,28 +30,41 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ManagerPage.cs",
-              "DocumentMoniker": "C:\\Users\\Andr\u00E9\\Desktop\\PSI1622Q_AndreSilva_2222111\\src\\Projeto2Ano\\Dionisios\\Dionisios\\ManagerPage.cs",
-              "RelativeDocumentMoniker": "Dionisios\\ManagerPage.cs",
-              "ToolTip": "C:\\Users\\Andr\u00E9\\Desktop\\PSI1622Q_AndreSilva_2222111\\src\\Projeto2Ano\\Dionisios\\Dionisios\\ManagerPage.cs",
-              "RelativeToolTip": "Dionisios\\ManagerPage.cs",
-              "ViewState": "AQIAACUEAAAAAAAAAADwv04EAAAnAAAA",
+              "DocumentIndex": 2,
+              "Title": "ManagerPage.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\Andr\u00E9\\Desktop\\PSI1622Q_AndreSilva_2222111\\src\\Projeto2Ano\\Dionisios\\Dionisios\\ManagerPage.Designer.cs",
+              "RelativeDocumentMoniker": "Dionisios\\ManagerPage.Designer.cs",
+              "ToolTip": "C:\\Users\\Andr\u00E9\\Desktop\\PSI1622Q_AndreSilva_2222111\\src\\Projeto2Ano\\Dionisios\\Dionisios\\ManagerPage.Designer.cs",
+              "RelativeToolTip": "Dionisios\\ManagerPage.Designer.cs",
+              "ViewState": "AQIAADkBAAAAAAAAAAAiwE0BAABTAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-26T00:32:34.734Z",
+              "WhenOpened": "2024-06-28T01:28:58.209Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "ManagerPage.cs [Design]",
               "DocumentMoniker": "C:\\Users\\Andr\u00E9\\Desktop\\PSI1622Q_AndreSilva_2222111\\src\\Projeto2Ano\\Dionisios\\Dionisios\\ManagerPage.cs",
               "RelativeDocumentMoniker": "Dionisios\\ManagerPage.cs",
               "ToolTip": "C:\\Users\\Andr\u00E9\\Desktop\\PSI1622Q_AndreSilva_2222111\\src\\Projeto2Ano\\Dionisios\\Dionisios\\ManagerPage.cs [Design]",
               "RelativeToolTip": "Dionisios\\ManagerPage.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-16T22:59:34.286Z",
+              "WhenOpened": "2024-06-28T01:28:53.871Z",
               "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ManagerPage.cs",
+              "DocumentMoniker": "C:\\Users\\Andr\u00E9\\Desktop\\PSI1622Q_AndreSilva_2222111\\src\\Projeto2Ano\\Dionisios\\Dionisios\\ManagerPage.cs",
+              "RelativeDocumentMoniker": "Dionisios\\ManagerPage.cs",
+              "ToolTip": "C:\\Users\\Andr\u00E9\\Desktop\\PSI1622Q_AndreSilva_2222111\\src\\Projeto2Ano\\Dionisios\\Dionisios\\ManagerPage.cs",
+              "RelativeToolTip": "Dionisios\\ManagerPage.cs",
+              "ViewState": "AQIAABoAAAAAAAAAAAAwwCwAAAAvAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-26T00:32:34.734Z",
+              "EditorCaption": ""
             }
           ]
         }

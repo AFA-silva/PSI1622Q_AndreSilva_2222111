@@ -283,6 +283,16 @@ namespace Dionisios.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ImageHere {
+            get {
+                object obj = ResourceManager.GetObject("ImageHere", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap images__1__removebg_preview {
             get {
                 object obj = ResourceManager.GetObject("images__1_-removebg-preview", resourceCulture);
