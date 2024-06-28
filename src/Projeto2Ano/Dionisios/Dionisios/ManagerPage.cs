@@ -284,26 +284,44 @@ namespace Dionisios
                 }
                 query += " WHERE Id = @Id";
                 SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@Name", IngNameBox.Text);
-                command.Parameters.AddWithValue("@Unit", IngUnitBox.Text);
-                command.Parameters.AddWithValue("@Quantity", int.Parse(IngQuantityBox.Text));
-                command.Parameters.AddWithValue("@Description", IngDescriptionBox.Text);
-                command.Parameters.AddWithValue("@Price", float.Parse(IngPriceBox.Text)); // Garante que o preço seja atualizado
 
-                // Adiciona o parâmetro da imagem apenas se a imagem foi alterada
-                if (selectedImage != null)
+                try
                 {
-                    string newImageHash = GetImageHash(selectedImage);
-                    if (newImageHash != currentImageHash)
-                    {
-                        byte[] imageData = ImageToByteArray(selectedImage, ImageFormat.Png); // Converte a imagem para byte array
-                        command.Parameters.AddWithValue("@Image", imageData);
-                    }
-                }
+                    // Adiciona os parâmetros fora do bloco try-catch para garantir que eles sejam sempre adicionados
+                    command.Parameters.AddWithValue("@Name", IngNameBox.Text);
+                    command.Parameters.AddWithValue("@Unit", IngUnitBox.Text);
+                    command.Parameters.AddWithValue("@Quantity", int.Parse(IngQuantityBox.Text));
+                    command.Parameters.AddWithValue("@Description", IngDescriptionBox.Text);
+                    command.Parameters.AddWithValue("@Price", float.Parse(IngPriceBox.Text)); // Garante que o preço seja atualizado
 
-                command.Parameters.AddWithValue("@Id", ingId);
-                connection.Open();
-                command.ExecuteNonQuery(); 
+                    // Adiciona o parâmetro da imagem apenas se a imagem foi alterada
+                    if (selectedImage != null)
+                    {
+                        string newImageHash = GetImageHash(selectedImage);
+                        if (newImageHash != currentImageHash)
+                        {
+                            byte[] imageData = ImageToByteArray(selectedImage, ImageFormat.Png); // Converte a imagem para byte array
+                            command.Parameters.AddWithValue("@Image", imageData);
+                        }
+                    }
+
+                    command.Parameters.AddWithValue("@Id", ingId);
+
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+                catch (FormatException)
+                {
+                    MessageBox.Show("Erro ao digitar algum dos valores. Verifique os campos de quantidade e preço.");
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show("Erro ao executar a atualização no banco de dados: " + ex.Message);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ocorreu um erro: " + ex.Message);
+                }
             }
         }
         private void ClearForm()
@@ -413,37 +431,62 @@ namespace Dionisios
                 MessageBox.Show("Por favor, preencha todos os campos obrigatórios.");
             }
         }
-
         // Função para atualizar uma bebida na base de dados
         private void UpdateDrink()
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            try
             {
-                // Base da query de atualização sem a imagem
-                string query = "UPDATE DrinksInfo SET Name = @Name, Price = @Price";
-
-                // Verifica se a imagem foi alterada
-                if (selectedImage != null)
+                using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    query += ", Image = @Image";
-                }
-                query += " WHERE Id = @Id";
-                SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@Name", DrinkNameBox.Text);
-                command.Parameters.AddWithValue("@Price", float.Parse(DrinkPriceBox.Text)); // Garante que o preço seja atualizado
+                    // Base da query de atualização sem a imagem
+                    string query = "UPDATE DrinksInfo SET Name = @Name, Price = @Price";
 
-                // Adiciona o parâmetro da imagem apenas se a imagem foi alterada
-                if (selectedImage != null)
-                {
-                    byte[] imageData = ImageToByteArray(selectedImage, ImageFormat.Png); // Converte a imagem para byte array
-                    command.Parameters.AddWithValue("@Image", imageData);
-                }
+                    // Verifica se a imagem foi alterada
+                    if (selectedImage != null)
+                    {
+                        query += ", Image = @Image";
+                    }
+                    query += " WHERE Id = @Id";
+                    SqlCommand command = new SqlCommand(query, connection);
+                    command.Parameters.AddWithValue("@Name", DrinkNameBox.Text);
 
-                command.Parameters.AddWithValue("@Id", drinkId);
-                connection.Open();
-                command.ExecuteNonQuery();
+                    // Tenta converter o preço para float
+                    if (float.TryParse(DrinkPriceBox.Text, out float price))
+                    {
+                        command.Parameters.AddWithValue("@Price", price); // Garante que o preço seja atualizado
+                    }
+                    else
+                    {
+                        MessageBox.Show("Formato de preço inválido. Por favor, insira um número válido.", "Erro de Formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return; // Sai do método se o preço for inválido
+                    }
+
+                    // Adiciona o parâmetro da imagem apenas se a imagem foi alterada
+                    if (selectedImage != null)
+                    {
+                        byte[] imageData = ImageToByteArray(selectedImage, ImageFormat.Png); // Converte a imagem para byte array
+                        command.Parameters.AddWithValue("@Image", imageData);
+                    }
+
+                    command.Parameters.AddWithValue("@Id", drinkId);
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+            }
+            catch (FormatException ex)
+            {
+                MessageBox.Show("Erro de formatação: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Erro de SQL: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro desconhecido: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         private void DeleteDrinkBtn_Click(object sender, EventArgs e)
         {
             var confirmResult = MessageBox.Show("Tem certeza de que deseja deletar este item?", "Deletar Drink", MessageBoxButtons.YesNo);

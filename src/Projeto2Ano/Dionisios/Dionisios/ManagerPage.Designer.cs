@@ -821,7 +821,7 @@
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             this.Chart.Series.Add(series1);
-            this.Chart.Size = new System.Drawing.Size(401, 404);
+            this.Chart.Size = new System.Drawing.Size(527, 407);
             this.Chart.TabIndex = 0;
             this.Chart.Visible = false;
             // 
@@ -883,9 +883,10 @@
             series2.Legend = "Legend1";
             series2.Name = "Series1";
             this.ChartIncome.Series.Add(series2);
-            this.ChartIncome.Size = new System.Drawing.Size(372, 397);
+            this.ChartIncome.Size = new System.Drawing.Size(515, 403);
             this.ChartIncome.TabIndex = 0;
             this.ChartIncome.Text = "chart3";
+            this.ChartIncome.Visible = false;
             // 
             // pictureBox3
             // 
